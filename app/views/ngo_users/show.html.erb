@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ngo:</strong>
+  <%= @ngo_user.ngo %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ngo_user.user %>
+</p>
+
+<%= link_to 'Edit', edit_ngo_user_path(@ngo_user) %> |
+<%= link_to 'Back', ngo_users_path %>

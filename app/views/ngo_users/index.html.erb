@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ngo Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ngo</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ngo_users.each do |ngo_user| %>
+      <tr>
+        <td><%= ngo_user.ngo %></td>
+        <td><%= ngo_user.user %></td>
+        <td><%= link_to 'Show', ngo_user %></td>
+        <td><%= link_to 'Edit', edit_ngo_user_path(ngo_user) %></td>
+        <td><%= link_to 'Destroy', ngo_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ngo User', new_ngo_user_path %>

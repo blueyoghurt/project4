@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2016-10-28
+  end_date: 2016-10-28
+  description: MyText
+  vacancy: 1
+  school: one
+
+two:
+  start_date: 2016-10-28
+  end_date: 2016-10-28
+  description: MyText
+  vacancy: 1
+  school: two

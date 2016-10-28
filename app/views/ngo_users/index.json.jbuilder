@@ -1,0 +1,1 @@
+json.array! @ngo_users, partial: 'ngo_users/ngo_user', as: :ngo_user
