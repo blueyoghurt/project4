@@ -1,3 +1,3 @@
 class Ngo < ApplicationRecord
-  has_many :ngo_uesrs
+  has_many :ngo_users
 end

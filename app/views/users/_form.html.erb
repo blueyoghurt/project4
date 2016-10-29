@@ -1,52 +1,53 @@
 <%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<% if user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>
+
+<div class="field">
+  <%= f.label :password %>
+  <%= f.text_field :password_digest %>
+</div>
+
+<div class="field">
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+</div>
+
+<div class="field">
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+</div>
+
+<div class="form-group">
+  <%= f.label :type, class: "control-label" %>
+    <div class="col-md-2">
+      <%= f.radio_button :school, "true"%>
+      <%= label :school_user, "School User"%>
     </div>
-  <% end %>
+    <div class="col-md-2">
+      <%= f.radio_button :school, "false"%>
+      <%= label :school_user, "Student"%>
+    </div>
+    <div class="col-md-2">
+      <%= f.radio_button :school, "false"%>
+      <%= label :school_user, "NGO User"%>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_digest %>
-    <%= f.text_field :password_digest %>
-  </div>
-
-  <div class="field">
-    <%= f.label :admin %>
-    <%= f.check_box :admin %>
-  </div>
-
-  <div class="field">
-    <%= f.label :school %>
-    <%= f.check_box :school %>
-  </div>
-
-  <div class="field">
-    <%= f.label :ngo %>
-    <%= f.check_box :ngo %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

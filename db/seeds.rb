@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.find_or_create_by!(email: ENV["seed_email"]) do |user|
+  user.first_name = 'Admin'
+  user.last_name = 'User'
+  user.admin = true
+  user.school = false
+  user.student = false
+  user.ngo = false
+  user.password = ENV["seed_password"]
+end
