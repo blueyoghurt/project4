@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :cards
+  resources :tasks
+  resources :templates
+  resources :students
+  resources :levels
   root 'public#index'
 
   # AUTHENTICATION
