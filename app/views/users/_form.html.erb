@@ -11,43 +11,45 @@
 </div>
 <% end %>
 
-<div class="field">
+<div class="form-group">
   <%= f.label :email %>
   <%= f.text_field :email %>
 </div>
 
-<div class="field">
+<div class="form-group">
   <%= f.label :password %>
-  <%= f.text_field :password_digest %>
+  <%= f.password_field :password %>
 </div>
 
-<div class="field">
+<div class="form-group">
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
 </div>
 
-<div class="field">
+<div class="form-group">
   <%= f.label :last_name %>
   <%= f.text_field :last_name %>
 </div>
 
 <div class="form-group">
-  <%= f.label :type, class: "control-label" %>
+  <%= f.label :type, class: "control-label col-md-2" %>
     <div class="col-md-2">
-      <%= f.radio_button :school, "true"%>
-      <%= label :school_user, "School User"%>
+      <%= f.radio_button :usertype, 2 %>
+      <%= label :usertype, "School User"%>
     </div>
     <div class="col-md-2">
-      <%= f.radio_button :school, "false"%>
-      <%= label :school_user, "Student"%>
+      <%= f.radio_button :usertype, 3 %>
+      <%= label :usertype, "Student"%>
     </div>
     <div class="col-md-2">
-      <%= f.radio_button :school, "false"%>
-      <%= label :school_user, "NGO User"%>
+      <%= f.radio_button :usertype, 4 %>
+      <%= label :usertype, "NGO User"%>
     </div>
 </div>
 
-<div class="actions">
-  <%= f.submit %>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-md-10">
+    <br><%= f.submit class: "btn btn-primary"%>
+  </div>
 </div>
 <% end %>

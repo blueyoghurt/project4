@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#new'
+  root 'public#index'
 
   # AUTHENTICATION
   get "login" => "sessions#new"
@@ -18,9 +18,14 @@ Rails.application.routes.draw do
     patch 'admin' => "users#toggle_admin", on: :member
   end
 
+  get "teacher/register" => "school_users#new"
+  resources :school_users
+
+  get "ngo/register" => "ngo_users#new"
+  resources :ngo_users
+
   resources :events
   resources :ngo_users
-  resources :school_users
   resources :ngos
   resources :schools
   get 'main/index'
