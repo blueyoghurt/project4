@@ -2,6 +2,7 @@ class User < ApplicationRecord
   #ASSOCIATIONS
   has_one :school_user
   has_one :ngo_user
+  has_one :student
 
   # MIXINS
   has_secure_password
