@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030151912) do
+ActiveRecord::Schema.define(version: 20161030163247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,7 +83,9 @@ ActiveRecord::Schema.define(version: 20161030151912) do
     t.integer  "level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "school_id"
     t.index ["level_id"], name: "index_students_on_level_id", using: :btree
+    t.index ["school_id"], name: "index_students_on_school_id", using: :btree
     t.index ["user_id"], name: "index_students_on_user_id", using: :btree
   end
 
@@ -123,6 +125,7 @@ ActiveRecord::Schema.define(version: 20161030151912) do
   add_foreign_key "school_users", "schools"
   add_foreign_key "school_users", "users"
   add_foreign_key "students", "levels"
+  add_foreign_key "students", "schools"
   add_foreign_key "students", "users"
   add_foreign_key "tasks", "templates"
   add_foreign_key "templates", "events"

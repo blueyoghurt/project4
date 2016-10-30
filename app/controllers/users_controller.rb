@@ -32,13 +32,13 @@ class UsersController < ApplicationController
         format.html {
           if (@user.usertype == 2)
             # redirect to school_user#create route
-            redirect_to teacher_register_path, notice: 'User was successfully created.'
+            redirect_to teacher_register_path, notice: 'User (teacher route) was successfully created.'
           elsif (@user.usertype == 3)
             # redirect to student_user#create route
-            redirect_to teacher_register_path, notice: 'User was successfully created.'
+            redirect_to student_register_path, notice: 'User (student route) was successfully created.'
           elsif (@user.usertype == 4)
             # redirect to ngo_user#create route
-            redirect_to ngo_register_path, notice: 'User was successfully created.'
+            redirect_to ngo_register_path, notice: 'User (ngo route) was successfully created.'
           end
         }
       else
