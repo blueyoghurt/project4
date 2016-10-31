@@ -33,3 +33,14 @@
 .ui.secondary.vertical.pointing.menu .active.item {
   border-color: #FBBD08;
 }
+
+#studentInput .ui.icon .loadingIcon {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#studentInput .ui.icon {
+  text-align: center;
+  margin-top: 20px;
+}

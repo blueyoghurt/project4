@@ -7,6 +7,14 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def profile
+    @student = User.find(@current_user.id)
+    respond_to do |format|
+      format.json { render :json => @student }
+      format.json { render :json => @school }
+    end
+  end
+
   # GET /students/1
   # GET /students/1.json
   def show

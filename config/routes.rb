@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :ngo_users
 
   get "student/register" => "students#new"
+  get "/student/profile" => "students#profile"
   resources :students
 
   resources :cards
