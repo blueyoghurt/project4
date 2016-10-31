@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20161030163247) do
     t.string   "telephone"
     t.string   "website"
     t.text     "description"
+    t.string   "logo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 20161030163247) do
     t.string   "address"
     t.string   "telephone"
     t.string   "website"
+    t.string   "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -26,7 +26,8 @@ class SchoolsController < ApplicationController
   # POST /schools.json
   def create
     @school = School.new(school_params)
-
+    uploaded_file = params[:school][:logo].path
+    @school.update(logo: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
     respond_to do |format|
       if @school.save
         format.html { redirect_to @school, notice: 'School was successfully created.' }
@@ -70,6 +71,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name, :address, :telephone, :website)
+      params.require(:school).permit(:name, :address, :telephone, :website, :logo)
     end
 end

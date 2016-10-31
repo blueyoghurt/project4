@@ -48,6 +48,8 @@ class NgosController < ApplicationController
   # PATCH/PUT /ngos/1
   # PATCH/PUT /ngos/1.json
   def update
+    uploaded_file = params[:ngo][:logo].path
+    @ngo.update(logo: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
     respond_to do |format|
       if @ngo.update(ngo_params)
         format.html { redirect_to @ngo, notice: 'Ngo was successfully updated.' }
@@ -77,6 +79,6 @@ class NgosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ngo_params
-      params.require(:ngo).permit(:name, :address, :telephone, :website, :description)
+      params.require(:ngo).permit(:name, :address, :telephone, :website, :description, :logo)
     end
 end
