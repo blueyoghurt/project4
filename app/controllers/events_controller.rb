@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :is_school_user, only: [:create, :new, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -25,6 +26,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.school_id = SchoolUser.find_by(user_id: current_user.id).school_id
 
     respond_to do |format|
       if @event.save
@@ -69,6 +71,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:start_date, :end_date, :description, :vacancy, :school_id)
+      params.require(:event).permit(:start_date, :end_date, :description, :vacancy)
     end
 end
