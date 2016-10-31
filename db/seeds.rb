@@ -9,9 +9,27 @@
 User.find_or_create_by!(email: ENV["seed_email"]) do |user|
   user.first_name = 'Admin'
   user.last_name = 'User'
-  user.admin = true
-  user.school = false
-  user.student = false
-  user.ngo = false
+  user.usertype = 1
+  user.password = ENV["seed_password"]
+end
+
+User.find_or_create_by!(email: ENV["seed_email1"]) do |user|
+  user.first_name = 'Teacher'
+  user.last_name = 'User'
+  user.usertype = 2
+  user.password = ENV["seed_password"]
+end
+
+User.find_or_create_by!(email: ENV["seed_email2"]) do |user|
+  user.first_name = 'Student'
+  user.last_name = 'User'
+  user.usertype = 3
+  user.password = ENV["seed_password"]
+end
+
+User.find_or_create_by!(email: ENV["seed_email3"]) do |user|
+  user.first_name = 'NGO'
+  user.last_name = 'User'
+  user.usertype = 4
   user.password = ENV["seed_password"]
 end
