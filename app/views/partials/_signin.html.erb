@@ -1,0 +1,22 @@
+<div class="ui basic modal centered grid" id="signInModal">
+  <%= form_for :user, html: { class: "ui form", role: "form" } do |f| %>
+    <div class="field">
+      <%= f.label :email %></br>
+      <div class="">
+        <%= f.email_field :email, :required => true, class: "signInInput", placeholder: "Email" %><br>
+      </div>
+    </div>
+    </br>
+    <div class="field">
+      <%= f.label :password%></br>
+      <div class="">
+        <%= f.password_field :password, :required => true, class: "signInInput", placeholder: "Password" %>
+      </div>
+    </div>
+      <div class="field">
+        <div>
+        <br><%= f.submit "Login" ,class: "ui inverted yellow button" %>
+      </div>
+    </div>
+  <% end %>
+</div>

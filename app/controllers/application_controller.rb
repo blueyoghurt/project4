@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   # Do we have a @current_user variable? if not try to find a user in the db using the session id
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
+    @newuser = User.new 
 
     if @current_user
       return @current_user

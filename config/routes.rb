@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :students
   resources :levels
   root 'public#index'
+  post "/" => "sessions#create"
 
   # AUTHENTICATION
   get "login" => "sessions#new"
