@@ -34,6 +34,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    uploaded_file = params[:user][:profile_pic].path
+    upload_image = Cloudinary::Uploader.upload(uploaded_file)
+    puts upload_image["public_id"]
+    @user.update(profile_pic: upload_image["public_id"])
 
     respond_to do |format|
       if @user.save
@@ -89,6 +93,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :usertype, :school_id)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :usertype, :profile_pic)
   end
 end
