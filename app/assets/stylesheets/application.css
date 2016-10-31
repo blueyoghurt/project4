@@ -22,25 +22,14 @@
   color: white;
 }
 
-.ui.form .field>label {
+#signInModal .ui.form .field>label {
   color: white;
 }
 
-#studentMenu {
-  width: 100%;
+#signUpModal .ui.form .field>label {
+  color: white;
 }
 
 .ui.secondary.vertical.pointing.menu .active.item {
   border-color: #FBBD08;
-}
-
-#studentInput .ui.icon .loadingIcon {
-  font-size: 50px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-#studentInput .ui.icon {
-  text-align: center;
-  margin-top: 20px;
 }

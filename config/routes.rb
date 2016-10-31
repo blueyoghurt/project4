@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Users - custom routes for users, registration, profile, editing etc
   get "register" => "users#new"
   post "users" => "users#create"
+  get "/users/profile" => "users#profile"
   get "profile" => "users#show"
   get "profile/edit" => "users#edit"
   put "profile" => "users#update"
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   resources :ngo_users
 
   get "student/register" => "students#new"
-  get "/student/profile" => "students#profile"
+  patch "update" => "student#update"
   resources :students
 
   resources :cards

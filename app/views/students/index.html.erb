@@ -12,3 +12,34 @@
   </div>
   <div class="twelve wide column apple" id="studentInput"></div>
 </div>
+
+<!-- MODALS -->
+<!-- EDIT PROFILE -->
+<div class="ui modal" id="editingProfile">
+  <div class="header">
+    Edit Profile
+  </div>
+  <div class="content">
+    <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
+      <div class="field">
+        <%= f.label :first_name %></br>
+        <%= f.text_field :first_name, placeholder: @student.first_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name %></br>
+        <%= f.text_field :last_name, placeholder: @student.last_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %></br>
+        <%= f.text_field :email, placeholder: @student.email%>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui inverted yellow button"%>
+    </div>
+  <%end %>
+</div>
+
+<!-- EDIT SCHOOL -->
