@@ -49,16 +49,16 @@ $(document).on('turbolinks:load', function() {
           '</tbody>' +
         '</table>' +
         '<button id="editProfile" class="ui yellow button right floated editButton">Edit</button>'
-        '</br>' +
-        '</br>' +
-        '<table class="ui basic table">' +
-          '<tbody>' +
-              '<td><b>School:</b></td>' +
-              '<td>' + data.school + '</td>' +
-            '</tr>' +
-          '</tbody>' +
-        '</table>' +
-        '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
+        // '</br>' +
+        // '</br>' +
+        // '<table class="ui basic table">' +
+        //   '<tbody>' +
+        //       '<td><b>School:</b></td>' +
+        //       '<td>' + data.school + '</td>' +
+        //     '</tr>' +
+        //   '</tbody>' +
+        // '</table>' +
+        // '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
       )
     })
   })
