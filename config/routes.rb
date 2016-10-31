@@ -27,12 +27,15 @@ Rails.application.routes.draw do
   resources :ngo_users, except: [:new]
 
   get "student/register" => "students#new"
+  get "students/search" => "students#search"
   resources :students, except: [:new]
 
   resources :templates
   resources :cards
   resources :tasks
   resources :levels
+
+  get "events/search" => "events#search"
   resources :events
 
   get "ngos/search" => "ngos#search"

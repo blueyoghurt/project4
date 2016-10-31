@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   console.log('PROFILE DOM loaded');
 
-  // CLICKING USER PROFILE
+  // CLICKING USER PROFILE (STUDENT, NGOS AND SCHOOLS)
   $("#userProfile").click(function() {
     loadingAjax()
 
@@ -10,6 +10,17 @@ $(document).on('turbolinks:load', function() {
       method: 'GET'
     }).done(function (data) {
       console.log("Information is back:", data);
+      var usertype = "";
+      if (data.usertype == 1) {
+        usertype = "Admin user"
+      } else if (data.usertype == 2) {
+        usertype = "School user"
+      } else if (data.usertype == 3) {
+        usertype = "Student user"
+      } else if (data.usertype == 4) {
+        usertype = "Ngo user"
+      }
+
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
@@ -28,7 +39,7 @@ $(document).on('turbolinks:load', function() {
             '</tr>' +
             '<tr>' +
               '<td><b>User Type:</b></td>' +
-              '<td>Student</td>' +
+              '<td>' + usertype + '</td>' +
             '</tr>' +
             '<tr>' +
           '</tbody>' +
@@ -42,7 +53,7 @@ $(document).on('turbolinks:load', function() {
     $('#editingProfile').modal('show')
   })
 
-  // CLICKING STUDENT SCHOOL Profile
+  // CLICKING STUDENT SCHOOL PROFILE (STUDENT)
   $("#schoolProfile").click(function() {
     loadingAjax()
 
@@ -71,7 +82,7 @@ $(document).on('turbolinks:load', function() {
   })
 
 
-  // CLICKING STUDENT SCHOOL Profile
+  // CLICKING ON NGO LIST (STUDENT & SCHOOLS)
   $("#ngoCards").click(function() {
     loadingAjax()
 
@@ -81,7 +92,32 @@ $(document).on('turbolinks:load', function() {
     }).done(function (data) {
       console.log("Information is back:", data);
       appendNgoCards(data)
+    })
+  })
 
+  // CLICKING ON EVENTS (SCHOOL)
+  $("#eventsList").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/events/search',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      appendEventCards(data)
+    })
+  })
+
+  // CLICKING ON STUDENT PROFILES (SCHOOL)
+  $("#schoolStudentProfiles").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/students/search',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      appendStudentCards(data)
     })
   })
 
@@ -136,5 +172,76 @@ $(document).on('turbolinks:load', function() {
       )
     }
   }
+
+  // APPENDING STUDENT CARDS
+  function appendStudentCards(data) {
+    console.log("Inside function:", data);
+    $("#profileInput").empty()
+    $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
+    for (var i = 0; i < data.length; i++) {
+      $("#studentAppendCards").append(
+        '<div class="ui yellow card">' +
+          '<div class="image">' +
+            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+          '</div>' +
+          '<div class="content">' +
+            '<a class="header">' + data[i].user.first_name+ '</a>' +
+            '<div class="meta">' +
+              '<span class="date">' + data[i].level.description + '</span>' +
+            '</div>' +
+            '<div class="description">' +
+              data[i].level.description +
+            '</div>' +
+          '</div>' +
+          '<div class="extra content">' +
+            '<div class="right floated">' +
+              '<a class="cardLinkIcons" href="mailto:' + data[i].user.email + '">' +
+                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+                'Email' +
+              '</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )
+    }
+  }
+
+  // APPENDING EVENTS
+  function appendEventCards(data) {
+    $("#profileInput").empty()
+    $("#profileInput").append(
+      '<div class="ui centered grid" id="addEventBox">' +
+          '<button class="ui yellow button" id="addEvent">Add Event</button>' +
+      '</div>' +
+      '<div class="ui cards" id="appendEventCards"></div>'
+    )
+    for (var i = 0; i < data.length; i++) {
+      $("#appendEventCards").append(
+        '<div class="ui yellow card">' +
+          '<div class="image">' +
+            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+          '</div>' +
+          '<div class="content">' +
+            '<a class="header">' + data[i].name + '</a>' +
+            '<div class="meta">' +
+              '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
+            '</div>' +
+            '<div class="description">' +
+              data[i].description +
+            '</div>' +
+          '</div>' +
+          '<div class="extra content">' +
+            '<div class="right floated">' +
+              '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
+                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+                'Email' +
+              '</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )
+    }
+  }
+
 
 })

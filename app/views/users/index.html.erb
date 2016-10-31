@@ -9,7 +9,10 @@
       <!-- CONDITIONALS MENU BAR -->
       <!-- SCHOOL -->
       <% if current_user.usertype == 2 %>
-        <a class="item menuScroll" id="studentSchoolProfile">Institution Profile</a>
+        <a class="item menuScroll" id="teacherSchoolProfile">Institution Profile</a>
+        <a class="item menuScroll" id="schoolStudentProfiles">Students</a>
+        <a class="item menuScroll" id="eventsList">Events</a>
+        <a class="item menuScroll ngoList" id="ngoCards">NGO Partners</a>
         <!-- STUDENT -->
       <% elsif current_user.usertype == 3 %>
         <a class="item menuScroll" id="schoolProfile">Institution Profile</a>
@@ -38,12 +41,14 @@
         </tr>
         <tr>
           <td><b>User Type:</b></td>
-          <% if @user.usertype == 2 %>
-            <td>School</td>
+          <% if @user.usertype == 1 %>
+            <td>Admin user</td>
+          <% elsif @user.usertype == 2 %>
+            <td>School user</td>
           <% elsif @user.usertype == 3 %>
-            <td>Student</td>
+            <td>Student user</td>
           <% elsif @user.usertype == 4 %>
-            <td>NGO</td>
+            <td>Ngo user</td>
           <% end %>
         </tr>
         <tr>
