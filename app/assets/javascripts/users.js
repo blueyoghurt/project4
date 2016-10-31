@@ -67,11 +67,6 @@ $(document).on('turbolinks:load', function() {
     $('#editingProfile').modal('show')
   })
 
-  $(document).on('click','#editSchool',function(){
-    $('#editingSchool').modal('show')
-    console.log("Modal to edit school");
-  })
-
   // CLICKING STUDENT SCHOOL Profile
   $("#schoolProfile").click(function() {
     console.log("User searching for Profile");
@@ -105,5 +100,46 @@ $(document).on('turbolinks:load', function() {
       )
     })
   })
+
+  $(document).on('click','#editSchool',function(){
+    $('#editingSchool').modal('show')
+    console.log("Modal to edit school");
+  })
+
+
+  // CLICKING STUDENT SCHOOL Profile
+  $("#studentCards").click(function() {
+    console.log("User searching for Profile");
+    $("#profileInput").empty()
+    $("#profileInput").append(
+      '<div class="ui icon">' +
+        '<i class="notched circle loading icon loadingIcon"></i>' +
+        '<div class="content">' +
+          '<div class="header">' +
+            'Loading...' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    )
+
+    $.ajax({
+      url: '/users/profile',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      $("#profileInput").empty()
+      $("#profileInput").append(
+        '<table class="ui basic table">' +
+          '<tbody>' +
+              '<td><b>School:</b></td>' +
+              '<td>' + data.school+ '</td>' +
+            '</tr>' +
+          '</tbody>' +
+        '</table>' +
+        '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
+      )
+    })
+  })
+
 
 })

@@ -25,8 +25,11 @@ ActiveRecord::Schema.define(version: 20161030163247) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.string   "name"
     t.date     "start_date"
     t.date     "end_date"
+    t.time     "start_time"
+    t.float    "duration"
     t.text     "description"
     t.integer  "vacancy"
     t.integer  "school_id"
@@ -81,9 +84,9 @@ ActiveRecord::Schema.define(version: 20161030163247) do
   create_table "students", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "level_id"
+    t.integer  "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "school_id"
     t.index ["level_id"], name: "index_students_on_level_id", using: :btree
     t.index ["school_id"], name: "index_students_on_school_id", using: :btree
     t.index ["user_id"], name: "index_students_on_user_id", using: :btree

@@ -34,24 +34,50 @@ User.find_or_create_by!(email: ENV["seed_email3"]) do |user|
   user.password = ENV["seed_password"]
 end
 
-School.create(name: "Anderson Secondary School", address: "123 main street", telephone: "61234567",
-website: "http://google.com")
+School.find_or_create_by!(name: "Anderson Secondary School") do |school|
+  school.name = "Anderson Secondary School"
+  school.address = "123 main street"
+  school.telephone = "61234567"
+  school.website = "http://google.com"
+end
 
-School.create(name: "ABC Primary School", address: "321 side street", telephone: "67654321",
-website: "http://yahoo.com")
+School.find_or_create_by!(name: "ABC Primary School") do |school|
+  school.name = "ABC Primary School"
+  school.address = "321 side street"
+  school.telephone = "67654321"
+  school.website = "http://baidu.com"
+end
 
-School.create(name: "DEF Junior College", address: "456 aod street", telephone: "66734131",
-website: "http://baidu.com")
+School.find_or_create_by!(name: "DEF Junior College") do |school|
+  school.name = "DEF Junior College"
+  school.address = "456 aod street"
+  school.telephone = "66734131"
+  school.website = "http://baidu.com"
+end
 
-Ngo.create(name: "Yi Hui Old Folks Home", address: "223 Bukit Batok", telephone: "91777366",
-website: "http://hush.sg", description: "Go in Peace")
+Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
+  ngo.name = "Yi Hui Old Folks Home"
+  ngo.address = "223 Bukit Batok"
+  ngo.telephone = "91777366"
+  ngo.website = "http://hush.sg"
+  ngo.description = "Go in Peace"
+end
 
-Ngo.create(name: "Xavier School for the gifted", address: "43 Bukit Pasoh", telephone: "78693124",
-website: "http://abc.com", description: "Be special")
+Ngo.find_or_create_by!(name: "avier School for the Gifted") do |ngo|
+  ngo.name = "Xavier School for the Gifted"
+  ngo.address = "43 Bukit Pasoh"
+  ngo.telephone = "78693124"
+  ngo.website = "http://abc.com"
+  ngo.description = "Be special"
+end
 
-Level.create(description: "upper primary")
+Level.find_or_create_by!(description: "upper primary") do |level|
+  level.description = "upper primary"
+end
 
-Level.create(description: "lower primary")
+Level.find_or_create_by!(description: "lower primary") do |level|
+  level.description = "lower primary"
+end
 
 SchoolUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email1"]).id) do |schooluser|
   schooluser.school_id = School.find_by(id: 1).id

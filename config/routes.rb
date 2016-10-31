@@ -21,20 +21,20 @@ Rails.application.routes.draw do
   end
 
   get "teacher/register" => "school_users#new"
-  resources :school_users
+  resources :school_users, except: [:new]
 
   get "ngo/register" => "ngo_users#new"
-  resources :ngo_users
+  resources :ngo_users, except: [:new]
 
   get "student/register" => "students#new"
-  patch "update" => "student#update"
-  resources :students
+  resources :students, except: [:new]
 
+  resources :templates
   resources :cards
   resources :tasks
-  resources :templates
   resources :levels
   resources :events
+
   resources :ngos
   resources :schools
   get 'main/index'
