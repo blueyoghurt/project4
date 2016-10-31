@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  resources :cards
-  resources :tasks
-  resources :templates
-  resources :students
-  resources :levels
   root 'public#index'
 
   # AUTHENTICATION
@@ -29,8 +24,14 @@ Rails.application.routes.draw do
   get "ngo/register" => "ngo_users#new"
   resources :ngo_users
 
+  get "student/register" => "students#new"
+  resources :students
+
+  resources :cards
+  resources :tasks
+  resources :templates
+  resources :levels
   resources :events
-  resources :ngo_users
   resources :ngos
   resources :schools
   get 'main/index'
