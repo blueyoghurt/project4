@@ -99,6 +99,17 @@
     Edit School
   </div>
   <!-- SNIPPET TO BE PLACED HERE -->
+  <%= form_tag student_path(@student), method: :patch, action: :update, html: { class: "ui form", role: "form" } do |f| %>
+    <div class="content">
+      <div class="field">
+        <%= f.label :school %></br>
+        <%= collection_select(:school_id, :name, School.all, :id, :name) %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui inverted yellow button"%>
+    </div>
+  <%end %>
 
 
 </div>

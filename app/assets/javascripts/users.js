@@ -1,24 +1,9 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
-
 $(document).on('turbolinks:load', function() {
-  console.log('Student DOM loaded');
+  console.log('PROFILE DOM loaded');
 
   // CLICKING USER PROFILE
   $("#userProfile").click(function() {
-    console.log("User searching for Profile");
-    $("#profileInput").empty()
-    $("#profileInput").append(
-      '<div class="ui icon">' +
-        '<i class="notched circle loading icon loadingIcon"></i>' +
-        '<div class="content">' +
-          '<div class="header">' +
-            'Loading...' +
-          '</div>' +
-        '</div>' +
-      '</div>'
-    )
+    loadingAjax()
 
     $.ajax({
       url: '/users/profile',
@@ -49,16 +34,6 @@ $(document).on('turbolinks:load', function() {
           '</tbody>' +
         '</table>' +
         '<button id="editProfile" class="ui yellow button right floated editButton">Edit</button>'
-        // '</br>' +
-        // '</br>' +
-        // '<table class="ui basic table">' +
-        //   '<tbody>' +
-        //       '<td><b>School:</b></td>' +
-        //       '<td>' + data.school + '</td>' +
-        //     '</tr>' +
-        //   '</tbody>' +
-        // '</table>' +
-        // '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
       )
     })
   })
@@ -69,18 +44,7 @@ $(document).on('turbolinks:load', function() {
 
   // CLICKING STUDENT SCHOOL Profile
   $("#schoolProfile").click(function() {
-    console.log("User searching for Profile");
-    $("#profileInput").empty()
-    $("#profileInput").append(
-      '<div class="ui icon">' +
-        '<i class="notched circle loading icon loadingIcon"></i>' +
-        '<div class="content">' +
-          '<div class="header">' +
-            'Loading...' +
-          '</div>' +
-        '</div>' +
-      '</div>'
-    )
+    loadingAjax()
 
     $.ajax({
       url: '/users/profile',
@@ -109,7 +73,21 @@ $(document).on('turbolinks:load', function() {
 
   // CLICKING STUDENT SCHOOL Profile
   $("#ngoCards").click(function() {
-    console.log("User searching for Profile");
+    loadingAjax()
+
+    $.ajax({
+      url: '/ngos/search',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      appendNgoCards(data)
+
+    })
+  })
+
+// ======================= FUNCTIONS =======================
+  // APPEND LOADING SYMBOL WHILE LOADING AJAX
+  function loadingAjax() {
     $("#profileInput").empty()
     $("#profileInput").append(
       '<div class="ui icon">' +
@@ -121,41 +99,42 @@ $(document).on('turbolinks:load', function() {
         '</div>' +
       '</div>'
     )
+  }
 
-    $.ajax({
-      url: '/ngos/search',
-      method: 'GET'
-    }).done(function (data) {
-      console.log("Information is back:", data);
-      $("#profileInput").empty()
-
-      for (var i = 0; i < data.length; i++) {
-        $("#profileInput").append(
-          '<div class="ui card">' +
-            '<div class="image">' +
-              '<img src="/images/avatar2/large/kristy.png">' +
+  // APPENDING NGO CARDS
+  function appendNgoCards(data) {
+    $("#profileInput").empty()
+    $("#profileInput").append('<div class="ui cards" id="ngoAppendCards"></div>')
+    for (var i = 0; i < data.length; i++) {
+      $("#ngoAppendCards").append(
+        '<div class="ui yellow card">' +
+          '<div class="image">' +
+            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+          '</div>' +
+          '<div class="content">' +
+            '<a class="header">' + data[i].name+ '</a>' +
+            '<div class="meta">' +
+              '<span class="date">MY INDUSTRY</span>' +
             '</div>' +
-            '<div class="content">' +
-              '<a class="header">' + data[i].name+ '</a>' +
-              '<div class="meta">' +
-                '<span class="date">MY INDUSTRY</span>' +
-              '</div>' +
-              '<div class="description">' +
-                data[i].description +
-              '</div>' +
+            '<div class="description">' +
+              data[i].description +
             '</div>' +
-            '<div class="extra content">' +
-              '<a>' +
-                '<i class="user icon"></i>' +
-                '22 Friends' +
+          '</div>' +
+          '<div class="extra content">' +
+            '<div class="right floated">' +
+              '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
+                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+                'Email' +
+              '</a>' +
+              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+                '<i class="text telephone icon"></i>' +
+                'Phone' +
               '</a>' +
             '</div>' +
-          '</div>'
-        )
-      }
-
-    })
-  })
-
+          '</div>' +
+        '</div>'
+      )
+    }
+  }
 
 })
