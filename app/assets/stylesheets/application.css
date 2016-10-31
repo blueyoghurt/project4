@@ -22,12 +22,12 @@
   color: white;
 }
 
-.ui.form .field>label {
+#signInModal .ui.form .field>label {
   color: white;
 }
 
-#studentMenu {
-  width: 100%;
+#signUpModal .ui.form .field>label {
+  color: white;
 }
 
 .ui.secondary.vertical.pointing.menu .active.item {

@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    @student = Student.where(:user_id => @current_user.id)
   end
 
   # GET /students/1
@@ -42,7 +43,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to users_url, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:user_id, :level_id)
+      params.require(:student).permit(:user_id, :level_id, :school_id)
     end
 end

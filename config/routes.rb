@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Users - custom routes for users, registration, profile, editing etc
   get "register" => "users#new"
   post "users" => "users#create"
+  get "/users/profile" => "users#profile"
   get "profile" => "users#show"
   get "profile/edit" => "users#edit"
   put "profile" => "users#update"
@@ -28,18 +29,12 @@ Rails.application.routes.draw do
   get "student/register" => "students#new"
   resources :students, except: [:new]
 
-  # post "templates/:id" => "templates#create"
-  # get "templates/new" => "templates#new"
-  resources :templates #, except: [:new, :create]
-
+  resources :templates
   resources :cards
   resources :tasks
   resources :levels
   resources :events
 
-  # resources :events do
-  #   resources :templates
-  # end
   resources :ngos
   resources :schools
   get 'main/index'

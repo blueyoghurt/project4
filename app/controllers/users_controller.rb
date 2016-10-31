@@ -4,7 +4,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @user = User.find(@current_user.id)
+    @schools = School.all
+    @student = Student.where(:user_id => @current_user.id)
+  end
+
+  def profile
+    @user = User.find(@current_user.id)
+    respond_to do |format|
+      format.json { render json: @user }
+    end
   end
 
   # GET /users/1
@@ -57,8 +66,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
+
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
