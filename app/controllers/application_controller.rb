@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_authenticated_admin
-    unless current_user.is_admin?
+    unless (current_user.usertype == 1)
       flash[:danger] = "Admin Only Access!"
       redirect_to root_path
     end
