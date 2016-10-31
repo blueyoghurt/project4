@@ -13,6 +13,15 @@ class EventsController < ApplicationController
   def show
   end
 
+  def search
+    school_user = SchoolUser.where(user_id: @current_user.id).first
+    school = school_user.school_id
+    @events = Event.where(school_id: school)
+    respond_to do |format|
+      format.json { render json: @events }
+    end
+  end
+
   # GET /events/new
   def new
     @event = Event.new

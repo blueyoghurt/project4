@@ -21,3 +21,27 @@
   text-align: center;
   margin-top: 20px;
 }
+
+#ngoAppendCards .card:hover {
+  box-shadow: 3px 3px 3px 3px #FBBD08;
+}
+
+#studentAppendCards .card:hover {
+  box-shadow: 3px 3px 3px 3px #FBBD08;
+}
+
+#appendEventCards .card:hover {
+  box-shadow: 3px 3px 3px 3px #FBBD08;
+}
+
+.cardLinkIcons {
+  margin-left: 10px;
+}
+
+#addEventBox {
+  margin: 0px auto 20px auto;
+}
+
+#addEvent{
+  width: 200px;
+}

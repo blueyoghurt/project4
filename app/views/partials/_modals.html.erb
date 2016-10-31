@@ -1,0 +1,49 @@
+<!-- MODALS -->
+<!-- EDIT PROFILE -->
+<div class="ui modal" id="editingProfile">
+  <div class="header">
+    Edit Profile
+  </div>
+  <div class="content">
+    <%= form_for (@user), html: { class: "ui form", role: "form" } do |f| %>
+      <div class="field">
+        <%= f.label :first_name %></br>
+        <%= f.text_field :first_name, placeholder: @user.first_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name %></br>
+        <%= f.text_field :last_name, placeholder: @user.last_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %></br>
+        <%= f.text_field :email, placeholder: @user.email%>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui inverted yellow button"%>
+    </div>
+  <%end %>
+</div>
+
+<!-- EDIT SCHOOL -->
+<div class="ui modal" id="editingSchool">
+  <div class="header">
+    Edit School
+  </div>
+  <!-- SNIPPET TO BE PLACED HERE -->
+  <%= form_tag student_path(@student), method: :patch, action: :update, html: { class: "ui form", role: "form" } do |f| %>
+    <div class="content">
+      <div class="field">
+        <%= f.label :school %></br>
+        <%= collection_select(:school_id, :name, School.all, :id, :name) %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui inverted yellow button"%>
+    </div>
+  <%end %>
+
+
+</div>

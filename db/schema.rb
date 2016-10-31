@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030163247) do
+ActiveRecord::Schema.define(version: 20161031153429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20161030163247) do
     t.string   "logo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "email"
   end
 
   create_table "school_users", force: :cascade do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20161030163247) do
     t.string   "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
   end
 
   create_table "students", force: :cascade do |t|
@@ -115,7 +117,6 @@ ActiveRecord::Schema.define(version: 20161030163247) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.string   "profile_pic"
     t.integer  "usertype"
     t.string   "first_name"
     t.string   "last_name"
