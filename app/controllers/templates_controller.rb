@@ -15,6 +15,8 @@ class TemplatesController < ApplicationController
   # GET /templates/new
   def new
     @template = Template.new
+    @template.event_id = params[:event_id]
+    @event = Event.find_by(id: params[:event_id])
   end
 
   # GET /templates/1/edit
