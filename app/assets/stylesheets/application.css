@@ -14,10 +14,22 @@
 *= require_self
 */
 
+.apple {
+  border: 1px solid red;
+}
+
 .ui.radio.checkbox .box, .ui.radio.checkbox label {
   color: white;
 }
 
 .ui.form .field>label {
   color: white;
+}
+
+#studentMenu {
+  width: 100%;
+}
+
+.ui.secondary.vertical.pointing.menu .active.item {
+  border-color: #FBBD08;
 }

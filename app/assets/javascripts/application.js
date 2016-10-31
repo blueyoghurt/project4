@@ -28,4 +28,9 @@ $(document).on('turbolinks:load', function() {
     $('#signInModal').modal('show')
   })
 
+  $(".menuScroll").click(function() {
+    $(".menuScroll").removeClass("active")
+    $(this).addClass("active")
+  })
+
 })
