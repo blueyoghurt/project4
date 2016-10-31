@@ -12,6 +12,14 @@ class NgosController < ApplicationController
   def show
   end
 
+  def search
+    @ngos = Ngo.all
+    respond_to do |format|
+      format.json { render json: @ngos }
+    end
+  end
+
+
   # GET /ngos/new
   def new
     @ngo = Ngo.new

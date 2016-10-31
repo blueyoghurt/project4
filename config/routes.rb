@@ -35,7 +35,9 @@ Rails.application.routes.draw do
   resources :levels
   resources :events
 
+  get "ngos/search" => "ngos#search"
   resources :ngos
+
   resources :schools
   get 'main/index'
 

@@ -108,7 +108,7 @@ $(document).on('turbolinks:load', function() {
 
 
   // CLICKING STUDENT SCHOOL Profile
-  $("#studentCards").click(function() {
+  $("#ngoCards").click(function() {
     console.log("User searching for Profile");
     $("#profileInput").empty()
     $("#profileInput").append(
@@ -123,21 +123,37 @@ $(document).on('turbolinks:load', function() {
     )
 
     $.ajax({
-      url: '/users/profile',
+      url: '/ngos/search',
       method: 'GET'
     }).done(function (data) {
       console.log("Information is back:", data);
       $("#profileInput").empty()
-      $("#profileInput").append(
-        '<table class="ui basic table">' +
-          '<tbody>' +
-              '<td><b>School:</b></td>' +
-              '<td>' + data.school+ '</td>' +
-            '</tr>' +
-          '</tbody>' +
-        '</table>' +
-        '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
-      )
+
+      for (var i = 0; i < data.length; i++) {
+        $("#profileInput").append(
+          '<div class="ui card">' +
+            '<div class="image">' +
+              '<img src="/images/avatar2/large/kristy.png">' +
+            '</div>' +
+            '<div class="content">' +
+              '<a class="header">' + data[i].name+ '</a>' +
+              '<div class="meta">' +
+                '<span class="date">MY INDUSTRY</span>' +
+              '</div>' +
+              '<div class="description">' +
+                data[i].description +
+              '</div>' +
+            '</div>' +
+            '<div class="extra content">' +
+              '<a>' +
+                '<i class="user icon"></i>' +
+                '22 Friends' +
+              '</a>' +
+            '</div>' +
+          '</div>'
+        )
+      }
+
     })
   })
 
