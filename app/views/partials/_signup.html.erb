@@ -1,0 +1,60 @@
+
+<div class="ui basic modal centered grid" id="signUpModal">
+  <%= form_for (@newuser), html: { class: "ui form", role: "form" } do |f| %>
+    <% if @newuser.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@newuser.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @newuser.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :email %></br>
+      <%= f.text_field :email, placeholder: "Email"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %></br>
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :first_name %></br>
+      <%= f.text_field :first_name, placeholder: "First Name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %></br>
+      <%= f.text_field :last_name, placeholder: "Last Name" %>
+    </div>
+
+    <%= f.label :type%></br>
+    <div class="inline fields">
+      <!-- <label for="fruit">Select your favorite fruit:</label> -->
+      <div class="field">
+        <div class="ui radio checkbox">
+          <%= f.radio_button :usertype, 2 %>
+          <%= label :usertype, "School User"%>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <%= f.radio_button :usertype, 3 %>
+          <%= label :usertype, "Student"%>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <%= f.radio_button :usertype, 4 %>
+          <%= label :usertype, "NGO User"%>
+        </div>
+      </div>
+
+    </div>
+    <%= f.submit class: "ui inverted yellow button"%>
+  <%end %>
+</div>

@@ -13,3 +13,11 @@
 *= require_tree .
 *= require_self
 */
+
+.ui.radio.checkbox .box, .ui.radio.checkbox label {
+  color: white;
+}
+
+.ui.form .field>label {
+  color: white;
+}

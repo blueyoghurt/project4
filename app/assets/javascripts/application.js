@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  console.log('DOM loaded');
+
+  $('#signUp').click(function() {
+    console.log("clicked sign up button");
+    $('#signUpModal').modal('show')
+  })
+
+  $('#signIn').click(function() {
+    console.log("clicked sign in button");
+    $('#signInModal').modal('show')
+  })
+
+})

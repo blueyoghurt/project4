@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'public#index'
+  post "/" => "sessions#create"
 
   # AUTHENTICATION
   get "login" => "sessions#new"
