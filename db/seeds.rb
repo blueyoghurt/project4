@@ -63,7 +63,7 @@ Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
   ngo.description = "Go in Peace"
 end
 
-Ngo.find_or_create_by!(name: "avier School for the Gifted") do |ngo|
+Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
   ngo.name = "Xavier School for the Gifted"
   ngo.address = "43 Bukit Pasoh"
   ngo.telephone = "78693124"
@@ -71,12 +71,28 @@ Ngo.find_or_create_by!(name: "avier School for the Gifted") do |ngo|
   ngo.description = "Be special"
 end
 
-Level.find_or_create_by!(description: "upper primary") do |level|
-  level.description = "upper primary"
+Level.find_or_create_by!(description: "primary one") do |level|
+  level.description = "primary one"
 end
 
-Level.find_or_create_by!(description: "lower primary") do |level|
-  level.description = "lower primary"
+Level.find_or_create_by!(description: "primary two") do |level|
+  level.description = "primary two"
+end
+
+Level.find_or_create_by!(description: "primary three") do |level|
+  level.description = "primary three"
+end
+
+Level.find_or_create_by!(description: "primary four") do |level|
+  level.description = "primary four"
+end
+
+Level.find_or_create_by!(description: "primary five") do |level|
+  level.description = "primary five"
+end
+
+Level.find_or_create_by!(description: "primary six") do |level|
+  level.description = "primary six"
 end
 
 SchoolUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email1"]).id) do |schooluser|
