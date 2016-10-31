@@ -1,0 +1,19 @@
+<div class="ui secondary vertical pointing menu" id="profileMenu">
+  <a class="item menuScroll active" id="userProfile">User Profile</a>
+  <!-- CONDITIONALS MENU BAR -->
+  <!-- SCHOOL -->
+  <% if current_user.usertype == 2 %>
+    <a class="item menuScroll" id="teacherSchoolProfile">Institution Profile</a>
+    <a class="item menuScroll" id="schoolStudentProfiles">Students</a>
+    <a class="item menuScroll" id="eventsList">Events</a>
+    <a class="item menuScroll ngoList" id="ngoCards">NGO Partners</a>
+    <!-- STUDENT -->
+  <% elsif current_user.usertype == 3 %>
+    <a class="item menuScroll" id="schoolProfile">Institution Profile</a>
+    <a class="item  menuScroll" id="studentCards">Cards</a>
+    <a class="item menuScroll ngoList" id="ngoCards">NGO Partners</a>
+  <!-- NGO -->
+  <% elsif current_user.usertype == 4 %>
+    <a class="item menuScroll" id="ngoProfile">Institution Profile</a>
+  <% end %>
+</div>
