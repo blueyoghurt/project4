@@ -32,7 +32,10 @@ Rails.application.routes.draw do
   resources :students, except: [:new]
 
   resources :cards
+
+  get "tasks/search" => "tasks#search"
   resources :tasks
+
   resources :levels
 
   get "events/search" => "events#search"

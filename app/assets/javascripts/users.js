@@ -239,7 +239,7 @@ $(document).on('click','#addEvent',function(){
             '<div class="extra content">' +
               '<div class="right floated">' +
                   '<i class="list layout icon"></i>' +
-                  data[i].templates.length + ' templates' +
+                  data[i].cards.length + ' students signed up!' +
               '</div>' +
             '</div>' +
           '</a>'

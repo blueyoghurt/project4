@@ -12,6 +12,15 @@ class TasksController < ApplicationController
   def show
   end
 
+  def search
+    puts "!!!!!!!!!!!!!!"
+    @tasks = Task.where(event_id: params[:id])
+    puts @tasks.inspect
+    respond_to do |format|
+      format.json { render json: @tasks, :include => [:event, :cards, :level] }
+    end
+  end
+
   # GET /tasks/new
   def new
     @task = Task.new
