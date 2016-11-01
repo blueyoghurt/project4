@@ -25,10 +25,11 @@ class NgoUsersController < ApplicationController
   # POST /ngo_users.json
   def create
     @ngo_user = NgoUser.new(ngo_user_params)
+    @ngo_user.user_id = @current_user.id
 
     respond_to do |format|
       if @ngo_user.save
-        format.html { redirect_to @ngo_user, notice: 'Ngo user was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Ngo user was successfully created.' }
         format.json { render :show, status: :created, location: @ngo_user }
       else
         format.html { render :new }

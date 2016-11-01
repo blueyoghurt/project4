@@ -25,10 +25,11 @@ class SchoolUsersController < ApplicationController
   # POST /school_users.json
   def create
     @school_user = SchoolUser.new(school_user_params)
+    @school_user.user_id = @current_user.id
 
     respond_to do |format|
       if @school_user.save
-        format.html { redirect_to @school_user, notice: 'School user was successfully created.' }
+        format.html { redirect_to users_path, notice: 'School user was successfully created.' }
         format.json { render :show, status: :created, location: @school_user }
       else
         format.html { render :new }

@@ -1,5 +1,32 @@
-<h1>New Student</h1>
+<div class="ui page active dimmer">
+  <div class="content">
+    <div class="center">
+      <div class="ui two column centered grid">
+        <div class="column">
+          <h2>Student Sign Up!</h2>
+          <% @student = Student.new %>
 
-<%= render 'form', student: @student %>
+          <div class="ui form">
+            <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
 
-<%= link_to 'Back', students_path %>
+              <div class="field">
+                <p>Select your level </p>
+                <%= f.select :level_id, Level.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
+              </div>
+              </br>
+              <div class="field">
+                <p>Select your School </p>
+                <%= f.select :school_id, School.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
+              </div>
+              <div class="actions">
+                <%= f.submit class: "ui yellow button"%>
+              </div>
+            <%end %>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

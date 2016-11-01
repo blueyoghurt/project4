@@ -12,8 +12,6 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(@current_user.id)
-    puts "#{@user.inspect}"
-    puts "In users profile"
     render json: @user
   end
 

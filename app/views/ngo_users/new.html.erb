@@ -1,5 +1,28 @@
-<h1>New Ngo User</h1>
+<div class="ui page active dimmer">
+  <div class="content">
+    <div class="center">
+      <div class="ui two column centered grid">
+        <div class="column">
+          <h2>Ngo User Sign Up!</h2>
+          <% @ngo_user = NgoUser.new %>
 
-<%= render 'form', ngo_user: @ngo_user %>
+          <div class="ui form">
+            <%= form_for (@ngo_user), html: { class: "ui form", role: "form" } do |f| %>
 
-<%= link_to 'Back', ngo_users_path %>
+              </br>
+              <div class="field">
+                <p>Select your Ngo </p>
+                <%= f.select :ngo_id, Ngo.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
+              </div>
+              <div class="actions">
+                <%= f.submit class: "ui yellow button"%>
+              </div>
+            <%end %>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
