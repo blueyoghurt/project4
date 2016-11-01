@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       end
     elsif @user.usertype == 3
       respond_to do |format|
-        format.json { render json: @user, :include => [:student, :school, :level]  }
+        format.json { render json: @user, :include => [:student, :school]  }
       end
     elsif @user.usertype == 4
       respond_to do |format|

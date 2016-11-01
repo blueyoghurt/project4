@@ -11,6 +11,7 @@ User.find_or_create_by!(email: ENV["seed_email"]) do |user|
   user.last_name = 'User'
   user.usertype = 1
   user.password = ENV["seed_password"]
+  user.profile_pic = "765-default-avatar_ygvgb"
 end
 
 User.find_or_create_by!(email: ENV["seed_email1"]) do |user|
@@ -18,6 +19,7 @@ User.find_or_create_by!(email: ENV["seed_email1"]) do |user|
   user.last_name = 'User'
   user.usertype = 2
   user.password = ENV["seed_password"]
+  user.profile_pic = "765-default-avatar_ygvgb"
 end
 
 User.find_or_create_by!(email: ENV["seed_email2"]) do |user|
@@ -25,6 +27,7 @@ User.find_or_create_by!(email: ENV["seed_email2"]) do |user|
   user.last_name = 'User'
   user.usertype = 3
   user.password = ENV["seed_password"]
+  user.profile_pic = "765-default-avatar_ygvgb"
 end
 
 User.find_or_create_by!(email: ENV["seed_email3"]) do |user|
@@ -32,6 +35,7 @@ User.find_or_create_by!(email: ENV["seed_email3"]) do |user|
   user.last_name = 'User'
   user.usertype = 4
   user.password = ENV["seed_password"]
+  user.profile_pic = "765-default-avatar_ygvgb"
 end
 
 School.find_or_create_by!(name: "Anderson Secondary School") do |school|
@@ -61,6 +65,22 @@ School.find_or_create_by!(name: "DEF Junior College") do |school|
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
 end
 
+NgoCategory.find_or_create_by!(name: "Elderly") do |cat|
+  cat.name = "Elderly"
+end
+
+NgoCategory.find_or_create_by!(name: "Youth") do |cat|
+  cat.name = "Youth"
+end
+
+NgoCategory.find_or_create_by!(name: "Wildlife Conservation") do |cat|
+  cat.name = "Wildlife Conservation"
+end
+
+NgoCategory.find_or_create_by!(name: "Environment") do |cat|
+  cat.name = "Environment"
+end
+
 Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
   ngo.name = "Yi Hui Old Folks Home"
   ngo.address = "223 Bukit Batok"
@@ -69,6 +89,7 @@ Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
   ngo.description = "Go in Peace"
   ngo.email = "yihui@email.com"
   ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  ngo.ngo_category_id = NgoCategory.find_by(name: "Elderly").id
 end
 
 Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
@@ -79,6 +100,12 @@ Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
   ngo.description = "Be special"
   ngo.email = "xavier@email.com"
   ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  ngo.ngo_category_id = NgoCategory.find_by(name: "Youth").id
+end
+
+NgoUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email3"]).id) do |ngouser|
+  ngouser.user_id = User.find_by(email: ENV["seed_email3"]).id
+  ngouser.ngo_id = Ngo.find_by(name: "Xavier School for the Gifted").id
 end
 
 EducationLevel.find_or_create_by!(description: "Primary") do |level|
