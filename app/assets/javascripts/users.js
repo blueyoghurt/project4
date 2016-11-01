@@ -121,6 +121,12 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+$(document).on('click','#addEvent',function(){
+  $('#addingEvent').modal('show')
+  console.log("Modal to add event");
+})
+
+
 // ======================= FUNCTIONS =======================
   // APPEND LOADING SYMBOL WHILE LOADING AJAX
   function loadingAjax() {
