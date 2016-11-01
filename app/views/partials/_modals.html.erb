@@ -7,10 +7,10 @@
   <div class="content">
     <%= form_for (@user), html: { class: "ui form", role: "form" } do |f| %>
 
-    <!-- <div class="field"> -->
+    <div class="profile-image-container">
       <%= image_tag(current_user.profile_image) %>
       <%= f.file_field :profile_pic%>
-    <!-- </div> -->
+    </div>
 
     <div class="field">
       <%= f.label :first_name %></br>

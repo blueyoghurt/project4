@@ -28,8 +28,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem "rails-erd"
-# gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'cloudinary'
+# gem 'will_paginate', '~> 3.1.0'
+# gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
