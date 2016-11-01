@@ -6,6 +6,7 @@ class CreateSchools < ActiveRecord::Migration[5.0]
       t.string :telephone
       t.string :website
       t.string :logo
+      t.string :email
 
       t.timestamps
     end

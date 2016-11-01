@@ -7,6 +7,7 @@ class CreateNgos < ActiveRecord::Migration[5.0]
       t.string :website
       t.text :description
       t.string :logo
+      t.string :email
 
       t.timestamps
     end

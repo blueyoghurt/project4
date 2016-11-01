@@ -8,7 +8,9 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.float :duration
       t.text :description
       t.integer :vacancy
+      t.string :image
       t.references :school, foreign_key: true
+      t.references :education_level, foreign_key: true
 
       t.timestamps
     end

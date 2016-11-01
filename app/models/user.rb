@@ -1,18 +1,12 @@
 class User < ApplicationRecord
   #ASSOCIATIONS
 
-  # belongs_to
-  # has_one
-  # has_many
-  # has_many :through
-  # has_one :through
-  # has_and_belongs_to_many
   has_one :school_user
   has_one :school, through: :school_user
   has_one :ngo_user
   has_one :ngo, through: :ngo_user
   has_one :student
-  has_one :card, through: :student
+  has_many :cards, through: :student
 
   # MIXINS
   has_secure_password
