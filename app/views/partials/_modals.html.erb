@@ -35,16 +35,6 @@
   <div class="content">
     <% @event = Event.new %>
     <%= form_for (@event), html: { class: "ui form", role: "form" } do |f| %>
-      <% if @event.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-          <ul>
-          <% event.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
 
       <div class="field">
         <%= f.label :event_name %>
@@ -73,6 +63,10 @@
       <div class="field">
         <%= f.label :vacancy %>
         <%= f.number_field :vacancy %>
+      </div>
+      <div class="field">
+        <%= f.label :education_level_id %></br>
+        <%= f.collection_select :education_level_id, EducationLevel.all, :id, :description%>
       </div>
     </div>
     <div class="actions">

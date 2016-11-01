@@ -211,3 +211,7 @@ end
 NgoCategory.find_or_create_by!(name: "Environment") do |cat|
   cat.name = "Environment"
 end
+
+Event.find_or_create_by!(name: "Environment") do |cat|
+  event.name = "Environment"
+end

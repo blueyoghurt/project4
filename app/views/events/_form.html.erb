@@ -46,6 +46,11 @@
     <%= f.number_field :vacancy %>
   </div>
 
+  <div class="field">
+    <%= f.label :education_level_id %></br>
+    <%= select("education_level_id", "description", EducationLevel.all.collect {|p| [ p.description, p.id ] }, {prompt: 'Select Educational Level'}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
