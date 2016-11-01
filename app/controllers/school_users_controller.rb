@@ -29,47 +29,53 @@ class SchoolUsersController < ApplicationController
 
     respond_to do |format|
       if @school_user.save
-        format.html { redirect_to users_path, notice: 'School user was successfully created.' }
-        format.json { render :show, status: :created, location: @school_user }
-      else
-        format.html { render :new }
-        format.json { render json: @school_user.errors, status: :unprocessable_entity }
+        format.html {
+          flash[:success] = 'Welcome ' + @school_user.user.name
+          redirect_to users_path }
+          format.json { render :show, status: :created, location: @school_user }
+        else
+          format.html {
+            flash[:danger] = 'Failed to create teacher'
+            render :new }
+            format.json { render json: @school_user.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
-  end
 
-  # PATCH/PUT /school_users/1
-  # PATCH/PUT /school_users/1.json
-  def update
-    respond_to do |format|
-      if @school_user.update(school_user_params)
-        format.html { redirect_to @school_user, notice: 'School user was successfully updated.' }
-        format.json { render :show, status: :ok, location: @school_user }
-      else
-        format.html { render :edit }
-        format.json { render json: @school_user.errors, status: :unprocessable_entity }
+      # PATCH/PUT /school_users/1
+      # PATCH/PUT /school_users/1.json
+      def update
+        respond_to do |format|
+          if @school_user.update(school_user_params)
+            format.html { redirect_to @school_user, notice: 'School user was successfully updated.' }
+            format.json { render :show, status: :ok, location: @school_user }
+          else
+            format.html { render :edit }
+            format.json { render json: @school_user.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
-  end
 
-  # DELETE /school_users/1
-  # DELETE /school_users/1.json
-  def destroy
-    @school_user.destroy
-    respond_to do |format|
-      format.html { redirect_to school_users_url, notice: 'School user was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+      # DELETE /school_users/1
+      # DELETE /school_users/1.json
+      def destroy
+        @school_user.destroy
+        respond_to do |format|
+          format.html {
+            flash[:danger] = 'User has been deleted'
+            redirect_to school_users_url }
+            format.json { head :no_content }
+          end
+        end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_school_user
-      @school_user = SchoolUser.find(params[:id])
-    end
+        private
+        # Use callbacks to share common setup or constraints between actions.
+        def set_school_user
+          @school_user = SchoolUser.find(params[:id])
+        end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def school_user_params
-      params.require(:school_user).permit(:school_id, :user_id)
-    end
-end
+        # Never trust parameters from the scary internet, only allow the white list through.
+        def school_user_params
+          params.require(:school_user).permit(:school_id, :user_id)
+        end
+      end

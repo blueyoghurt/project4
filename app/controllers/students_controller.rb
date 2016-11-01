@@ -20,7 +20,6 @@ class StudentsController < ApplicationController
     end
   end
 
-
   def search
     school_user = SchoolUser.where(user_id: @current_user.id).first
     school = school_user.school_id
@@ -44,14 +43,19 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     @student.user_id = @current_user.id
-    puts @student.inspect
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to users_path, notice: 'Student was successfully created.' }
+        format.html {
+          flash[:success] = 'Welcome ' + @student.user.name
+          redirect_to users_path
+        }
         format.json { render :show, status: :created, location: @student }
       else
-        format.html { render :new }
+        format.html {
+          flash[:danger] = 'Failed to create student'
+          render :new
+        }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +66,10 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to users_url, notice: 'Student was successfully updated.' }
+        format.html {
+          flash[:success] = "Your profile has been updated"
+          redirect_to users_url
+        }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -82,13 +89,13 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_params
-      params.require(:student).permit(:user_id, :level_id, :school_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_params
+    params.require(:student).permit(:user_id, :level_id, :school_id)
+  end
 end

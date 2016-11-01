@@ -569,7 +569,7 @@ Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
 end
 
 Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
-  event.name = "CConserve the french fries day"
+  event.name = "Conserve the french fries day"
   event.start_date = "2016-11-11"
   event.end_date = "2016-11-11"
   event.start_time = "17:00:00"

@@ -45,14 +45,11 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         format.html {
-          if (@user.usertype == 2)
-            # redirect to school_user#create route
+          if (@user.usertype == 2) # redirect to school_user#create route
             redirect_to teacher_register_path, notice: 'User (teacher route) was successfully created.'
-          elsif (@user.usertype == 3)
-            # redirect to student_user#create route
+          elsif (@user.usertype == 3) # redirect to student_user#create route
             redirect_to student_register_path, notice: 'User (student route) was successfully created.'
-          elsif (@user.usertype == 4)
-            # redirect to ngo_user#create route
+          elsif (@user.usertype == 4) # redirect to ngo_user#create route
             redirect_to ngo_register_path, notice: 'User (ngo route) was successfully created.'
           end
         }
@@ -66,12 +63,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    uploaded_file = params[:user][:profile_pic].path
-    @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
+    # uploaded_file = params[:user][:profile_pic].path
+    # @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
-
+        format.html {
+          flash[:success] = "Your profile has been updated."
+          redirect_to users_url
+        }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -84,7 +83,10 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html {
+        flash[:danger] = "User has been destroyed"
+        redirect_to users_url
+      }
       format.json { head :no_content }
     end
   end
