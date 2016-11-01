@@ -9,7 +9,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @students = Student.where()
+    @cards = Card.where(event_id: @event.id)
+    puts "=============="
+    puts @cards.inspect
+    # respond_to do |format|
+    #   format.json { render json: @cards, :include => [:students, :tasks] }
+    # end
   end
 
   def search
@@ -17,7 +22,7 @@ class EventsController < ApplicationController
     school = school_user.school_id
     @events = Event.where(school_id: school)
     respond_to do |format|
-      format.json { render json: @events, :include => [:tasks] }
+      format.json { render json: @events, :include => [:tasks, :cards] }
     end
   end
 
