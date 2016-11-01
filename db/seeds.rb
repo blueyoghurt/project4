@@ -39,6 +39,8 @@ School.find_or_create_by!(name: "Anderson Secondary School") do |school|
   school.address = "123 main street"
   school.telephone = "61234567"
   school.website = "http://google.com"
+  school.email = "anderson@email.com"
+  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
 end
 
 School.find_or_create_by!(name: "ABC Primary School") do |school|
@@ -46,6 +48,8 @@ School.find_or_create_by!(name: "ABC Primary School") do |school|
   school.address = "321 side street"
   school.telephone = "67654321"
   school.website = "http://baidu.com"
+  school.email = "abc@email.com"
+  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
 end
 
 School.find_or_create_by!(name: "DEF Junior College") do |school|
@@ -53,6 +57,8 @@ School.find_or_create_by!(name: "DEF Junior College") do |school|
   school.address = "456 aod street"
   school.telephone = "66734131"
   school.website = "http://baidu.com"
+  school.email = "def@email.com"
+  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
 end
 
 Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
@@ -61,6 +67,8 @@ Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
   ngo.telephone = "91777366"
   ngo.website = "http://hush.sg"
   ngo.description = "Go in Peace"
+  ngo.email = "yihui@email.com"
+  ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
 end
 
 Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
@@ -69,30 +77,107 @@ Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
   ngo.telephone = "78693124"
   ngo.website = "http://abc.com"
   ngo.description = "Be special"
+  ngo.email = "xavier@email.com"
+  ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
 end
 
-Level.find_or_create_by!(description: "primary one") do |level|
-  level.description = "primary one"
+EducationLevel.find_or_create_by!(description: "Primary") do |level|
+  level.description = "Primary"
 end
 
-Level.find_or_create_by!(description: "primary two") do |level|
-  level.description = "primary two"
+EducationLevel.find_or_create_by!(description: "Secondary") do |level|
+  level.description = "Secondary"
 end
 
-Level.find_or_create_by!(description: "primary three") do |level|
-  level.description = "primary three"
+EducationLevel.find_or_create_by!(description: "JC") do |level|
+  level.description = "JC"
 end
 
-Level.find_or_create_by!(description: "primary four") do |level|
-  level.description = "primary four"
+EducationLevel.find_or_create_by!(description: "Poly") do |level|
+  level.description = "Poly"
 end
 
-Level.find_or_create_by!(description: "primary five") do |level|
-  level.description = "primary five"
+EducationLevel.find_or_create_by!(description: "ITE") do |level|
+  level.description = "ITE"
 end
 
-Level.find_or_create_by!(description: "primary six") do |level|
-  level.description = "primary six"
+EducationLevel.find_or_create_by!(description: "Tertiary") do |level|
+  level.description = "Tertiary"
+end
+
+Level.find_or_create_by!(description: "Primary One") do |level|
+  level.description = "Primary One"
+  level.education_level_id = 1
+end
+
+Level.find_or_create_by!(description: "Primary Two") do |level|
+  level.description = "Primary Two"
+  level.education_level_id = 1
+end
+
+Level.find_or_create_by!(description: "Primary Three") do |level|
+  level.description = "Primary Three"
+  level.education_level_id = 1
+end
+
+Level.find_or_create_by!(description: "Primary Four") do |level|
+  level.description = "Primary Four"
+  level.education_level_id = 1
+end
+
+Level.find_or_create_by!(description: "Primary Five") do |level|
+  level.description = "Primary Five"
+  level.education_level_id = 1
+end
+
+Level.find_or_create_by!(description: "Primary Six") do |level|
+  level.description = "Primary Six"
+  level.education_level_id = 1
+end
+
+Level.find_or_create_by!(description: "Secondary One") do |level|
+  level.description = "Secondary One"
+  level.education_level_id = 2
+end
+
+Level.find_or_create_by!(description: "Secondary Two") do |level|
+  level.description = "Secondary Two"
+  level.education_level_id = 2
+end
+
+Level.find_or_create_by!(description: "Secondary Three") do |level|
+  level.description = "Secondary Three"
+  level.education_level_id = 2
+end
+
+Level.find_or_create_by!(description: "Secondary Four") do |level|
+  level.description = "Secondary Four"
+  level.education_level_id = 2
+end
+
+Level.find_or_create_by!(description: "Secondary Five") do |level|
+  level.description = "Secondary Five"
+  level.education_level_id = 2
+end
+
+Level.find_or_create_by!(description: "JC") do |level|
+  level.description = "JC"
+  level.education_level_id = 3
+end
+
+Level.find_or_create_by!(description: "Poly") do |level|
+  level.description = "Poly"
+  level.education_level_id = 4
+end
+
+Level.find_or_create_by!(description: "ITE") do |level|
+  level.description = "ITE"
+  level.education_level_id = 5
+end
+
+Level.find_or_create_by!(description: "Tertiary") do |level|
+  level.description = "Tertiary"
+  level.education_level_id = 6
 end
 
 SchoolUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email1"]).id) do |schooluser|
@@ -109,4 +194,20 @@ end
 NgoUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email3"]).id) do |ngouser|
   ngouser.user_id = User.find_by(email: ENV["seed_email3"]).id
   ngouser.ngo_id = 1
+end
+
+NgoCategory.find_or_create_by!(name: "Elderly") do |cat|
+  cat.name = "Elderly"
+end
+
+NgoCategory.find_or_create_by!(name: "Youth") do |cat|
+  cat.name = "Youth"
+end
+
+NgoCategory.find_or_create_by!(name: "Wildlife Conservation") do |cat|
+  cat.name = "Wildlife Conservation"
+end
+
+NgoCategory.find_or_create_by!(name: "Environment") do |cat|
+  cat.name = "Environment"
 end

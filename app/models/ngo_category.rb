@@ -1,0 +1,2 @@
+class NgoCategory < ApplicationRecord
+end

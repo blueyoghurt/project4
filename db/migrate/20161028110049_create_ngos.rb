@@ -8,6 +8,7 @@ class CreateNgos < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :logo
       t.string :email
+      t.references :ngo_category, foreign_key: true
 
       t.timestamps
     end

@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 20161030151912) do
     t.index ["education_level_id"], name: "index_levels_on_education_level_id", using: :btree
   end
 
+  create_table "ngo_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ngo_users", force: :cascade do |t|
     t.integer  "ngo_id"
     t.integer  "user_id"
@@ -75,8 +81,10 @@ ActiveRecord::Schema.define(version: 20161030151912) do
     t.text     "description"
     t.string   "logo"
     t.string   "email"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "ngo_category_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["ngo_category_id"], name: "index_ngos_on_ngo_category_id", using: :btree
   end
 
   create_table "school_users", force: :cascade do |t|
@@ -134,6 +142,7 @@ ActiveRecord::Schema.define(version: 20161030151912) do
   add_foreign_key "levels", "education_levels"
   add_foreign_key "ngo_users", "ngos"
   add_foreign_key "ngo_users", "users"
+  add_foreign_key "ngos", "ngo_categories"
   add_foreign_key "school_users", "schools"
   add_foreign_key "school_users", "users"
   add_foreign_key "students", "levels"
