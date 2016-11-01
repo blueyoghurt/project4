@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def profile
     @user = User.find(@current_user.id)
     respond_to do |format|
-      format.json { render json: @user }
+      format.json { render json: @user, :include => [:student, :school, :level]  }
     end
   end
 

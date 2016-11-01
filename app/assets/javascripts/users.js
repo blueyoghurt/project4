@@ -223,29 +223,28 @@ $(document).on('click','#addEvent',function(){
     )
     for (var i = 0; i < data.length; i++) {
       $("#appendEventCards").append(
-        '<div class="ui yellow card">' +
-          '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
-          '</div>' +
-          '<div class="content">' +
-            '<a class="header">' + data[i].name + '</a>' +
-            '<div class="meta">' +
-              '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
+          '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
+            '<div class="image">' +
+              '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
             '</div>' +
-            '<div class="description">' +
-              data[i].description +
+            '<div class="content">' +
+              '<div class="header">' + data[i].name + '</div>' +
+              '<div class="meta">' +
+                '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
+              '</div>' +
+              '<div class="description">' +
+                data[i].description +
+              '</div>' +
             '</div>' +
-          '</div>' +
-          '<div class="extra content">' +
-            '<div class="right floated">' +
-              '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
-                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-                'Email' +
-              '</a>' +
+            '<div class="extra content">' +
+              '<div class="right floated">' +
+                  '<i class="list layout icon"></i>' +
+                  data[i].templates.length + ' templates' +
+              '</div>' +
             '</div>' +
-          '</div>' +
-        '</div>'
+          '</a>' 
       )
+
     }
   }
 

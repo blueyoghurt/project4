@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h1>Welcome <%=current_user.first_name%></h1>
+
+<div class="ui grid stackable">
+
+  <div class="four wide column apple">
+    <%= render "partials/edittemplatebar" %>
+  </div>
+
+  <div class="twelve wide column apple" id="taskListInput">
+    
+  </div>
+</div>
+
+
+
+<!-- <p>
   <strong>Start date:</strong>
   <%= @event.start_date %>
 </p>
@@ -26,4 +41,4 @@
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path %> -->

@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     school = school_user.school_id
     @events = Event.where(school_id: school)
     respond_to do |format|
-      format.json { render json: @events }
+      format.json { render json: @events, :include => [:templates] }
     end
   end
 
@@ -39,7 +39,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to new_template_path(:event_id => @event.id), notice: "Great! Let's enter the details for the event!" }
+        format.html { redirect_to @event, notice: "Great! Let's enter the details for the event!" }
+        # format.html { redirect_to new_template_path(:event_id => @event.id), notice: "Great! Let's enter the details for the event!" }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
