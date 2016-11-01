@@ -11,7 +11,7 @@ User.find_or_create_by!(email: ENV["seed_email"]) do |user|
   user.last_name = 'User'
   user.usertype = 1
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email1"]) do |user|
@@ -19,7 +19,7 @@ User.find_or_create_by!(email: ENV["seed_email1"]) do |user|
   user.last_name = 'User One'
   user.usertype = 2
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email2"]) do |user|
@@ -27,7 +27,7 @@ User.find_or_create_by!(email: ENV["seed_email2"]) do |user|
   user.last_name = 'User Two'
   user.usertype = 2
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email3"]) do |user|
@@ -35,7 +35,7 @@ User.find_or_create_by!(email: ENV["seed_email3"]) do |user|
   user.last_name = 'User One'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email4"]) do |user|
@@ -43,7 +43,7 @@ User.find_or_create_by!(email: ENV["seed_email4"]) do |user|
   user.last_name = 'User Two'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email5"]) do |user|
@@ -51,7 +51,7 @@ User.find_or_create_by!(email: ENV["seed_email5"]) do |user|
   user.last_name = 'User Three'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email6"]) do |user|
@@ -59,7 +59,7 @@ User.find_or_create_by!(email: ENV["seed_email6"]) do |user|
   user.last_name = 'User Four'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email7"]) do |user|
@@ -67,7 +67,7 @@ User.find_or_create_by!(email: ENV["seed_email7"]) do |user|
   user.last_name = 'User Five'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email8"]) do |user|
@@ -75,7 +75,7 @@ User.find_or_create_by!(email: ENV["seed_email8"]) do |user|
   user.last_name = 'User Six'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email9"]) do |user|
@@ -83,7 +83,7 @@ User.find_or_create_by!(email: ENV["seed_email9"]) do |user|
   user.last_name = 'User Seven'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email10"]) do |user|
@@ -91,7 +91,7 @@ User.find_or_create_by!(email: ENV["seed_email10"]) do |user|
   user.last_name = 'User Eight'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email11"]) do |user|
@@ -99,7 +99,7 @@ User.find_or_create_by!(email: ENV["seed_email11"]) do |user|
   user.last_name = 'User Nine'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email12"]) do |user|
@@ -107,7 +107,7 @@ User.find_or_create_by!(email: ENV["seed_email12"]) do |user|
   user.last_name = 'User Ten'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email13"]) do |user|
@@ -115,7 +115,7 @@ User.find_or_create_by!(email: ENV["seed_email13"]) do |user|
   user.last_name = 'User Eleven'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email14"]) do |user|
@@ -123,7 +123,7 @@ User.find_or_create_by!(email: ENV["seed_email14"]) do |user|
   user.last_name = 'User Twelve'
   user.usertype = 4
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email15"]) do |user|
@@ -131,7 +131,7 @@ User.find_or_create_by!(email: ENV["seed_email15"]) do |user|
   user.last_name = 'User Thirteen'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email16"]) do |user|
@@ -139,7 +139,7 @@ User.find_or_create_by!(email: ENV["seed_email16"]) do |user|
   user.last_name = 'User Fourteen'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email17"]) do |user|
@@ -147,7 +147,7 @@ User.find_or_create_by!(email: ENV["seed_email17"]) do |user|
   user.last_name = 'User Fifteen'
   user.usertype = 3
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email18"]) do |user|
@@ -155,7 +155,7 @@ User.find_or_create_by!(email: ENV["seed_email18"]) do |user|
   user.last_name = 'User One'
   user.usertype = 4
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 User.find_or_create_by!(email: ENV["seed_email19"]) do |user|
@@ -163,7 +163,7 @@ User.find_or_create_by!(email: ENV["seed_email19"]) do |user|
   user.last_name = 'User Two'
   user.usertype = 4
   user.password = ENV["seed_password"]
-  user.profile_pic = "b0cakqqv3fcvydkdixae"
+  user.profile_pic = "user/profile/thevqag466ytstlljmqq"
 end
 
 School.find_or_create_by!(name: "ABC Primary School") do |school|

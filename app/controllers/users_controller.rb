@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     uploaded_file = params[:user][:profile_pic].path
-    @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
+    @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
 
     respond_to do |format|
       if @user.save
