@@ -6,24 +6,26 @@
   </div>
   <div class="content">
     <%= form_for (@user), html: { class: "ui form", role: "form" } do |f| %>
-      <div class="field">
-        <%= f.label :first_name %></br>
-        <%= f.text_field :first_name, placeholder: @user.first_name %>
-      </div>
 
-      <div class="field">
-        <%= f.label :last_name %></br>
-        <%= f.text_field :last_name, placeholder: @user.last_name %>
-      </div>
+    <!-- <div class="field"> -->
+      <%= image_tag(current_user.profile_image) %>
+      <%= f.file_field :profile_pic%>
+    <!-- </div> -->
 
-      <div class="field">
-        <%= f.label :profile_pic %></br>
-        <%= f.file_field :profile_pic%>
-      </div>
+    <div class="field">
+      <%= f.label :first_name %></br>
+      <%= f.text_field :first_name, placeholder: @user.first_name %>
     </div>
-    <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
+
+    <div class="field">
+      <%= f.label :last_name %></br>
+      <%= f.text_field :last_name, placeholder: @user.last_name %>
     </div>
+
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui yellow button"%>
+  </div>
   <%end %>
 </div>
 
@@ -36,63 +38,63 @@
     <% @event = Event.new %>
     <%= form_for (@event), html: { class: "ui form", role: "form" } do |f| %>
 
-      <div class="field">
-        <%= f.label :event_name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :start_date %>
-        <%= f.date_field :start_date %>
-      </div>
-      <div class="field">
-        <%= f.label :end_date %>
-        <%= f.date_field :end_date %>
-      </div>
-      <div class="field">
-        <%= f.label :start_time %>
-        <%= f.time_select :start_time %>
-      </div>
-      <div class="field">
-        <%= f.label :duration_in_hours%>
-        <%= f.number_field :duration, :step => 0.01  %>
-      </div>
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-      </div>
-      <div class="field">
-        <%= f.label :vacancy %>
-        <%= f.number_field :vacancy %>
-      </div>
-      <div class="field">
-        <%= f.label :education_level_id %></br>
-        <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {} %>
-      </div>
+    <div class="field">
+      <%= f.label :event_name %>
+      <%= f.text_field :name %>
     </div>
-    <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
+    <div class="field">
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date %>
     </div>
+    <div class="field">
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date %>
+    </div>
+    <div class="field">
+      <%= f.label :start_time %>
+      <%= f.time_select :start_time %>
+    </div>
+    <div class="field">
+      <%= f.label :duration_in_hours%>
+      <%= f.number_field :duration, :step => 0.01  %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :vacancy %>
+      <%= f.number_field :vacancy %>
+    </div>
+    <div class="field">
+      <%= f.label :education_level_id %></br>
+      <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {} %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui yellow button"%>
+  </div>
   <%end %>
 </div>
 
 <!-- EDIT SCHOOL -->
 <% if (@user.usertype==3) %>
-  <div class="ui modal" id="editingSchool">
-    <div class="header">
-      Edit School
-    </div>
-    <!-- SNIPPET TO BE PLACED HERE -->
-    <% @student = Student.new %>
-    <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
-      <div class="content">
-        <div class="field">
-          <%= f.label :school %></br>
-          <%= collection_select(:school_id, :name, School.all, :id, :name) %>
-        </div>
-      </div>
-      <div class="actions">
-        <%= f.submit class: "ui inverted yellow button"%>
-      </div>
-    <%end %>
+<div class="ui modal" id="editingSchool">
+  <div class="header">
+    Edit School
   </div>
+  <!-- SNIPPET TO BE PLACED HERE -->
+  <% @student = Student.new %>
+  <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
+  <div class="content">
+    <div class="field">
+      <%= f.label :school %></br>
+      <%= collection_select(:school_id, :name, School.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui inverted yellow button"%>
+  </div>
+  <%end %>
+</div>
 <% end %>

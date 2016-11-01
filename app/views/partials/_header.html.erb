@@ -1,21 +1,26 @@
-<div class="ui yellow inverted menu">
-  <a class="item" href="/">My Spot!</a>
-  <div class="right menu">
-    <% if current_user %>
-        <a class="item" href="/users" id="manage">Manage</a>
-      <!-- <% if current_user.usertype == 2 %>
-        <a class="item" href="/schools" id="manage">Manage</a>
-      <% elsif current_user.usertype == 3 %>
-        <a class="item" href="/students" id="manage">Manage</a>
-      <% elsif current_user.usertype == 4 %>
-        <a class="item" href="/ngos" id="manage">Manage</a>
-      <% end %> -->
-      <%= link_to 'Logout', logout_path, class: "item", method: :delete %>
-    <% else %>
-      <a class="item" id="signIn">Sign In!</a>
-      <%= render "partials/signin" %>
-      <a class="item" id="signUp">Sign Up!</a>
-      <%= render "partials/signup" %>
-    <% end %>
-  </div>
-</div>
+<% if current_user %>
+<% if  (current_user.usertype == 2)%>
+<div class="ui orange inverted menu">
+  <% elsif (current_user.usertype == 3)%>
+  <div class="ui yellow inverted menu">
+    <% elsif (current_user.usertype == 4)%>
+    <div class="ui teal inverted menu">
+      <% elsif (current_user.usertype == 1)%>
+      <div class="ui brown inverted menu">
+        <% end %>
+        <% else %>
+        <div class="ui yellow inverted menu">
+          <% end %>
+          <a class="item" href="/">My Spot!</a>
+          <div class="right menu">
+            <% if current_user %>
+            <a class="item" href="/users" id="manage"><%= current_user.name.titlecase %></a>
+            <%= link_to 'Logout', logout_path, class: "item", method: :delete %>
+            <% else %>
+            <a class="item" id="signIn">Log In</a>
+            <%= render "partials/signin" %>
+            <a class="item" id="signUp">Sign Up</a>
+            <%= render "partials/signup" %>
+            <% end %>
+          </div>
+        </div>
