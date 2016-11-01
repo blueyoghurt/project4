@@ -12,6 +12,15 @@ class NgosController < ApplicationController
   def show
   end
 
+  def profile
+    ngo_user = NgoUser.find_by(:user_id => @current_user.id)
+    ngo = ngo_user.id
+    @ngo = Ngo.find(ngo)
+    respond_to do |format|
+      format.json { render json: @ngo, :include => [:ngo_category]  }
+    end
+  end
+
   def search
     @ngos = Ngo.all
     respond_to do |format|

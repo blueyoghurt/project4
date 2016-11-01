@@ -174,8 +174,8 @@ EducationLevel.find_or_create_by!(description: "Secondary") do |level|
   level.description = "Secondary"
 end
 
-EducationLevel.find_or_create_by!(description: "JC") do |level|
-  level.description = "JC"
+EducationLevel.find_or_create_by!(description: "Junior College") do |level|
+  level.description = "Junior College"
 end
 
 EducationLevel.find_or_create_by!(description: "Poly") do |level|

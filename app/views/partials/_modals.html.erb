@@ -138,3 +138,43 @@
       <%end %>
   </div>
 <% end %>
+
+<!-- EDIT NGO PROFILE -->
+<% if (@user.usertype == 4) %>
+  <div class="ui modal" id="editingNgoProfile">
+    <div class="header">
+      Edit NGO Details
+    </div>
+    <div class="content">
+    <%= form_for (@ngo), html: { class: "ui form", role: "form" } do |f| %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+      <div class="field">
+        <%= f.label :telephone %>
+        <%= f.text_field :telephone %>
+      </div>
+      <div class="field">
+        <%= f.label :website %>
+        <%= f.text_field :website %>
+      </div>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <div class="field">
+        <%= f.label :ngo_category %>
+        <%= f.select :ngo_category_id, NgoCategory.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui yellow button"%>
+    </div>
+      <%end %>
+  </div>
+<% end %>

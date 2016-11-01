@@ -135,6 +135,60 @@ $(document).on('turbolinks:load', function() {
     console.log("Modal to edit school");
   })
 
+  // CLICKING NGO INSTITUTION PROFILE (NGO)
+  $("#ngoProfile").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/ngos/profile',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      $("#profileInput").empty()
+      $("#profileInput").append(
+        '<table class="ui basic table">' +
+          '<tbody>' +
+            '<tr>' +
+              '<td><b>NGO Name:</b></td>' +
+              '<td>' + data.name + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Address:</b></td>' +
+              '<td>' + data.address + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Email:</b></td>' +
+              '<td>' + data.email + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Telephone:</b></td>' +
+              '<td>' + data.telephone + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Website:</b></td>' +
+              '<td>' + data.website + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Description:</b></td>' +
+              '<td>' + data.description + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Industry:</b></td>' +
+              '<td>' + data.ngo_category.name + '</td>' +
+            '</tr>' +
+          '</tbody>' +
+        '</table>' +
+        '<button id="editNgoProfile" class="ui yellow button right floated editButton">Edit</button>'
+      )
+    })
+  })
+
+  $(document).on('click','#editNgoProfile',function(){
+    $('#editingNgoProfile').modal('show')
+    console.log("Modal to edit school");
+  })
+
+
   // CLICKING ON CARDS (STUDENT)
   $("#studentCards").click(function() {
     loadingAjax()
@@ -193,6 +247,20 @@ $(document).on('click','#addEvent',function(){
   console.log("Modal to add event");
 })
 
+// CLICKING ON SCHOOL PROFILES (NGO)
+$("#schoolCards").click(function() {
+  loadingAjax()
+
+  $.ajax({
+    url: '/schools/search',
+    method: 'GET'
+  }).done(function (data) {
+    console.log("Information is back:", data);
+    loadingAjax()
+    appendSchoolCards(data)
+  })
+})
+
 
 // ======================= FUNCTIONS =======================
   // APPEND LOADING SYMBOL WHILE LOADING AJAX
@@ -238,6 +306,47 @@ $(document).on('click','#addEvent',function(){
               '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
                 '<i class="text telephone icon"></i>' +
                 'Phone' +
+              '</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )
+    }
+  }
+
+  // APPENDING SCHOOL CARDS FOR NGO
+  function appendSchoolCards(data) {
+    $("#profileInput").empty()
+    $("#profileInput").append('<div class="ui cards" id="appendSchoolCards"></div>')
+    for (var i = 0; i < data.length; i++) {
+      $("#appendSchoolCards").append(
+        '<div class="ui yellow card">' +
+          '<div class="image">' +
+            '<img src="' + data[i].logo + '">' +
+          '</div>' +
+          '<div class="content">' +
+            '<a class="header">' + data[i].name+ '</a>' +
+            '<div class="meta">' +
+              '<span class="date">' + data[i].education_level.description + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="extra content">' +
+            '<div class="right floated">' +
+              '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
+                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+                'Email' +
+              '</a>' +
+              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+                '<i class="text telephone icon"></i>' +
+                'Phone' +
+              '</a>' +
+              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+                '<i class="world icon"></i>' +
+                'Website' +
+              '</a>' +
+              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+                '<i class="text telephone icon"></i>' +
+                'Telephone' +
               '</a>' +
             '</div>' +
           '</div>' +

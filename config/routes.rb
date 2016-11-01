@@ -43,10 +43,12 @@ Rails.application.routes.draw do
   get "events/search" => "events#search"
   resources :events
 
+  get "ngos/profile" => "ngos#profile"
   get "ngos/search" => "ngos#search"
   resources :ngos
 
   get "schools/profile" => "schools#profile"
+  get "schools/search" => "schools#search"
   resources :schools
   get 'main/index'
 
