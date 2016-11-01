@@ -25,10 +25,10 @@ class User < ApplicationRecord
     "https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/#{profile_pic}"
   end
 
-  # validates :email,
-  # presence: true,
-  # length: { maximum: 255 },
-  # uniqueness: {case_sensitive: false},
+  validates :email,
+  presence: true,
+  length: { maximum: 255 },
+  uniqueness: {case_sensitive: false}
   # format: VALID_EMAIL_REGEX
 
   validates :password, length: { in: 8..72 } , on: :create, :if => :password_needs_validating?
@@ -37,7 +37,7 @@ class User < ApplicationRecord
   # validate :atleast_one_admin
 
   # HOOKS
-  before_save :downcase_fields
+  before_save :titlecase_fields
 
   # PUBLIC METHODS
   def name
@@ -65,10 +65,10 @@ class User < ApplicationRecord
     end
   end
 
-  def downcase_fields
+  def titlecase_fields
     self.email = email.downcase
-    self.first_name = first_name.downcase
-    self.last_name = last_name.downcase
+    self.first_name = first_name.downcase.titlecase
+    self.last_name = last_name.downcase.titlecase
   end
 
 end
