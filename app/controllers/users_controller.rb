@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   def index
     @user = User.find(@current_user.id)
     @schools = School.all
-    @student = Student.where(:user_id => @current_user.id)
-    @education_level = EducationLevel.all
+    @school = School.find(SchoolUser.find_by(:user_id => @current_user.id).id)
+    @student = Student.find_by(:user_id => @current_user.id)
+    @education_levels = EducationLevel.all
   end
 
   def profile

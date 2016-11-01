@@ -166,6 +166,30 @@ User.find_or_create_by!(email: ENV["seed_email19"]) do |user|
   user.profile_pic = "b0cakqqv3fcvydkdixae"
 end
 
+EducationLevel.find_or_create_by!(description: "Primary") do |level|
+  level.description = "Primary"
+end
+
+EducationLevel.find_or_create_by!(description: "Secondary") do |level|
+  level.description = "Secondary"
+end
+
+EducationLevel.find_or_create_by!(description: "JC") do |level|
+  level.description = "JC"
+end
+
+EducationLevel.find_or_create_by!(description: "Poly") do |level|
+  level.description = "Poly"
+end
+
+EducationLevel.find_or_create_by!(description: "ITE") do |level|
+  level.description = "ITE"
+end
+
+EducationLevel.find_or_create_by!(description: "Tertiary") do |level|
+  level.description = "Tertiary"
+end
+
 School.find_or_create_by!(name: "ABC Primary School") do |school|
   school.name = "ABC Primary School"
   school.address = "321 side street"
@@ -173,6 +197,7 @@ School.find_or_create_by!(name: "ABC Primary School") do |school|
   school.website = "http://baidu.com"
   school.email = "abc@email.com"
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.education_level_id = 1
 end
 
 School.find_or_create_by!(name: "Anderson Secondary School") do |school|
@@ -182,6 +207,7 @@ School.find_or_create_by!(name: "Anderson Secondary School") do |school|
   school.website = "http://google.com"
   school.email = "anderson@email.com"
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.education_level_id = 2
 end
 
 School.find_or_create_by!(name: "DEF Junior College") do |school|
@@ -191,6 +217,7 @@ School.find_or_create_by!(name: "DEF Junior College") do |school|
   school.website = "http://baidu.com"
   school.email = "def@email.com"
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.education_level_id = 3
 end
 
 School.find_or_create_by!(name: "GHI Polytechnic") do |school|
@@ -200,6 +227,7 @@ School.find_or_create_by!(name: "GHI Polytechnic") do |school|
   school.website = "http://baidu.com"
   school.email = "def@email.com"
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.education_level_id = 4
 end
 
 School.find_or_create_by!(name: "ITE Singapore") do |school|
@@ -209,6 +237,7 @@ School.find_or_create_by!(name: "ITE Singapore") do |school|
   school.website = "http://baidu.com"
   school.email = "def@email.com"
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.education_level_id = 5
 end
 
 School.find_or_create_by!(name: "SUTD") do |school|
@@ -218,6 +247,7 @@ School.find_or_create_by!(name: "SUTD") do |school|
   school.website = "http://baidu.com"
   school.email = "def@email.com"
   school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.education_level_id = 6
 end
 
 NgoCategory.find_or_create_by!(name: "Elderly") do |cat|
@@ -270,30 +300,6 @@ end
 NgoUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email19"]).id) do |ngouser|
   ngouser.user_id = User.find_by(email: ENV["seed_email19"]).id
   ngouser.ngo_id = Ngo.find_by(name: "Yi Hui Old Folks Home").id
-end
-
-EducationLevel.find_or_create_by!(description: "Primary") do |level|
-  level.description = "Primary"
-end
-
-EducationLevel.find_or_create_by!(description: "Secondary") do |level|
-  level.description = "Secondary"
-end
-
-EducationLevel.find_or_create_by!(description: "JC") do |level|
-  level.description = "JC"
-end
-
-EducationLevel.find_or_create_by!(description: "Poly") do |level|
-  level.description = "Poly"
-end
-
-EducationLevel.find_or_create_by!(description: "ITE") do |level|
-  level.description = "ITE"
-end
-
-EducationLevel.find_or_create_by!(description: "Tertiary") do |level|
-  level.description = "Tertiary"
 end
 
 Level.find_or_create_by!(description: "Primary One") do |level|

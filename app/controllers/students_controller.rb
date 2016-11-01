@@ -14,31 +14,20 @@ class StudentsController < ApplicationController
   end
 
   def profile
-    @student = Student.where(:user_id => @current_user.id)
-    puts "#{@student.inspect}"
-    puts "In student profile"
+    @student = Student.find_by(:user_id => @current_user.id)
     respond_to do |format|
-      format.json { render json: @students }
+      format.json { render json: @student, :include => [:level, :school]  }
     end
   end
 
 
   def search
-    puts @current_user.inspect
     school_user = SchoolUser.where(user_id: @current_user.id).first
-    puts "==========="
-    puts school_user.inspect
-    puts "==========="
-    puts school_user.school_id
     school = school_user.school_id
     @students = Student.where(school_id: school)
-    puts "==========="
-    puts "#{@students.inspect}"
-    puts "ENDDD"
     respond_to do |format|
       format.json { render json: @students, :include => [:user, :level] }
     end
-
   end
 
   # GET /students/new

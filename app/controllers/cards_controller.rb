@@ -12,6 +12,17 @@ class CardsController < ApplicationController
   def show
   end
 
+  def profile
+    @student = Student.find_by(:user_id => @current_user.id)
+    @cards = Card.where(student_id: @student.id)
+    respond_to do |format|
+      format.json { render json: @cards, :include => [:student, :event => { :include => [:tasks]}]  }
+    end
+  end
+
+  def search
+  end
+
   # GET /cards/new
   def new
     @card = Card.new

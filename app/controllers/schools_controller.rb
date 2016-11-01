@@ -13,6 +13,15 @@ class SchoolsController < ApplicationController
   def show
   end
 
+  def profile
+    school_user = SchoolUser.find_by(:user_id => @current_user.id)
+    school = school_user.school_id
+    @school = School.find(school)
+    respond_to do |format|
+      format.json { render json: @school, :include => [:education_level]  }
+    end
+  end
+
   # GET /schools/new
   def new
     @school = School.new
@@ -44,7 +53,7 @@ class SchoolsController < ApplicationController
   def update
     respond_to do |format|
       if @school.update(school_params)
-        format.html { redirect_to @school, notice: 'School was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'School was successfully updated.' }
         format.json { render :show, status: :ok, location: @school }
       else
         format.html { render :edit }
@@ -71,6 +80,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name, :address, :telephone, :website, :logo)
+      params.require(:school).permit(:name, :address, :telephone, :website, :logo, :education_level_id)
     end
 end

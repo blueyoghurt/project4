@@ -62,23 +62,90 @@ $(document).on('turbolinks:load', function() {
       method: 'GET'
     }).done(function (data) {
       console.log("Information is back:", data);
-      // $("#profileInput").empty()
-      // $("#profileInput").append(
-      //   '<table class="ui basic table">' +
-      //     '<tbody>' +
-      //         '<td><b>School:</b></td>' +
-      //         '<td>' + data.school+ '</td>' +
-      //       '</tr>' +
-      //     '</tbody>' +
-      //   '</table>' +
-      //   '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
-      // )
+      $("#profileInput").empty()
+      $("#profileInput").append(
+        '<table class="ui basic table">' +
+          '<tbody>' +
+            '<tr>' +
+              '<td><b>School:</b></td>' +
+              '<td>' + data.school.name + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Level:</b></td>' +
+              '<td>' + data.level.description + '</td>' +
+            '</tr>' +
+          '</tbody>' +
+        '</table>' +
+        '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
+      )
     })
   })
 
   $(document).on('click','#editSchool',function(){
     $('#editingSchool').modal('show')
     console.log("Modal to edit school");
+  })
+
+  // CLICKING SCHOOL INSTITUTION PROFILE (SCHOOL)
+  $("#teacherSchoolProfile").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/schools/profile',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      $("#profileInput").empty()
+      $("#profileInput").append(
+        '<table class="ui basic table">' +
+          '<tbody>' +
+            '<tr>' +
+              '<td><b>School Name:</b></td>' +
+              '<td>' + data.name + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Address:</b></td>' +
+              '<td>' + data.address + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Email:</b></td>' +
+              '<td>' + data.email + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Telephone:</b></td>' +
+              '<td>' + data.telephone + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Website:</b></td>' +
+              '<td>' + data.website + '</td>' +
+            '</tr>' +
+            '<tr>' +
+              '<td><b>Educational Level:</b></td>' +
+              '<td>' + data.education_level.description + '</td>' +
+            '</tr>' +
+          '</tbody>' +
+        '</table>' +
+        '<button id="editSchoolInstitution" class="ui yellow button right floated editButton">Edit</button>'
+      )
+    })
+  })
+
+  $(document).on('click','#editSchoolInstitution',function(){
+    $('#editingSchoolInstitution').modal('show')
+    console.log("Modal to edit school");
+  })
+
+  // CLICKING ON CARDS (STUDENT)
+  $("#studentCards").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/cards/profile',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      appendStudentCards(data)
+    })
   })
 
 
@@ -117,7 +184,7 @@ $(document).on('turbolinks:load', function() {
       method: 'GET'
     }).done(function (data) {
       console.log("Information is back:", data);
-      appendStudentCards(data)
+      appendAllStudentCards(data)
     })
   })
 
@@ -179,8 +246,41 @@ $(document).on('click','#addEvent',function(){
     }
   }
 
-  // APPENDING STUDENT CARDS
+  // APPEND STUDENT SIGNED UP CARDS
   function appendStudentCards(data) {
+    console.log("Inside function:", data);
+    $("#profileInput").empty()
+    $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
+
+    for (var i = 0; i < data.length; i++) {
+      $("#studentAppendCards").append(
+        '<div class="ui yellow card">' +
+          '<div class="image">' +
+            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+          '</div>' +
+          '<div class="content">' +
+            '<a class="header">' + data[i].event.name + '</a>' +
+            '<div class="meta">' +
+              '<span class="date">' + data[i].event.start_date + ' to ' + data[i].event.end_date + '</span>' +
+            '</div>' +
+            '<div class="description">' +
+              data[i].event.description +
+            '</div>' +
+          '</div>' +
+          '<div class="extra content">' +
+            '<div class="right floated">' +
+              '<i class="list layout icon"></i>' +
+              data[i].event.tasks.length + ' tasks!' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )
+    }
+
+  }
+
+  // APPENDING ALL STUDENT CARDS FOR SCHOOL
+  function appendAllStudentCards(data) {
     console.log("Inside function:", data);
     $("#profileInput").empty()
     $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')

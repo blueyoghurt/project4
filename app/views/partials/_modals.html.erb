@@ -78,23 +78,63 @@
 </div>
 
 <!-- EDIT SCHOOL -->
-<% if (@user.usertype==3) %>
-<div class="ui modal" id="editingSchool">
-  <div class="header">
-    Edit School
-  </div>
-  <!-- SNIPPET TO BE PLACED HERE -->
-  <% @student = Student.new %>
-  <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
-  <div class="content">
-    <div class="field">
-      <%= f.label :school %></br>
-      <%= collection_select(:school_id, :name, School.all, :id, :name) %>
+<% if (@user.usertype == 3) %>
+  <div class="ui modal" id="editingSchool">
+    <div class="header">
+      Edit School
     </div>
+    <div class="content">
+    <!-- SNIPPET TO BE PLACED HERE -->
+    <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
+      <div class="field">
+        <p>Select your School </p>
+        <%= f.select :school_id, School.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
+      </div>
+      </br>
+      <div class="field">
+        <p>Select your level </p>
+        <%= f.select :level_id, Level.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui yellow button"%>
+    </div>
+      <%end %>
   </div>
-  <div class="actions">
-    <%= f.submit class: "ui inverted yellow button"%>
+<% end %>
+
+<!-- EDIT SCHOOL INSTITUTION -->
+<% if (@user.usertype == 2) %>
+  <div class="ui modal" id="editingSchoolInstitution">
+    <div class="header">
+      Edit Institution Details
+    </div>
+    <div class="content">
+    <%= form_for (@school), html: { class: "ui form", role: "form" } do |f| %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+      <div class="field">
+        <%= f.label :telephone %>
+        <%= f.text_field :telephone %>
+      </div>
+      <div class="field">
+        <%= f.label :website %>
+        <%= f.text_field :website %>
+      </div>
+      <div class="field">
+        <%= f.label :education_level %>
+        <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "ui yellow button"%>
+    </div>
+      <%end %>
   </div>
-  <%end %>
-</div>
 <% end %>

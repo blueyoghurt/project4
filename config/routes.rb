@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get "students/profile" => "students#profile"
   resources :students, except: [:new]
 
+  get "cards/profile" => "cards#profile"
+  get "cards/search" => "cards#search"
   resources :cards
 
   get "tasks/search" => "tasks#search"
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   get "ngos/search" => "ngos#search"
   resources :ngos
 
+  get "schools/profile" => "schools#profile"
   resources :schools
   get 'main/index'
 
