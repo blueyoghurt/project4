@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20161030151912) do
     t.text     "description"
     t.integer  "student_id"
     t.integer  "task_id"
+    t.integer  "event_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_cards_on_event_id", using: :btree
     t.index ["student_id"], name: "index_cards_on_student_id", using: :btree
     t.index ["task_id"], name: "index_cards_on_task_id", using: :btree
   end
@@ -120,8 +122,12 @@ ActiveRecord::Schema.define(version: 20161030151912) do
 
   create_table "tasks", force: :cascade do |t|
     t.text     "description"
+    t.integer  "level_id"
+    t.integer  "event_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_tasks_on_event_id", using: :btree
+    t.index ["level_id"], name: "index_tasks_on_level_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,6 +141,7 @@ ActiveRecord::Schema.define(version: 20161030151912) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "cards", "events"
   add_foreign_key "cards", "students"
   add_foreign_key "cards", "tasks"
   add_foreign_key "events", "education_levels"
@@ -148,4 +155,6 @@ ActiveRecord::Schema.define(version: 20161030151912) do
   add_foreign_key "students", "levels"
   add_foreign_key "students", "schools"
   add_foreign_key "students", "users"
+  add_foreign_key "tasks", "events"
+  add_foreign_key "tasks", "levels"
 end

@@ -6,6 +6,7 @@ class CreateCards < ActiveRecord::Migration[5.0]
       t.text :description
       t.references :student, foreign_key: true
       t.references :task, foreign_key: true
+      t.references :event, foreign_key: true
       t.timestamps
     end
   end
