@@ -12,20 +12,9 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(@current_user.id)
-
-    if @user.usertype == 2
-      respond_to do |format|
-        format.json { render json: @user}
-      end
-    elsif @user.usertype == 3
-      respond_to do |format|
-        format.json { render json: @user, :include => [:student, :school]  }
-      end
-    elsif @user.usertype == 4
-      respond_to do |format|
-        format.json { render json: @user}
-      end
-    end
+    puts "#{@user.inspect}"
+    puts "In users profile"
+    render json: @user
   end
 
   # GET /users/1

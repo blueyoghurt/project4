@@ -58,21 +58,21 @@ $(document).on('turbolinks:load', function() {
     loadingAjax()
 
     $.ajax({
-      url: '/users/profile',
+      url: '/students/profile',
       method: 'GET'
     }).done(function (data) {
       console.log("Information is back:", data);
-      $("#profileInput").empty()
-      $("#profileInput").append(
-        '<table class="ui basic table">' +
-          '<tbody>' +
-              '<td><b>School:</b></td>' +
-              '<td>' + data.school+ '</td>' +
-            '</tr>' +
-          '</tbody>' +
-        '</table>' +
-        '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
-      )
+      // $("#profileInput").empty()
+      // $("#profileInput").append(
+      //   '<table class="ui basic table">' +
+      //     '<tbody>' +
+      //         '<td><b>School:</b></td>' +
+      //         '<td>' + data.school+ '</td>' +
+      //       '</tr>' +
+      //     '</tbody>' +
+      //   '</table>' +
+      //   '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
+      // )
     })
   })
 
@@ -242,7 +242,7 @@ $(document).on('click','#addEvent',function(){
                   data[i].templates.length + ' templates' +
               '</div>' +
             '</div>' +
-          '</a>' 
+          '</a>'
       )
 
     }
