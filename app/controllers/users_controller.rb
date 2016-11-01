@@ -35,9 +35,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     uploaded_file = params[:user][:profile_pic].path
-    upload_image = Cloudinary::Uploader.upload(uploaded_file)
-    puts upload_image["public_id"]
-    @user.update(profile_pic: upload_image["public_id"])
+    @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
 
     respond_to do |format|
       if @user.save
@@ -64,6 +62,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    uploaded_file = params[:user][:profile_pic].path
+    @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url, notice: 'User was successfully updated.' }

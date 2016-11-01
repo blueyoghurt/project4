@@ -81,25 +81,24 @@
   <%end %>
 </div>
 
-
 <!-- EDIT SCHOOL -->
-<div class="ui modal" id="editingSchool">
-  <div class="header">
-    Edit School
-  </div>
-  <!-- SNIPPET TO BE PLACED HERE -->
-  <% @student = Student.new %>
-  <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
-    <div class="content">
-      <div class="field">
-        <%= f.label :school %></br>
-        <%= collection_select(:school_id, :name, School.all, :id, :name) %>
+<% if (@user.usertype==3) %>
+  <div class="ui modal" id="editingSchool">
+    <div class="header">
+      Edit School
+    </div>
+    <!-- SNIPPET TO BE PLACED HERE -->
+    <% @student = Student.new %>
+    <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
+      <div class="content">
+        <div class="field">
+          <%= f.label :school %></br>
+          <%= collection_select(:school_id, :name, School.all, :id, :name) %>
+        </div>
       </div>
-    </div>
-    <div class="actions">
-      <%= f.submit class: "ui inverted yellow button"%>
-    </div>
-  <%end %>
-
-
-</div>
+      <div class="actions">
+        <%= f.submit class: "ui inverted yellow button"%>
+      </div>
+    <%end %>
+  </div>
+<% end %>

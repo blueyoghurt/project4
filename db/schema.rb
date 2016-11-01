@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20161031153429) do
     t.string   "telephone"
     t.string   "website"
     t.text     "description"
+    t.string   "logo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "email"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20161031153429) do
     t.string   "address"
     t.string   "telephone"
     t.string   "website"
+    t.string   "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "email"
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 20161031153429) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "profile_pic"
     t.integer  "usertype"
     t.string   "first_name"
     t.string   "last_name"
