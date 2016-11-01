@@ -13,6 +13,16 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def profile
+    @student = Student.where(:user_id => @current_user.id)
+    puts "#{@student.inspect}"
+    puts "In student profile"
+    respond_to do |format|
+      format.json { render json: @students }
+    end
+  end
+
+
   def search
     puts @current_user.inspect
     school_user = SchoolUser.where(user_id: @current_user.id).first
@@ -44,11 +54,12 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
+    @student.user_id = @current_user.id
     puts @student.inspect
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }

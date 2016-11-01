@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get "student/register" => "students#new"
   get "students/search" => "students#search"
+  get "students/profile" => "students#profile"
   resources :students, except: [:new]
 
   resources :cards
