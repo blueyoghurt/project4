@@ -229,4 +229,3 @@ Event.find_or_create_by!(name: "Save the Web Developers") do |cat|
   # event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   # event.school_id = School.find_by(name" "Anderson Secondary School").id
   # event.education_level_id = EducationLevel.find_by("Secondary").id
-end

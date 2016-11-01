@@ -20,6 +20,11 @@ class User < ApplicationRecord
   presence: true,
   length: { in: 3..50 }
 
+  # PUBLIC METHODS
+  def profile_image
+    "https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/#{profile_pic}"
+  end
+
   # validates :email,
   # presence: true,
   # length: { maximum: 255 },

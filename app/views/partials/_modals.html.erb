@@ -66,7 +66,7 @@
       </div>
       <div class="field">
         <%= f.label :education_level_id %></br>
-        <%= f.collection_select :education_level_id, EducationLevel.all, :id, :description%>
+        <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {} %>
       </div>
     </div>
     <div class="actions">
