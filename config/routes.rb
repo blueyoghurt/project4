@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   get "students/search" => "students#search"
   resources :students, except: [:new]
 
-  resources :templates
   resources :cards
   resources :tasks
   resources :levels
