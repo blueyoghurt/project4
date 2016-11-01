@@ -35,7 +35,8 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.school_id = SchoolUser.find_by(user_id: current_user.id).school_id
-
+    puts "=================="
+    puts "#{@event.inspect}"
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Great! Let's enter the details for the event!" }
@@ -79,6 +80,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_date, :end_date, :start_time, :duration, :description, :vacancy, :educational_level_id)
+      params.require(:event).permit(:name, :start_date, :end_date, :start_time, :duration, :description, :vacancy, :education_level_id)
     end
 end
