@@ -100,7 +100,7 @@ Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
   ngo.description = "Be special"
   ngo.email = "xavier@email.com"
   ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
-  ngo.ngo_category_id = NgoCategory.find_by(name: "Youth").id
+  ngo.ngo_category_id = NgoCategory.find_by(name: "Environment").id
 end
 
 NgoUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email3"]).id) do |ngouser|
@@ -217,7 +217,16 @@ Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email2"]).id) 
   student.level_id = 1
   student.school_id = 1
 end
-#
-# Event.find_or_create_by!(name: "Environment") do |cat|
-#   event.name = "Environment"
-# end
+
+Event.find_or_create_by!(name: "Save the Web Developers") do |cat|
+  event.name = "Save the Web Developers"
+  # event.start_date = ""
+  # event.end_date = ""
+  # event.start_time = ""
+  event.duration = 2
+  # event.description = "Save the poor buggers!"
+  # event.vacancy = 40
+  # event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  # event.school_id = School.find_by(name" "Anderson Secondary School").id
+  # event.education_level_id = EducationLevel.find_by("Secondary").id
+end
