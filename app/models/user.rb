@@ -39,6 +39,10 @@ class User < ApplicationRecord
     "#{first_name.titlecase} #{last_name.titlecase}"
   end
 
+  def profile_pic
+    "https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/#{profile_pic}"
+  end
+
   def self.authenticate(params)
     User.find_by_email(params[:email]).try(:authenticate, params[:password])
   end
