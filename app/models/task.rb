@@ -1,5 +1,4 @@
 class Task < ApplicationRecord
-  belongs_to :event
-  belongs_to :level
-  has_many :cards
+  belongs_to :template
+  has_many :tasktrackers
 end
