@@ -38,8 +38,8 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").append(
         '<table class="ui basic table">' +
         '<tbody>' +
-        '<tr>' +
-        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.profile_pic + '"/>' + '</td>' +
+        '<tr class="logo">' +
+        '<td colspan="2">' + '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.profile_pic + '"/>' + '</td>' +
         '</tr>' +
         '<tr>' +
         '<td><b>First Name:</b></td>' +
@@ -77,13 +77,13 @@ $(document).on('turbolinks:load', function() {
       url: '/students/profile',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
+      console.log("Information is back:", "student", data);
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
         '<tbody>' +
-        '<tr>' +
-        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.school.logo_image + '"/>' + '</td>' +
+        '<tr class="logo">' +
+        '<td colspan="2">' + '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.school.logo + '"/>' + '</td>' +
         '</tr>' +
         '<tr>' +
         '<td><b>School:</b></td>' +
@@ -118,8 +118,8 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").append(
         '<table class="ui basic table">' +
         '<tbody>' +
-        '<tr>' +
-        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.school.logo_image + '"/>' + '</td>' +
+        '<tr class="logo">' +
+        '<td colspan="2">' + '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.logo + '"/>' + '</td>' +
         '</tr>' +
         '<tr>' +
         '<td><b>School Name:</b></td>' +
@@ -170,8 +170,8 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").append(
         '<table class="ui basic table">' +
         '<tbody>' +
-        '<tr>' +
-        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.ngo.logo_image + '"/>' + '</td>' +
+        '<tr class="logo">' +
+        '<td colspan="2">' + '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.logo + '"/>' + '</td>' +
         '</tr>' +
         '<tr>' +
         '<td><b>NGO Name:</b></td>' +
@@ -278,6 +278,32 @@ $(document).on('turbolinks:load', function() {
 
     $.ajax({
       url: '/schools/search',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      loadingAjax()
+      appendSchoolCards(data)
+    })
+  })
+
+  $("#pendingEvents").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/events/pending',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      loadingAjax()
+      appendSchoolCards(data)
+    })
+  })
+
+  $("#pastEvents").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/events/past',
       method: 'GET'
     }).done(function (data) {
       console.log("Information is back:", data);
