@@ -629,96 +629,96 @@ Task.find_or_create_by!(id: 1) do |task|
   task.description = "Talk to an elderly person and describe your experience"
   task.template_id = Template.find_by(id: 1).id
 end
-
-Task.find_or_create_by!(id: 2) do |task|
-  task.description = "Hang out with an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 1).id
-end
-
-Task.find_or_create_by!(id: 3) do |task|
-  task.description = "Help an elderly person cross the road and describe your experience"
-  task.template_id = Template.find_by(id: 2).id
-end
-
-Task.find_or_create_by!(id: 4) do |task|
-  task.description = "Play chess with an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 2).id
-end
-
-Task.find_or_create_by!(id: 5) do |task|
-  task.description = "Fold origami an elderly person cross the road and describe your experience"
-  task.template_id = Template.find_by(id: 3).id
-end
-
-Task.find_or_create_by!(id: 6) do |task|
-  task.description = "Dance with an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 3).id
-end
-
-Task.find_or_create_by!(id: 7) do |task|
-  task.description = "Make CNY lanterns with an elderly person cross the road and describe your experience"
-  task.template_id = Template.find_by(id: 4).id
-end
-
-Task.find_or_create_by!(id: 8) do |task|
-  task.description = "Teach an elderly person how to dance and describe your experience"
-  task.template_id = Template.find_by(id: 4).id
-end
-
-Task.find_or_create_by!(id: 9) do |task|
-  task.description = "Teach the kids to fold origami and describe your experience"
-  task.template_id = Template.find_by(id: 5).id
-end
-
-Task.find_or_create_by!(id: 10) do |task|
-  task.description = "Teach the kids to dance and describe your experience"
-  task.template_id = Template.find_by(id: 5).id
-end
-
-Task.find_or_create_by!(id: 11) do |task|
-  task.description = "Teach the kids the concept of integrity and describe your experience"
-  task.template_id = Template.find_by(id: 6).id
-end
-
-Task.find_or_create_by!(id: 12) do |task|
-  task.description = "Teach the kids the concept of humility and describe your experience"
-  task.template_id = Template.find_by(id: 6).id
-end
-
-Card.find_or_create_by!(id: 1) do |card|
-  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email8"]).id).id
-  card.template_id = Template.find_by(id: 4).id
-end
-
-Card.find_or_create_by!(id: 2) do |card|
-  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email7"]).id).id
-  card.template_id = Template.find_by(id: 3).id
-end
-
-Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 1).id
-  tasktracker.task_id = Task.find_by(id: 7).id
-  tasktracker.approval = false
-  tasktracker.completion = false
-end
-
-Tasktracker.find_or_create_by!(id: 2) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 1).id
-  tasktracker.task_id = Task.find_by(id: 8).id
-  tasktracker.approval = false
-  tasktracker.completion = false
-end
-
-Tasktracker.find_or_create_by!(id: 3) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 2).id
-  tasktracker.task_id = Task.find_by(id: 5).id
-  tasktracker.approval = false
-  tasktracker.completion = false
-end
-
-Tasktracker.find_or_create_by!(id: 4) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 2).id
-  tasktracker.task_id = Task.find_by(id: 6).id
-  tasktracker.approval = false
-  tasktracker.completion = false
-end
+#
+# Task.find_or_create_by!(id: 2) do |task|
+#   task.description = "Hang out with an elderly person and describe your experience"
+#   task.template_id = Template.find_by(id: 1).id
+# end
+#
+# Task.find_or_create_by!(id: 3) do |task|
+#   task.description = "Help an elderly person cross the road and describe your experience"
+#   task.template_id = Template.find_by(id: 2).id
+# end
+#
+# Task.find_or_create_by!(id: 4) do |task|
+#   task.description = "Play chess with an elderly person and describe your experience"
+#   task.template_id = Template.find_by(id: 2).id
+# end
+#
+# Task.find_or_create_by!(id: 5) do |task|
+#   task.description = "Fold origami an elderly person cross the road and describe your experience"
+#   task.template_id = Template.find_by(id: 3).id
+# end
+#
+# Task.find_or_create_by!(id: 6) do |task|
+#   task.description = "Dance with an elderly person and describe your experience"
+#   task.template_id = Template.find_by(id: 3).id
+# end
+#
+# Task.find_or_create_by!(id: 7) do |task|
+#   task.description = "Make CNY lanterns with an elderly person cross the road and describe your experience"
+#   task.template_id = Template.find_by(id: 4).id
+# end
+#
+# Task.find_or_create_by!(id: 8) do |task|
+#   task.description = "Teach an elderly person how to dance and describe your experience"
+#   task.template_id = Template.find_by(id: 4).id
+# end
+#
+# Task.find_or_create_by!(id: 9) do |task|
+#   task.description = "Teach the kids to fold origami and describe your experience"
+#   task.template_id = Template.find_by(id: 5).id
+# end
+#
+# Task.find_or_create_by!(id: 10) do |task|
+#   task.description = "Teach the kids to dance and describe your experience"
+#   task.template_id = Template.find_by(id: 5).id
+# end
+#
+# Task.find_or_create_by!(id: 11) do |task|
+#   task.description = "Teach the kids the concept of integrity and describe your experience"
+#   task.template_id = Template.find_by(id: 6).id
+# end
+#
+# Task.find_or_create_by!(id: 12) do |task|
+#   task.description = "Teach the kids the concept of humility and describe your experience"
+#   task.template_id = Template.find_by(id: 6).id
+# end
+#
+# Card.find_or_create_by!(id: 1) do |card|
+#   card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email8"]).id).id
+#   card.template_id = Template.find_by(id: 4).id
+# end
+#
+# Card.find_or_create_by!(id: 2) do |card|
+#   card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email7"]).id).id
+#   card.template_id = Template.find_by(id: 3).id
+# end
+#
+# Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
+#   tasktracker.card_id = Card.find_by(id: 1).id
+#   tasktracker.task_id = Task.find_by(id: 7).id
+#   tasktracker.approval = false
+#   tasktracker.completion = false
+# end
+#
+# Tasktracker.find_or_create_by!(id: 2) do |tasktracker|
+#   tasktracker.card_id = Card.find_by(id: 1).id
+#   tasktracker.task_id = Task.find_by(id: 8).id
+#   tasktracker.approval = false
+#   tasktracker.completion = false
+# end
+#
+# Tasktracker.find_or_create_by!(id: 3) do |tasktracker|
+#   tasktracker.card_id = Card.find_by(id: 2).id
+#   tasktracker.task_id = Task.find_by(id: 5).id
+#   tasktracker.approval = false
+#   tasktracker.completion = false
+# end
+#
+# Tasktracker.find_or_create_by!(id: 4) do |tasktracker|
+#   tasktracker.card_id = Card.find_by(id: 2).id
+#   tasktracker.task_id = Task.find_by(id: 6).id
+#   tasktracker.approval = false
+#   tasktracker.completion = false
+# end
