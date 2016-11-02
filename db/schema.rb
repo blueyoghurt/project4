@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20161102033223) do
     t.text     "description"
     t.integer  "vacancy"
     t.string   "image"
+    t.integer  "status"
     t.integer  "school_id"
     t.integer  "education_level_id"
     t.integer  "ngo_id"
@@ -140,7 +141,6 @@ ActiveRecord::Schema.define(version: 20161102033223) do
   end
 
   create_table "templates", force: :cascade do |t|
-    t.integer  "status"
     t.integer  "event_id"
     t.integer  "level_id"
     t.datetime "created_at", null: false
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20161102033223) do
     t.integer  "usertype"
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "gender"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
