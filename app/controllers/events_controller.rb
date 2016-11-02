@@ -9,7 +9,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @cards = Card.where(event_id: @event.id)
+    puts ">>>>>>>", @event.id    
+    @templates = Template.find_by(event_id: @event.id)
+    puts ">>>>>>>", @templates.id
+    @cards = Card.where(template_id: @templates.id)
     puts "=============="
     puts @cards.inspect
     # respond_to do |format|

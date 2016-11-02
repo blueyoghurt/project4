@@ -603,6 +603,35 @@ Event.find_or_create_by!(name: "Conserve the salad day") do |event|
   event.ngo_id = 2
 end
 
+Event.find_or_create_by!(name: "Adopt a starving developer") do |event|
+  event.name = "Adopt a starving developer"
+  event.start_date = "2016-11-11"
+  event.end_date = "2016-11-11"
+  event.start_time = "17:00:00"
+  event.duration = 4.0
+  event.description = "Save water, drink beer."
+  event.vacancy = 18
+  event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  event.school_id = School.find_by(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 2
+end
+
+Event.find_or_create_by!(name: "Adopt an ugly developer") do |event|
+  event.name = "Adopt an ugly developer"
+  event.start_date = "2016-11-11"
+  event.end_date = "2016-11-11"
+  event.start_time = "17:00:00"
+  event.duration = 4.0
+  event.description = "Save water, drink beer."
+  event.vacancy = 18
+  event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  event.school_id = School.find_by(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 2
+end
+
+
 Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
   event.name = "Conserve the potato chips day"
   event.start_date = "2016-11-11"
