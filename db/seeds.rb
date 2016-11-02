@@ -688,37 +688,33 @@ end
 Card.find_or_create_by!(id: 1) do |card|
   card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email8"]).id).id
   card.template_id = Template.find_by(id: 4).id
+  card.approval = false
+  card.completion = false
 end
 
 Card.find_or_create_by!(id: 2) do |card|
   card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email7"]).id).id
   card.template_id = Template.find_by(id: 3).id
+  card.approval = false
+  card.completion = false
 end
 
 Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
   tasktracker.card_id = Card.find_by(id: 1).id
   tasktracker.task_id = Task.find_by(id: 7).id
-  tasktracker.approval = false
-  tasktracker.completion = false
 end
 
 Tasktracker.find_or_create_by!(id: 2) do |tasktracker|
   tasktracker.card_id = Card.find_by(id: 1).id
   tasktracker.task_id = Task.find_by(id: 8).id
-  tasktracker.approval = false
-  tasktracker.completion = false
 end
 
 Tasktracker.find_or_create_by!(id: 3) do |tasktracker|
   tasktracker.card_id = Card.find_by(id: 2).id
   tasktracker.task_id = Task.find_by(id: 5).id
-  tasktracker.approval = false
-  tasktracker.completion = false
 end
 
 Tasktracker.find_or_create_by!(id: 4) do |tasktracker|
   tasktracker.card_id = Card.find_by(id: 2).id
   tasktracker.task_id = Task.find_by(id: 6).id
-  tasktracker.approval = false
-  tasktracker.completion = false
 end

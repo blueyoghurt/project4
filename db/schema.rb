@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20161102033223) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
+    t.boolean  "approval"
+    t.boolean  "completion"
     t.integer  "student_id"
     t.integer  "template_id"
     t.datetime "created_at",  null: false
@@ -128,8 +130,6 @@ ActiveRecord::Schema.define(version: 20161102033223) do
   end
 
   create_table "tasktrackers", force: :cascade do |t|
-    t.boolean  "approval"
-    t.boolean  "completion"
     t.string   "picture"
     t.text     "description"
     t.integer  "card_id"

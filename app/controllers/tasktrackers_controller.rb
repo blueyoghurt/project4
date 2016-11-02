@@ -10,6 +10,8 @@ class TasktrackersController < ApplicationController
   # GET /tasktrackers/1
   # GET /tasktrackers/1.json
   def show
+    @tasktracker = Tasktracker.find(params[:id])
+    puts "#{@tasktracker.inspect}"
   end
 
   # GET /tasktrackers/new
