@@ -83,6 +83,9 @@ $(document).on('turbolinks:load', function() {
         '<table class="ui basic table">' +
         '<tbody>' +
         '<tr>' +
+        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.school.logo_image + '"/>' + '</td>' +
+        '</tr>' +
+        '<tr>' +
         '<td><b>School:</b></td>' +
         '<td>' + data.school.name + '</td>' +
         '</tr>' +
@@ -115,6 +118,9 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").append(
         '<table class="ui basic table">' +
         '<tbody>' +
+        '<tr>' +
+        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.school.logo_image + '"/>' + '</td>' +
+        '</tr>' +
         '<tr>' +
         '<td><b>School Name:</b></td>' +
         '<td>' + data.name + '</td>' +
@@ -164,6 +170,9 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").append(
         '<table class="ui basic table">' +
         '<tbody>' +
+        '<tr>' +
+        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.ngo.logo_image + '"/>' + '</td>' +
+        '</tr>' +
         '<tr>' +
         '<td><b>NGO Name:</b></td>' +
         '<td>' + data.name + '</td>' +
@@ -379,7 +388,7 @@ $(document).on('turbolinks:load', function() {
 
     for (var i = 0; i < data.length; i++) {
       $("#studentAppendCards").append(
-        '<a class="anchorForCards ui yellow card" href="/tasktrackers/' + data[i].id + '">' +
+        '<a class="anchorForCards ui yellow card" href="/cards/' + data[i].id + '">' +
           '<div class="image">' +
             '<img src="' + data[i].template.event.image+ '">' +
           '</div>' +
