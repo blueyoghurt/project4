@@ -39,6 +39,9 @@ $(document).on('turbolinks:load', function() {
         '<table class="ui basic table">' +
         '<tbody>' +
         '<tr>' +
+        '<td>' + '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/'+ data.profile_pic + '"/>' + '</td>' +
+        '</tr>' +
+        '<tr>' +
         '<td><b>First Name:</b></td>' +
         '<td>' + data.first_name + '</td>' +
         '</tr>' +

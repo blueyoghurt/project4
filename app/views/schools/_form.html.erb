@@ -16,7 +16,8 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
+    <%= f.label :logo %></br>
     <%= f.file_field :logo%>
   </div>
 
@@ -33,6 +34,11 @@
   <div class="field">
     <%= f.label :website %>
     <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :education_level %>
+    <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {} %>
   </div>
 
   <div class="actions">
