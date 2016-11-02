@@ -759,15 +759,13 @@ end
 Card.find_or_create_by!(id: 1) do |card|
   card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email8"]).id).id
   card.template_id = Template.find_by(id: 4).id
-  card.approval = false
-  card.completion = false
+  card.approval = 0
 end
 
 Card.find_or_create_by!(id: 2) do |card|
   card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email7"]).id).id
   card.template_id = Template.find_by(id: 3).id
-  card.approval = false
-  card.completion = false
+  card.approval = 0
 end
 
 Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
