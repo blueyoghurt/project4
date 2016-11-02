@@ -18,8 +18,8 @@ class User < ApplicationRecord
   # validates :profile_pic,
   # allow_blank: true
 
-  validates :usertype,
-  pressence: true
+  # validates :usertype,
+  # pressence: true
 
   validates :email,
   presence: true,
