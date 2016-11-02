@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="ui card">
+   <div class="content">
+     <div class="header"><%= @card.template.event.name %></div>
+     <div class="meta"><%=@card.template.level.description%></div>
+   </div>
+   <div class="content">
+     <div class="description">
+       <p><b>Date:</b></p>
+       <p><%= @card.template.event.start_date%> to <%= @card.template.event.end_date%> </p>
+       <p><b>Start Time:</b> </p>
+       <p><%= @card.template.event.start_time %> </p>
+       <p><b>Duration:</b></p>
+       <p> <%= @card.template.event.duration %> hours</p>
+       <p><b>Description:</b></p>
+      <p><%= @card.template.event.description %></p>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div class="row">
+
+  <%= form_for(@card) do |f| %>
+
+    <div class="actions">
+      <%= f.submit class: "ui yellow button"%>
+    </div>
+  <% end %>
+
+</div>

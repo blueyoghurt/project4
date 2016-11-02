@@ -10,8 +10,6 @@ class TasktrackersController < ApplicationController
   # GET /tasktrackers/1
   # GET /tasktrackers/1.json
   def show
-    @tasktracker = Tasktracker.find(params[:id])
-    puts "#{@tasktracker.inspect}"
   end
 
   # GET /tasktrackers/new
@@ -42,9 +40,17 @@ class TasktrackersController < ApplicationController
   # PATCH/PUT /tasktrackers/1
   # PATCH/PUT /tasktrackers/1.json
   def update
+
+    @card = Card.find(@tasktracker.card_id)
+
+    if params[:tasktracker][:picture]
+      uploaded_file = params[:tasktracker][:picture].path
+      @tasktracker.update(picture: Cloudinary::Uploader.upload(uploaded_file, :folder => "tasktracker/picture")["public_id"])
+    end
+
     respond_to do |format|
       if @tasktracker.update(tasktracker_params)
-        format.html { redirect_to @tasktracker, notice: 'Tasktracker was successfully updated.' }
+        format.html { redirect_to @card, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @tasktracker }
       else
         format.html { render :edit }
