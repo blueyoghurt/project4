@@ -13,10 +13,13 @@ class CardsController < ApplicationController
   end
 
   def profile
+    puts "IM IN CARDS PROFILE"
     @student = Student.find_by(:user_id => @current_user.id)
     @cards = Card.where(student_id: @student.id)
+    puts "#{@cards.inspect}"
+    puts "!!!!!!!!!"
     respond_to do |format|
-      format.json { render json: @cards, :include => [:student, :event => { :include => [:tasks]}]  }
+      format.json { render json: @cards, :include => [:student, :template => {:include => [:event]}, :tasktrackers => { :include => [:task]}]  }
     end
   end
 
