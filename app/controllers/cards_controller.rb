@@ -19,7 +19,11 @@ class CardsController < ApplicationController
     puts "#{@cards.inspect}"
     puts "!!!!!!!!!"
     respond_to do |format|
-      format.json { render json: @cards, :include => [:student, :template => {:include => [:event]}, :tasktrackers => { :include => [:task]}]  }
+      format.json { render json: @cards, :include => { :student => {},
+                                                      :template => {:include => [:event, :tasks] },
+                                                      :tasktrackers => { :include => [:task] }
+                                                    }
+      }
     end
   end
 
