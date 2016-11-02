@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem "rails-erd"
 gem 'cloudinary'
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 # gem 'will_paginate', '~> 3.1.0'
 # gem 'ransack', github: 'activerecord-hackery/ransack'
 

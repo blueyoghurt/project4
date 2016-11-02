@@ -1,6 +1,19 @@
 $(document).on('turbolinks:load', function() {
   console.log('PROFILE DOM loaded');
 
+// Event listener to dismiss flash alerts
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+    .closest('.message')
+    .transition('fade')
+    ;
+  })
+  ;
+
+// Flash alerts automatically fades out after 5 seconds
+  $("#alertDiv").fadeTo(5000, 0);
+
   // CLICKING USER PROFILE (STUDENT, NGOS AND SCHOOLS)
   $("#userProfile").click(function() {
     loadingAjax()
@@ -24,25 +37,25 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
-          '<tbody>' +
-            '<tr>' +
-              '<td><b>First Name:</b></td>' +
-              '<td>' + data.first_name + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Last Name:</b></td>' +
-              '<td>' + data.last_name + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Email:</b></td>' +
-              '<td>' + data.email + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>User Type:</b></td>' +
-              '<td>' + usertype + '</td>' +
-            '</tr>' +
-            '<tr>' +
-          '</tbody>' +
+        '<tbody>' +
+        '<tr>' +
+        '<td><b>First Name:</b></td>' +
+        '<td>' + data.first_name + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Last Name:</b></td>' +
+        '<td>' + data.last_name + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Email:</b></td>' +
+        '<td>' + data.email + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>User Type:</b></td>' +
+        '<td>' + usertype + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '</tbody>' +
         '</table>' +
         '<button id="editProfile" class="ui yellow button right floated editButton">Edit</button>'
       )
@@ -65,16 +78,16 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
-          '<tbody>' +
-            '<tr>' +
-              '<td><b>School:</b></td>' +
-              '<td>' + data.school.name + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Level:</b></td>' +
-              '<td>' + data.level.description + '</td>' +
-            '</tr>' +
-          '</tbody>' +
+        '<tbody>' +
+        '<tr>' +
+        '<td><b>School:</b></td>' +
+        '<td>' + data.school.name + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Level:</b></td>' +
+        '<td>' + data.level.description + '</td>' +
+        '</tr>' +
+        '</tbody>' +
         '</table>' +
         '<button id="editSchool" class="ui yellow button right floated editButton">Edit</button>'
       )
@@ -98,32 +111,32 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
-          '<tbody>' +
-            '<tr>' +
-              '<td><b>School Name:</b></td>' +
-              '<td>' + data.name + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Address:</b></td>' +
-              '<td>' + data.address + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Email:</b></td>' +
-              '<td>' + data.email + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Telephone:</b></td>' +
-              '<td>' + data.telephone + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Website:</b></td>' +
-              '<td>' + data.website + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Educational Level:</b></td>' +
-              '<td>' + data.education_level.description + '</td>' +
-            '</tr>' +
-          '</tbody>' +
+        '<tbody>' +
+        '<tr>' +
+        '<td><b>School Name:</b></td>' +
+        '<td>' + data.name + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Address:</b></td>' +
+        '<td>' + data.address + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Email:</b></td>' +
+        '<td>' + data.email + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Telephone:</b></td>' +
+        '<td>' + data.telephone + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Website:</b></td>' +
+        '<td>' + data.website + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Educational Level:</b></td>' +
+        '<td>' + data.education_level.description + '</td>' +
+        '</tr>' +
+        '</tbody>' +
         '</table>' +
         '<button id="editSchoolInstitution" class="ui yellow button right floated editButton">Edit</button>'
       )
@@ -147,36 +160,36 @@ $(document).on('turbolinks:load', function() {
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
-          '<tbody>' +
-            '<tr>' +
-              '<td><b>NGO Name:</b></td>' +
-              '<td>' + data.name + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Address:</b></td>' +
-              '<td>' + data.address + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Email:</b></td>' +
-              '<td>' + data.email + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Telephone:</b></td>' +
-              '<td>' + data.telephone + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Website:</b></td>' +
-              '<td>' + data.website + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Description:</b></td>' +
-              '<td>' + data.description + '</td>' +
-            '</tr>' +
-            '<tr>' +
-              '<td><b>Industry:</b></td>' +
-              '<td>' + data.ngo_category.name + '</td>' +
-            '</tr>' +
-          '</tbody>' +
+        '<tbody>' +
+        '<tr>' +
+        '<td><b>NGO Name:</b></td>' +
+        '<td>' + data.name + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Address:</b></td>' +
+        '<td>' + data.address + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Email:</b></td>' +
+        '<td>' + data.email + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Telephone:</b></td>' +
+        '<td>' + data.telephone + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Website:</b></td>' +
+        '<td>' + data.website + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Description:</b></td>' +
+        '<td>' + data.description + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Industry:</b></td>' +
+        '<td>' + data.ngo_category.name + '</td>' +
+        '</tr>' +
+        '</tbody>' +
         '</table>' +
         '<button id="editNgoProfile" class="ui yellow button right floated editButton">Edit</button>'
       )
@@ -242,38 +255,38 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
-$(document).on('click','#addEvent',function(){
-  $('#addingEvent').modal('show')
-  console.log("Modal to add event");
-})
-
-// CLICKING ON SCHOOL PROFILES (NGO)
-$("#schoolCards").click(function() {
-  loadingAjax()
-
-  $.ajax({
-    url: '/schools/search',
-    method: 'GET'
-  }).done(function (data) {
-    console.log("Information is back:", data);
-    loadingAjax()
-    appendSchoolCards(data)
+  $(document).on('click','#addEvent',function(){
+    $('#addingEvent').modal('show')
+    console.log("Modal to add event");
   })
-})
+
+  // CLICKING ON SCHOOL PROFILES (NGO)
+  $("#schoolCards").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/schools/search',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      loadingAjax()
+      appendSchoolCards(data)
+    })
+  })
 
 
-// ======================= FUNCTIONS =======================
+  // ======================= FUNCTIONS =======================
   // APPEND LOADING SYMBOL WHILE LOADING AJAX
   function loadingAjax() {
     $("#profileInput").empty()
     $("#profileInput").append(
       '<div class="ui icon">' +
-        '<i class="notched circle loading icon loadingIcon"></i>' +
-        '<div class="content">' +
-          '<div class="header">' +
-            'Loading...' +
-          '</div>' +
-        '</div>' +
+      '<i class="notched circle loading icon loadingIcon"></i>' +
+      '<div class="content">' +
+      '<div class="header">' +
+      'Loading...' +
+      '</div>' +
+      '</div>' +
       '</div>'
     )
   }
@@ -285,30 +298,30 @@ $("#schoolCards").click(function() {
     for (var i = 0; i < data.length; i++) {
       $("#ngoAppendCards").append(
         '<div class="ui yellow card">' +
-          '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
-          '</div>' +
-          '<div class="content">' +
-            '<a class="header">' + data[i].name+ '</a>' +
-            '<div class="meta">' +
-              '<span class="date">MY INDUSTRY</span>' +
-            '</div>' +
-            '<div class="description">' +
-              data[i].description +
-            '</div>' +
-          '</div>' +
-          '<div class="extra content">' +
-            '<div class="right floated">' +
-              '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
-                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-                'Email' +
-              '</a>' +
-              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-                '<i class="text telephone icon"></i>' +
-                'Phone' +
-              '</a>' +
-            '</div>' +
-          '</div>' +
+        '<div class="image">' +
+        '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        '</div>' +
+        '<div class="content">' +
+        '<a class="header">' + data[i].name+ '</a>' +
+        '<div class="meta">' +
+        '<span class="date">MY INDUSTRY</span>' +
+        '</div>' +
+        '<div class="description">' +
+        data[i].description +
+        '</div>' +
+        '</div>' +
+        '<div class="extra content">' +
+        '<div class="right floated">' +
+        '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
+        '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+        'Email' +
+        '</a>' +
+        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+        '<i class="text telephone icon"></i>' +
+        'Phone' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
         '</div>'
       )
     }
@@ -321,35 +334,35 @@ $("#schoolCards").click(function() {
     for (var i = 0; i < data.length; i++) {
       $("#appendSchoolCards").append(
         '<div class="ui yellow card">' +
-          '<div class="image">' +
-            '<img src="' + data[i].logo + '">' +
-          '</div>' +
-          '<div class="content">' +
-            '<a class="header">' + data[i].name+ '</a>' +
-            '<div class="meta">' +
-              '<span class="date">' + data[i].education_level.description + '</span>' +
-            '</div>' +
-          '</div>' +
-          '<div class="extra content">' +
-            '<div class="right floated">' +
-              '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
-                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-                'Email' +
-              '</a>' +
-              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-                '<i class="text telephone icon"></i>' +
-                'Phone' +
-              '</a>' +
-              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-                '<i class="world icon"></i>' +
-                'Website' +
-              '</a>' +
-              '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-                '<i class="text telephone icon"></i>' +
-                'Telephone' +
-              '</a>' +
-            '</div>' +
-          '</div>' +
+        '<div class="image">' +
+        '<img src="' + data[i].logo + '">' +
+        '</div>' +
+        '<div class="content">' +
+        '<a class="header">' + data[i].name+ '</a>' +
+        '<div class="meta">' +
+        '<span class="date">' + data[i].education_level.description + '</span>' +
+        '</div>' +
+        '</div>' +
+        '<div class="extra content">' +
+        '<div class="right floated">' +
+        '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
+        '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+        'Email' +
+        '</a>' +
+        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+        '<i class="text telephone icon"></i>' +
+        'Phone' +
+        '</a>' +
+        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+        '<i class="world icon"></i>' +
+        'Website' +
+        '</a>' +
+        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+        '<i class="text telephone icon"></i>' +
+        'Telephone' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
         '</div>'
       )
     }
@@ -364,24 +377,24 @@ $("#schoolCards").click(function() {
     for (var i = 0; i < data.length; i++) {
       $("#studentAppendCards").append(
         '<div class="ui yellow card">' +
-          '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
-          '</div>' +
-          '<div class="content">' +
-            '<a class="header">' + data[i].event.name + '</a>' +
-            '<div class="meta">' +
-              '<span class="date">' + data[i].event.start_date + ' to ' + data[i].event.end_date + '</span>' +
-            '</div>' +
-            '<div class="description">' +
-              data[i].event.description +
-            '</div>' +
-          '</div>' +
-          '<div class="extra content">' +
-            '<div class="right floated">' +
-              '<i class="list layout icon"></i>' +
-              data[i].event.tasks.length + ' tasks!' +
-            '</div>' +
-          '</div>' +
+        '<div class="image">' +
+        '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        '</div>' +
+        '<div class="content">' +
+        '<a class="header">' + data[i].event.name + '</a>' +
+        '<div class="meta">' +
+        '<span class="date">' + data[i].event.start_date + ' to ' + data[i].event.end_date + '</span>' +
+        '</div>' +
+        '<div class="description">' +
+        data[i].event.description +
+        '</div>' +
+        '</div>' +
+        '<div class="extra content">' +
+        '<div class="right floated">' +
+        '<i class="list layout icon"></i>' +
+        data[i].event.tasks.length + ' tasks!' +
+        '</div>' +
+        '</div>' +
         '</div>'
       )
     }
@@ -396,26 +409,26 @@ $("#schoolCards").click(function() {
     for (var i = 0; i < data.length; i++) {
       $("#studentAppendCards").append(
         '<div class="ui yellow card">' +
-          '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
-          '</div>' +
-          '<div class="content">' +
-            '<a class="header">' + data[i].user.first_name+ '</a>' +
-            '<div class="meta">' +
-              '<span class="date">' + data[i].level.description + '</span>' +
-            '</div>' +
-            '<div class="description">' +
-              data[i].level.description +
-            '</div>' +
-          '</div>' +
-          '<div class="extra content">' +
-            '<div class="right floated">' +
-              '<a class="cardLinkIcons" href="mailto:' + data[i].user.email + '">' +
-                '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-                'Email' +
-              '</a>' +
-            '</div>' +
-          '</div>' +
+        '<div class="image">' +
+        '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        '</div>' +
+        '<div class="content">' +
+        '<a class="header">' + data[i].user.first_name+ '</a>' +
+        '<div class="meta">' +
+        '<span class="date">' + data[i].level.description + '</span>' +
+        '</div>' +
+        '<div class="description">' +
+        data[i].level.description +
+        '</div>' +
+        '</div>' +
+        '<div class="extra content">' +
+        '<div class="right floated">' +
+        '<a class="cardLinkIcons" href="mailto:' + data[i].user.email + '">' +
+        '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+        'Email' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
         '</div>'
       )
     }
@@ -426,32 +439,32 @@ $("#schoolCards").click(function() {
     $("#profileInput").empty()
     $("#profileInput").append(
       '<div class="ui centered grid" id="addEventBox">' +
-          '<button class="ui yellow button" id="addEvent">Add Event</button>' +
+      '<button class="ui yellow button" id="addEvent">Add Event</button>' +
       '</div>' +
       '<div class="ui cards" id="appendEventCards"></div>'
     )
     for (var i = 0; i < data.length; i++) {
       $("#appendEventCards").append(
-          '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
-            '<div class="image">' +
-              '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
-            '</div>' +
-            '<div class="content">' +
-              '<div class="header">' + data[i].name + '</div>' +
-              '<div class="meta">' +
-                '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
-              '</div>' +
-              '<div class="description">' +
-                data[i].description +
-              '</div>' +
-            '</div>' +
-            '<div class="extra content">' +
-              '<div class="right floated">' +
-                  '<i class="list layout icon"></i>' +
-                  data[i].cards.length + ' students signed up!' +
-              '</div>' +
-            '</div>' +
-          '</a>'
+        '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
+        '<div class="image">' +
+        '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        '</div>' +
+        '<div class="content">' +
+        '<div class="header">' + data[i].name + '</div>' +
+        '<div class="meta">' +
+        '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
+        '</div>' +
+        '<div class="description">' +
+        data[i].description +
+        '</div>' +
+        '</div>' +
+        '<div class="extra content">' +
+        '<div class="right floated">' +
+        '<i class="list layout icon"></i>' +
+        data[i].cards.length + ' students signed up!' +
+        '</div>' +
+        '</div>' +
+        '</a>'
       )
 
     }

@@ -11,6 +11,9 @@ class User < ApplicationRecord
   # MIXINS
   has_secure_password
 
+  # CONSTANTS
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   # VALIDATIONS
   validates :first_name,
   presence: true,
@@ -20,16 +23,12 @@ class User < ApplicationRecord
   presence: true,
   length: { in: 3..50 }
 
-  # PUBLIC METHODS
-  def profile_image
-    "https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/#{profile_pic}"
-  end
 
   validates :email,
   presence: true,
   length: { maximum: 255 },
-  uniqueness: {case_sensitive: false}
-  # format: VALID_EMAIL_REGEX
+  uniqueness: {case_sensitive: false},
+  format: VALID_EMAIL_REGEX
 
   validates :password, length: { in: 8..72 } , on: :create, :if => :password_needs_validating?
 
@@ -40,6 +39,10 @@ class User < ApplicationRecord
   before_save :titlecase_fields
 
   # PUBLIC METHODS
+  def profile_image
+    "https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/#{profile_pic}"
+  end
+
   def name
     "#{first_name.titlecase} #{last_name.titlecase}"
   end

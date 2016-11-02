@@ -1,12 +1,12 @@
 <% if flash[:success] %>
-<div class="ui positive message">
+<div id="alertDiv" class="ui floating positive message">
   <i class="close icon"></i>
   <%= flash[:success] %>
 </div>
 <% end %>
 
 <% if flash[:danger] %>
-<div class="ui negative message">
+<div id="alertDiv" class="ui floating negative message">
   <i class="close icon"></i>
   <%= flash[:danger] %>
 </div>
