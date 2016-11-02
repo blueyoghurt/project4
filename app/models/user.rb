@@ -56,6 +56,10 @@ class User < ApplicationRecord
     User.find_by_email(params[:email]).try(:authenticate, params[:password])
   end
 
+  def logo_image
+    "https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/#{logo}"
+  end
+  
   # PRIVATE METHODS
   private
 

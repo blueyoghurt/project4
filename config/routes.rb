@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   resources :levels
 
   get "events/search" => "events#search"
+  get "events/pending" => "events#pending"
+  get "events/past" => "events#past"
   resources :events
 
   get "ngos/profile" => "ngos#profile"

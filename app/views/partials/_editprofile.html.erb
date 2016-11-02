@@ -10,12 +10,14 @@
     <!-- STUDENT -->
   <% elsif current_user.usertype == 3 %>
     <a class="item menuScroll" id="schoolProfile">Institution Profile</a>
-    <a class="item  menuScroll" id="studentCards">Cards</a>
-    <a class="item  menuScroll" id="availableEvents">Available Events</a>
+    <a class="item menuScroll" id="studentCards">Cards</a>
+    <a class="item menuScroll" id="availableEvents">Available Events</a>
     <a class="item menuScroll ngoList" id="ngoCards">NGO Partners</a>
   <!-- NGO -->
   <% elsif current_user.usertype == 4 %>
     <a class="item menuScroll" id="ngoProfile">Institution Profile</a>
     <a class="item menuScroll" id="schoolCards">School Partners</a>
+    <a class="item menuScroll" id="pendingEvents">Upcoming</a>
+    <a class="item menuScroll" id="pastEvents">Past</a>
   <% end %>
 </div>

@@ -11,8 +11,8 @@
   <div class="twelve wide column apple" id="profileInput">
     <table class="ui basic table">
       <tbody>
-        <tr>
-          <td><%= image_tag(current_user.profile_image) %></td>
+        <tr class="logo">
+          <td colspan="2"><%= image_tag(current_user.profile_image) %></td>
         </tr>
         <tr>
           <td><b>First Name:</b></td>
@@ -29,16 +29,15 @@
         <tr>
           <td><b>User Type:</b></td>
           <% if @user.usertype == 1 %>
-            <td>Admin user</td>
+          <td>Admin user</td>
           <% elsif @user.usertype == 2 %>
-            <td>School user</td>
+          <td>School user</td>
           <% elsif @user.usertype == 3 %>
-            <td>Student user</td>
+          <td>Student user</td>
           <% elsif @user.usertype == 4 %>
-            <td>Ngo user</td>
+          <td>Ngo user</td>
           <% end %>
         </tr>
-        <tr>
       </tbody>
     </table>
     <button id="editProfile" class="ui yellow button right floated editButton">Edit</button>
