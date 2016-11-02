@@ -1,4 +1,31 @@
-<p id="notice"><%= notice %></p>
+<table class="ui selectable celled padded yellow table" id="appendStudentTasks">
+  <thead>
+    <tr>
+      <th class="one wide"></th>
+      <th class="five wide">Task Name</th>
+      <th class="five wide">Description</th>
+      <th class="four wide">Picture</th>
+      <th class="one wide">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <%= @card.inspect %>
+    <%= @tasktrackers.inspect %>
+    <% @tasktrackers.each_with_index do |task, index| %>
+      <tr>
+        <th> <%= index + 1 %> </th>
+        <th> <%=task.task.description %> </th>
+        <th> <%=task.description %> </th>
+        <th> <img src="https://secure.static.tumblr.com/330fcedfe909e60c1dbcc178bcdd98f3/cy2msxw/p7Rnkvae8/tumblr_static_tumblr_static_elecokipngg0scs4w4w0kskc4_640.jpg" class="ui rounded image eventStudentImage"> </th>
+        <th><button class="ui button studentTaskButton" id="<%= task.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Student:</strong>
@@ -11,4 +38,4 @@
 </p>
 
 <%= link_to 'Edit', edit_card_path(@card) %> |
-<%= link_to 'Back', cards_path %>
+<%= link_to 'Back', cards_path %> -->
