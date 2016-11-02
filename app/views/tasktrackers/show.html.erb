@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Approval:</strong>
+  <%= @tasktracker.approval %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @tasktracker.picture %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tasktracker.description %>
+</p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @tasktracker.card %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @tasktracker.task %>
+</p>
+
+<%= link_to 'Edit', edit_tasktracker_path(@tasktracker) %> |
+<%= link_to 'Back', tasktrackers_path %>

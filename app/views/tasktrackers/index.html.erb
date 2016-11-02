@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasktrackers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Approval</th>
+      <th>Picture</th>
+      <th>Description</th>
+      <th>Card</th>
+      <th>Task</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasktrackers.each do |tasktracker| %>
+      <tr>
+        <td><%= tasktracker.approval %></td>
+        <td><%= tasktracker.picture %></td>
+        <td><%= tasktracker.description %></td>
+        <td><%= tasktracker.card %></td>
+        <td><%= tasktracker.task %></td>
+        <td><%= link_to 'Show', tasktracker %></td>
+        <td><%= link_to 'Edit', edit_tasktracker_path(tasktracker) %></td>
+        <td><%= link_to 'Destroy', tasktracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tasktracker', new_tasktracker_path %>

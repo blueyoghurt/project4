@@ -357,8 +357,8 @@ Level.find_or_create_by!(description: "Secondary Five") do |level|
   level.education_level_id = 2
 end
 
-Level.find_or_create_by!(description: "JC") do |level|
-  level.description = "JC"
+Level.find_or_create_by!(description: "Junior College") do |level|
+  level.description = "Junior College"
   level.education_level_id = 3
 end
 
@@ -455,7 +455,7 @@ end
 
 Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email14"]).id) do |student|
   student.user_id = User.find_by(email: ENV["seed_email14"]).id
-  student.level_id = Level.find_by(description: "JC").id
+  student.level_id = Level.find_by(description: "Junior College").id
   student.school_id = School.find_by(name: "DEF Junior College").id
 end
 
@@ -477,8 +477,8 @@ Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email17"]).id)
   student.school_id = School.find_by(name: "SUTD").id
 end
 
-Event.find_or_create_by!(name: "Save Eugene") do |event|
-  event.name = "Save Eugene"
+Event.find_or_create_by!(name: "Save Old Folk Eugene") do |event|
+  event.name = "Save Old Folk Eugene"
   event.start_date = "2016-11-04"
   event.end_date = "2016-11-04"
   event.start_time = "17:00:00"
@@ -488,10 +488,11 @@ Event.find_or_create_by!(name: "Save Eugene") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.ngo_id = 1
 end
 
-Event.find_or_create_by!(name: "Save Celine") do |event|
-  event.name = "Save Celine"
+Event.find_or_create_by!(name: "Save Celine The Kid") do |event|
+  event.name = "Save Celine The Kid"
   event.start_date = "2016-11-04"
   event.end_date = "2016-11-04"
   event.start_time = "17:00:00"
@@ -501,6 +502,7 @@ Event.find_or_create_by!(name: "Save Celine") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.ngo_id = 1
 end
 
 Event.find_or_create_by!(name: "Save John") do |event|
@@ -514,6 +516,7 @@ Event.find_or_create_by!(name: "Save John") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.ngo_id = 2
 end
 
 Event.find_or_create_by!(name: "Save Yvonne") do |event|
@@ -527,6 +530,7 @@ Event.find_or_create_by!(name: "Save Yvonne") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.ngo_id = 2
 end
 
 Event.find_or_create_by!(name: "Conserve the beer day") do |event|
@@ -540,6 +544,7 @@ Event.find_or_create_by!(name: "Conserve the beer day") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 2
 end
 
 Event.find_or_create_by!(name: "Conserve the chocolate day") do |event|
@@ -553,6 +558,7 @@ Event.find_or_create_by!(name: "Conserve the chocolate day") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 2
 end
 
 Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
@@ -566,6 +572,7 @@ Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 1
 end
 
 Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
@@ -579,19 +586,139 @@ Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 1
+end
+
+Template.find_or_create_by!(id: 1) do |template|
+  template.event_id = Event.find_by(id: 1).id
+  template.level_id = Level.find_by(id: 3).id
+  template.status = 1
+end
+
+Template.find_or_create_by!(id: 2) do |template|
+  template.event_id = Event.find_by(id: 1).id
+  template.level_id = Level.find_by(id: 4).id
+  template.status = 1
+end
+
+Template.find_or_create_by!(id: 3) do |template|
+  template.event_id = Event.find_by(id: 1).id
+  template.level_id = Level.find_by(id: 5).id
+  template.status = 1
+end
+
+Template.find_or_create_by!(id: 4) do |template|
+  template.event_id = Event.find_by(id: 1).id
+  template.level_id = Level.find_by(id: 6).id
+  template.status = 1
+end
+
+Template.find_or_create_by!(id: 5) do |template|
+  template.event_id = Event.find_by(id: 2).id
+  template.level_id = Level.find_by(id: 10).id
+  template.status = 1
+end
+
+Template.find_or_create_by!(id: 6) do |template|
+  template.event_id = Event.find_by(id: 2).id
+  template.level_id = Level.find_by(id: 11).id
+  template.status = 1
 end
 
 Task.find_or_create_by!(id: 1) do |task|
   task.description = "Talk to an elderly person and describe your experience"
-  task.level_id = Level.find_by(id: 5).id
-  task.event_id = Event.find_by(id: 1).id
+  task.template_id = Template.find_by(id: 1).id
+end
+
+Task.find_or_create_by!(id: 2) do |task|
+  task.description = "Hang out with an elderly person and describe your experience"
+  task.template_id = Template.find_by(id: 1).id
+end
+
+Task.find_or_create_by!(id: 3) do |task|
+  task.description = "Help an elderly person cross the road and describe your experience"
+  task.template_id = Template.find_by(id: 2).id
+end
+
+Task.find_or_create_by!(id: 4) do |task|
+  task.description = "Play chess with an elderly person and describe your experience"
+  task.template_id = Template.find_by(id: 2).id
+end
+
+Task.find_or_create_by!(id: 5) do |task|
+  task.description = "Fold origami an elderly person cross the road and describe your experience"
+  task.template_id = Template.find_by(id: 3).id
+end
+
+Task.find_or_create_by!(id: 6) do |task|
+  task.description = "Dance with an elderly person and describe your experience"
+  task.template_id = Template.find_by(id: 3).id
+end
+
+Task.find_or_create_by!(id: 7) do |task|
+  task.description = "Make CNY lanterns with an elderly person cross the road and describe your experience"
+  task.template_id = Template.find_by(id: 4).id
+end
+
+Task.find_or_create_by!(id: 8) do |task|
+  task.description = "Teach an elderly person how to dance and describe your experience"
+  task.template_id = Template.find_by(id: 4).id
+end
+
+Task.find_or_create_by!(id: 9) do |task|
+  task.description = "Teach the kids to fold origami and describe your experience"
+  task.template_id = Template.find_by(id: 5).id
+end
+
+Task.find_or_create_by!(id: 10) do |task|
+  task.description = "Teach the kids to dance and describe your experience"
+  task.template_id = Template.find_by(id: 5).id
+end
+
+Task.find_or_create_by!(id: 11) do |task|
+  task.description = "Teach the kids the concept of integrity and describe your experience"
+  task.template_id = Template.find_by(id: 6).id
+end
+
+Task.find_or_create_by!(id: 12) do |task|
+  task.description = "Teach the kids the concept of humility and describe your experience"
+  task.template_id = Template.find_by(id: 6).id
 end
 
 Card.find_or_create_by!(id: 1) do |card|
-  card.approval = false
-  card.picture = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  card.description = "I saw the poor bald souls and i was glad I helped them"
-  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email3"]).id).id
-  card.event_id = Event.find_by(id: 2).id
-  card.task_id = Task.find_by(id: 1).id
+  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email8"]).id).id
+  card.template_id = Template.find_by(id: 4).id
+end
+
+Card.find_or_create_by!(id: 2) do |card|
+  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email7"]).id).id
+  card.template_id = Template.find_by(id: 3).id
+end
+
+Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
+  tasktracker.card_id = Card.find_by(id: 1).id
+  tasktracker.task_id = Task.find_by(id: 7).id
+  tasktracker.approval = false
+  tasktracker.completion = false
+end
+
+Tasktracker.find_or_create_by!(id: 2) do |tasktracker|
+  tasktracker.card_id = Card.find_by(id: 1).id
+  tasktracker.task_id = Task.find_by(id: 8).id
+  tasktracker.approval = false
+  tasktracker.completion = false
+end
+
+Tasktracker.find_or_create_by!(id: 3) do |tasktracker|
+  tasktracker.card_id = Card.find_by(id: 2).id
+  tasktracker.task_id = Task.find_by(id: 5).id
+  tasktracker.approval = false
+  tasktracker.completion = false
+end
+
+Tasktracker.find_or_create_by!(id: 4) do |tasktracker|
+  tasktracker.card_id = Card.find_by(id: 2).id
+  tasktracker.task_id = Task.find_by(id: 6).id
+  tasktracker.approval = false
+  tasktracker.completion = false
 end

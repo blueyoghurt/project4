@@ -7,6 +7,7 @@ class CreateSchools < ActiveRecord::Migration[5.0]
       t.string :website
       t.string :logo
       t.string :email
+      t.references :education_level, foreign_key: true
 
       t.timestamps
     end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  approval: false
+  picture: MyString
+  description: MyText
+  card: one
+  task: one
+
+two:
+  approval: false
+  picture: MyString
+  description: MyText
+  card: two
+  task: two

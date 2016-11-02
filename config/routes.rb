@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasktrackers
+  resources :templates
   root 'public#index'
   post "/" => "sessions#create"
 

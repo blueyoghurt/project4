@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
   belongs_to :student
-  belongs_to :event
-  has_many :tasks
+  belongs_to :template
+  has_many :tasktrackers
 end

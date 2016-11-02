@@ -1,0 +1,1 @@
+json.array! @tasktrackers, partial: 'tasktrackers/tasktracker', as: :tasktracker
