@@ -10,6 +10,18 @@
     </tr>
   </thead>
   <tbody>
+
+    <% @tasktracker.each_with_index do |task, index| %>
+      <tr>
+        <th>#{index}</th>
+        <th>Task Name</th>
+        <th>Description</th>
+        <th>Picture</th>
+        <th>Completion</th>
+        <th>Approval</th>
+      </tr>
+    <% end %>
+
     <tr>
       <th></th>
       <th>Task Name</th>
@@ -22,11 +34,6 @@
 </table>
 
 <!-- <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Approval:</strong>
-  <%= @tasktracker.approval %>
-</p>
 
 <p>
   <strong>Picture:</strong>
