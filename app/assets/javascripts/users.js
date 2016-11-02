@@ -293,9 +293,8 @@ $(document).on('turbolinks:load', function() {
       url: '/events/pending',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       loadingAjax()
-      appendSchoolCards(data)
+      appendEventCards(data)
     })
   })
 
@@ -308,7 +307,7 @@ $(document).on('turbolinks:load', function() {
     }).done(function (data) {
       console.log("Information is back:", data);
       loadingAjax()
-      appendSchoolCards(data)
+      appendEventCards(data)
     })
   })
 

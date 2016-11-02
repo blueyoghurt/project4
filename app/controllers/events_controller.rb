@@ -27,9 +27,17 @@ class EventsController < ApplicationController
   end
 
   def pending
+    @events = Event.where("end_date > ?", Date.today )
+    respond_to do |format|
+      format.json { render json: @events, :include => [:tasks, :cards] }
+    end
   end
 
   def past
+    @events = Event.where("end_date <= ?", Date.today )
+    respond_to do |format|
+      format.json { render json: @events, :include => [:tasks, :cards] }
+    end
   end
 
   # GET /events/new
