@@ -1,41 +1,65 @@
-<table class="ui selectable celled padded yellow table" id="appendStudentTasks">
-  <thead>
-    <tr>
-      <th class="one wide"></th>
-      <th class="five wide">Task Name</th>
-      <th class="five wide">Description</th>
-      <th class="four wide">Picture</th>
-      <th class="one wide">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="ui grid stackable">
 
-    <%= @card.inspect %>
-    <%= @tasktrackers.inspect %>
-    <% @tasktrackers.each_with_index do |task, index| %>
-      <tr>
-        <th> <%= index + 1 %> </th>
-        <th> <%=task.task.description %> </th>
-        <th> <%=task.description %> </th>
-        <th> <img src="https://secure.static.tumblr.com/330fcedfe909e60c1dbcc178bcdd98f3/cy2msxw/p7Rnkvae8/tumblr_static_tumblr_static_elecokipngg0scs4w4w0kskc4_640.jpg" class="ui rounded image eventStudentImage"> </th>
-        <th><button class="ui button studentTaskButton" id="<%= task.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
-      </tr>
-    <% end %>
+  <div class="four wide column apple">
+    <%= render "partials/eventcard" %>
+  </div>
 
-  </tbody>
-</table>
 
-<!-- <p id="notice"><%= notice %></p>
+  <div class="twelve wide column apple">
+    <table class="ui selectable celled padded yellow table" id="appendStudentTasks">
+      <thead>
+        <tr>
+          <th class="one wide"></th>
+          <th class="five wide">Task Name</th>
+          <th class="five wide">Description</th>
+          <th class="four wide">Picture</th>
+          <th class="one wide">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
 
-<p>
-  <strong>Student:</strong>
-  <%= @card.student %>
-</p>
+        <%= @card.inspect %>
+        <%= @tasktrackers.inspect %>
+        <% @tasktrackers.each_with_index do |tasktracker, index| %>
+          <tr>
+            <!-- <th> <%= index + 1 %> </th> -->
+            <th> <%= tasktracker.id %> </th>
+            <th> <%=tasktracker.task.description %> </th>
+            <th> <%=tasktracker.description %> </th>
+            <th> <img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/ + <%=tasktracker.picture%>" class="ui rounded image eventStudentImage"> </th>
+            <th><button class="ui button studentTaskButton" id="TaskButton<%= tasktracker.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
+          </tr>
+        <% end %>
 
-<p>
-  <strong>Template:</strong>
-  <%= @card.template %>
-</p>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_card_path(@card) %> |
-<%= link_to 'Back', cards_path %> -->
+  <!-- MODAL FOR AMENDING TASK COMPLETION STATUS -->
+  <% @tasktrackers.each do |tasktracker| %>
+    <div class="ui modal" id="editingTaskButton<%= tasktracker.id %>">
+      <div class="header">
+        Edit Task
+      </div>
+      <div class="content">
+        <% @tasktracker = Tasktracker.find(tasktracker.id) %>
+        <%= form_for (@tasktracker), html: { class: "ui form", role: "form" } do |f| %>
+
+        <div class="field">
+          <%= f.label :description %></br>
+          <%= f.text_area :description, placeholder: @tasktracker.description %>
+        </div>
+
+        <div class="profile-image-container">
+          <%= image_tag(@tasktracker.picture) %>
+          <%= f.file_field :picture%>
+        </div>
+
+      </div>
+      <div class="actions">
+        <%= f.submit class: "ui yellow button"%>
+      </div>
+      <%end %>
+    </div>
+  <%end %>
