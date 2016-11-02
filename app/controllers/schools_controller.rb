@@ -43,8 +43,10 @@ class SchoolsController < ApplicationController
   # POST /schools.json
   def create
     @school = School.new(school_params)
-    uploaded_file = params[:school][:logo].path
-    @school.update(logo: Cloudinary::Uploader.upload(uploaded_file)["public_id"])
+    if params[:school][:logo]
+      uploaded_file = params[:school][:logo].path
+      @school.update(logo: Cloudinary::Uploader.upload(uploaded_file, :folder => "school/logo")["public_id"])
+    end
     respond_to do |format|
       if @school.save
         format.html { redirect_to @school, notice: 'School was successfully created.' }
@@ -59,6 +61,11 @@ class SchoolsController < ApplicationController
   # PATCH/PUT /schools/1
   # PATCH/PUT /schools/1.json
   def update
+    @school = School.new(school_params)
+    if params[:school][:logo]
+      uploaded_file = params[:school][:logo].path
+      @school.update(logo: Cloudinary::Uploader.upload(uploaded_file, :folder => "school/logo")["public_id"])
+    end
     respond_to do |format|
       if @school.update(school_params)
         format.html { redirect_to users_path, notice: 'School was successfully updated.' }

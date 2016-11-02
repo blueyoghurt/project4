@@ -15,6 +15,18 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # VALIDATIONS
+  # validates :profile_pic,
+  # allow_blank: true
+
+  # validates :usertype,
+  # pressence: true
+
+  validates :email,
+  presence: true,
+  length: { maximum: 255 },
+  uniqueness: {case_sensitive: false},
+  format: VALID_EMAIL_REGEX
+
   validates :first_name,
   presence: true,
   length: { in: 3..50 }
@@ -22,13 +34,6 @@ class User < ApplicationRecord
   validates :last_name,
   presence: true,
   length: { in: 3..50 }
-
-
-  validates :email,
-  presence: true,
-  length: { maximum: 255 },
-  uniqueness: {case_sensitive: false},
-  format: VALID_EMAIL_REGEX
 
   validates :password, length: { in: 8..72 } , on: :create, :if => :password_needs_validating?
 

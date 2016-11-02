@@ -38,8 +38,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    uploaded_file = params[:user][:profile_pic].path
-    @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
+    if params[:user][:profile_pic]
+      uploaded_file = params[:user][:profile_pic].path
+      @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
+    end
 
     respond_to do |format|
       if @user.save
@@ -54,8 +56,10 @@ class UsersController < ApplicationController
           end
         }
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html {
+          flash[:danger] = "Unable to create"
+          redirect_to root_path
+        }
       end
     end
   end
@@ -63,8 +67,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    # uploaded_file = params[:user][:profile_pic].path
-    # @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
+    if params[:user][:profile_pic]
+      uploaded_file = params[:user][:profile_pic].path
+      @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
+    end
     respond_to do |format|
       if @user.update(user_params)
         format.html {

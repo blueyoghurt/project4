@@ -196,7 +196,7 @@ School.find_or_create_by!(name: "ABC Primary School") do |school|
   school.telephone = "67654321"
   school.website = "http://baidu.com"
   school.email = "abc@email.com"
-  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.logo = "school/logo/dbuttkbenhmwgscgmoqx"
   school.education_level_id = 1
 end
 
@@ -206,7 +206,7 @@ School.find_or_create_by!(name: "Anderson Secondary School") do |school|
   school.telephone = "61234567"
   school.website = "http://google.com"
   school.email = "anderson@email.com"
-  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.logo = "school/logo/dbuttkbenhmwgscgmoqx"
   school.education_level_id = 2
 end
 
@@ -216,7 +216,7 @@ School.find_or_create_by!(name: "DEF Junior College") do |school|
   school.telephone = "66734131"
   school.website = "http://baidu.com"
   school.email = "def@email.com"
-  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.logo = "school/logo/dbuttkbenhmwgscgmoqx"
   school.education_level_id = 3
 end
 
@@ -226,7 +226,7 @@ School.find_or_create_by!(name: "GHI Polytechnic") do |school|
   school.telephone = "66734131"
   school.website = "http://baidu.com"
   school.email = "def@email.com"
-  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.logo = "school/logo/dbuttkbenhmwgscgmoqx"
   school.education_level_id = 4
 end
 
@@ -236,7 +236,7 @@ School.find_or_create_by!(name: "ITE Singapore") do |school|
   school.telephone = "66734131"
   school.website = "http://baidu.com"
   school.email = "def@email.com"
-  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.logo = "school/logo/dbuttkbenhmwgscgmoqx"
   school.education_level_id = 5
 end
 
@@ -246,7 +246,7 @@ School.find_or_create_by!(name: "SUTD") do |school|
   school.telephone = "66734131"
   school.website = "http://baidu.com"
   school.email = "def@email.com"
-  school.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  school.logo = "school/logo/dbuttkbenhmwgscgmoqx"
   school.education_level_id = 6
 end
 
@@ -277,7 +277,7 @@ Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
   ngo.website = "http://hush.sg"
   ngo.description = "Go in Peace"
   ngo.email = "yihui@email.com"
-  ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  ngo.logo = "ngo/logo/ppwiimshbmqtneeliwrz"
   ngo.ngo_category_id = NgoCategory.find_by(name: "Elderly").id
 end
 
@@ -288,7 +288,7 @@ Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
   ngo.website = "http://abc.com"
   ngo.description = "Be special"
   ngo.email = "xavier@email.com"
-  ngo.logo = "https://avatars3.githubusercontent.com/u/5298861?v=3&s=466"
+  ngo.logo = "ngo/logo/ppwiimshbmqtneeliwrz"
   ngo.ngo_category_id = NgoCategory.find_by(name: "Special Needs").id
 end
 
