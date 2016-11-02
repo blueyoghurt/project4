@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20161102033223) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.boolean  "approval"
-    t.boolean  "completion"
+    t.integer  "approval"
     t.integer  "student_id"
     t.integer  "template_id"
     t.datetime "created_at",  null: false
