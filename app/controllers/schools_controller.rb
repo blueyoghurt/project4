@@ -23,7 +23,6 @@ class SchoolsController < ApplicationController
   end
 
   def search
-    puts "IM IN SCHOOL"
     @schools = School.all
     respond_to do |format|
       format.json { render json: @schools, :include => [:education_level] }
@@ -61,13 +60,12 @@ class SchoolsController < ApplicationController
   # PATCH/PUT /schools/1
   # PATCH/PUT /schools/1.json
   def update
-    @school = School.new(school_params)
-    if params[:school][:logo]
-      uploaded_file = params[:school][:logo].path
-      @school.update(logo: Cloudinary::Uploader.upload(uploaded_file, :folder => "school/logo")["public_id"])
-    end
     respond_to do |format|
       if @school.update(school_params)
+        if params[:school][:logo]
+          uploaded_file = params[:school][:logo].path
+          @school.update(logo: Cloudinary::Uploader.upload(uploaded_file, :folder => "school/logo")["public_id"])
+        end
         format.html { redirect_to users_path, notice: 'School was successfully updated.' }
         format.json { render :show, status: :ok, location: @school }
       else

@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  console.log('PROFILE DOM loaded');
 
 // Event listener to dismiss flash alerts
   $('.message .close')
@@ -22,7 +21,6 @@ $(document).on('turbolinks:load', function() {
       url: '/users/profile',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       var usertype = "";
       if (data.usertype == 1) {
         usertype = "Admin user"
@@ -77,7 +75,6 @@ $(document).on('turbolinks:load', function() {
       url: '/students/profile',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", "student", data);
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
@@ -102,7 +99,6 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click','#editSchool',function(){
     $('#editingSchool').modal('show')
-    console.log("Modal to edit school");
   })
 
   // CLICKING SCHOOL INSTITUTION PROFILE (SCHOOL)
@@ -113,7 +109,6 @@ $(document).on('turbolinks:load', function() {
       url: '/schools/profile',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
@@ -154,7 +149,6 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click','#editSchoolInstitution',function(){
     $('#editingSchoolInstitution').modal('show')
-    console.log("Modal to edit school");
   })
 
   // CLICKING NGO INSTITUTION PROFILE (NGO)
@@ -165,7 +159,6 @@ $(document).on('turbolinks:load', function() {
       url: '/ngos/profile',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       $("#profileInput").empty()
       $("#profileInput").append(
         '<table class="ui basic table">' +
@@ -210,7 +203,6 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click','#editNgoProfile',function(){
     $('#editingNgoProfile').modal('show')
-    console.log("Modal to edit school");
   })
 
 
@@ -222,7 +214,6 @@ $(document).on('turbolinks:load', function() {
       url: '/cards/profile',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       appendStudentCards(data)
     })
   })
@@ -236,7 +227,6 @@ $(document).on('turbolinks:load', function() {
       url: '/ngos/search',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       appendNgoCards(data)
     })
   })
@@ -249,7 +239,6 @@ $(document).on('turbolinks:load', function() {
       url: '/events/search',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       appendEventCards(data)
     })
   })
@@ -262,7 +251,6 @@ $(document).on('turbolinks:load', function() {
       url: '/events/student',
       method: 'GET'
     }).done(function (data) {
-      console.log("availableEvents Information is back:", data);
       appendEventCardsStudent(data)
     })
   })
@@ -276,14 +264,12 @@ $(document).on('turbolinks:load', function() {
       url: '/students/search',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       appendAllStudentCards(data)
     })
   })
 
   $(document).on('click','#addEvent',function(){
     $('#addingEvent').modal('show')
-    console.log("Modal to add event");
   })
 
   // CLICKING ON SCHOOL PROFILES (NGO)
@@ -318,7 +304,6 @@ $(document).on('turbolinks:load', function() {
       url: '/events/past',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       loadingAjax()
       appendEventCards(data)
     })
@@ -331,7 +316,6 @@ $(document).on('turbolinks:load', function() {
       url: '/cards/pending',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       loadingAjax()
       appendPendingEventCards(data)
     })
@@ -426,7 +410,6 @@ $(document).on('turbolinks:load', function() {
 
   // APPEND STUDENT SIGNED UP CARDS
   function appendStudentCards(data) {
-    console.log("Inside function:", data);
     $("#profileInput").empty()
     $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
 
@@ -460,7 +443,6 @@ $(document).on('turbolinks:load', function() {
 
   // APPENDING ALL STUDENT CARDS FOR SCHOOL
   function appendAllStudentCards(data) {
-    console.log("Inside function:", data);
     $("#profileInput").empty()
     $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
     for (var i = 0; i < data.length; i++) {
@@ -493,7 +475,6 @@ $(document).on('turbolinks:load', function() {
 
   // APPENDING EVENTS
   function appendEventCards(data) {
-    console.log(data);
     $("#profileInput").empty()
     $("#profileInput").append(
       '<div class="ui centered grid" id="addEventBox">' +
@@ -534,7 +515,6 @@ $(document).on('turbolinks:load', function() {
 
   // APPENDING EVENTS FOR STUDENT
   function appendEventCardsStudent(data) {
-    console.log(data);
     $("#profileInput").empty()
     $("#profileInput").append('<div class="ui cards" id="appendCards"></div>')
     for (var i = 0; i < data.length; i++) {
@@ -568,7 +548,6 @@ $(document).on('turbolinks:load', function() {
 
   // APPENDING PENDING EVENTS FOR TEACHER TO APPROVE
   function appendPendingEventCards(data) {
-    console.log(data);
     $("#profileInput").empty()
     $("#profileInput").append('<div class="ui cards" id="appendCards"></div>')
     for (var i = 0; i < data.length; i++) {

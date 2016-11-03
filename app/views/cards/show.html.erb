@@ -19,13 +19,13 @@
       <tbody>
 
         <% @tasktrackers.each_with_index do |tasktracker, index| %>
-          <tr>
-            <th> <%= index + 1 %> </th>
-            <th> <%=tasktracker.task.description %> </th>
-            <th> <%=tasktracker.description %> </th>
-            <th> <img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/ + <%=tasktracker.picture%>" class="ui rounded image eventStudentImage"> </th>
-            <th><button class="ui button studentTaskButton" id="TaskButton<%= tasktracker.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
-          </tr>
+        <tr>
+          <th> <%= index + 1 %> </th>
+          <th> <%=tasktracker.task.description %> </th>
+          <th> <%=tasktracker.description %> </th>
+          <th> <img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/<%=tasktracker.picture%>" class="ui rounded image eventStudentImage"> </th>
+          <th><button class="ui button studentTaskButton" id="TaskButton<%= tasktracker.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
+        </tr>
         <% end %>
 
       </tbody>
@@ -33,30 +33,30 @@
   </div>
 </div>
 
-  <!-- MODAL FOR AMENDING TASK DESCRIPTION AND PICTURE STATUS -->
-  <% @tasktrackers.each do |tasktracker| %>
-    <div class="ui modal" id="editingTaskButton<%= tasktracker.id %>">
-      <div class="header">
-        Edit Task
-      </div>
-      <div class="content">
-        <% @tasktracker = Tasktracker.find(tasktracker.id) %>
-        <%= form_for (@tasktracker), html: { class: "ui form", role: "form" } do |f| %>
+<!-- MODAL FOR AMENDING TASK DESCRIPTION AND PICTURE STATUS -->
+<% @tasktrackers.each do |tasktracker| %>
+<div class="ui modal" id="editingTaskButton<%= tasktracker.id %>">
+  <div class="header">
+    Edit Task
+  </div>
+  <div class="content">
+    <% @tasktracker = Tasktracker.find(tasktracker.id) %>
+    <%= form_for (@tasktracker), html: { class: "ui form", role: "form" } do |f| %>
 
-        <div class="field">
-          <%= f.label :description %></br>
-          <%= f.text_area :description, placeholder: @tasktracker.description %>
-        </div>
-
-        <div class="profile-image-container">
-          <%= image_tag(@tasktracker.picture) %>
-          <%= f.file_field :picture%>
-        </div>
-
-      </div>
-      <div class="actions">
-        <%= f.submit class: "ui yellow button"%>
-      </div>
-      <%end %>
+    <div class="field">
+      <%= f.label :description %></br>
+      <%= f.text_area :description, placeholder: @tasktracker.description %>
     </div>
+
+    <div class="profile-image-container">
+      <!-- <%= image_tag(@tasktracker.picture) %> -->
+      <%= f.file_field :picture%>
+    </div>
+
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui yellow button"%>
+  </div>
   <%end %>
+</div>
+<%end %>

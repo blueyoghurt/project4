@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   get "student/register" => "students#new"
   get "students/search" => "students#search"
+  get "students/signedup" => "students#signedup"
   get "students/profile" => "students#profile"
   resources :students, except: [:new]
 
@@ -48,7 +49,7 @@ Rails.application.routes.draw do
   get "events/past" => "events#past"
   get "events/student" => "events#eventsAvailabletoStudent"
   get "events/student/past" => "events#pastEventstoStudent"
-  patch "event/approval/:id" => 'events#event_approval'
+  patch "event/approval" => 'events#event_approval'
   resources :events
 
   get "ngos/profile" => "ngos#profile"
