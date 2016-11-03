@@ -17,14 +17,17 @@ $(document).on('turbolinks:load', function() {
 
   $(".studentSignedUp").click(function() {
     loadingAjax()
-    // var taskID = this.id
+    var taskID = this.id
+    console.log("id is:",taskID);
 
     $.ajax({
       url: '/students/event',
-      method: 'GET'
+      method: 'GET',
+      dataType: "json",
+      data: {id : taskID}
     }).done(function (data) {
       console.log("data returned from function", data);
-      appendTaskTable(data)
+      appendAllStudentCards(data)
     })
   })
 
@@ -61,6 +64,44 @@ $(document).on('turbolinks:load', function() {
       '</div>' +
       '<div class="ui cards" id="appendTaskList"></div>'
     )
+  }
+
+})
+
+    // APPENDING ALL STUDENT CARDS FOR SCHOOL
+    function appendAllStudentCards(data) {
+      
+      $("#profileInput").empty()
+      $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
+      for (var i = 0; i < data.length; i++) {
+        $("#studentAppendCards").append(
+          '<div class="ui yellow card">' +
+          '<div class="image">' +
+          '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].user.profile_pic + '"/>'  +
+          '</div>' +
+          '<div class="content">' +
+          '<a class="header">' + data[i].user.first_name + " " + data[i].user.last_name + '</a>' +
+          '<div class="meta">' +
+          '<span class="date">' + data[i].level.description + '</span>' +
+          '</div>' +
+          '<div class="description">' +
+          data[i].level.description +
+          '</div>' +
+          '</div>' +
+          '<div class="extra content">' +
+          '<div class="right floated">' +
+          '<a class="cardLinkIcons" href="mailto:' + data[i].user.email + '">' +
+          '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
+          'Email' +
+          '</a>' +
+          '</div>' +
+          '</div>' +
+          '</div>'
+        )
+      }
+    }
+
+
 
     // '<table class="ui sortable celled table">' +
     //   '<thead>' +
@@ -78,6 +119,3 @@ $(document).on('turbolinks:load', function() {
     //   }
     //   '</tbody>' +
     // '</table>'
-  }
-
-})

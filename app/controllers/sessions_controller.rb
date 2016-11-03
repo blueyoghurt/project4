@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = "Welcome back " + user.name
-      redirect_to users_path#, notice: "Thank you for logging in!"
+      redirect_to users_path
     else
       flash[:danger] = "Credentials Invalid!!"
       redirect_to login_path

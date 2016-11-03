@@ -414,10 +414,13 @@ $(document).on('turbolinks:load', function() {
     $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
 
     for (var i = 0; i < data.length; i++) {
+      if (!data[i].template.event.image.length){
+        data[i].template.event.image = data[i].template.event.ngo.logo
+      }
       $("#studentAppendCards").append(
         '<a class="anchorForCards ui yellow card" href="/cards/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img src="' + data[i].template.event.image+ '">' +
+            '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].template.event.image + '"/>'  +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
@@ -484,10 +487,14 @@ $(document).on('turbolinks:load', function() {
     )
 
     for (var i = 0; i < data.length; i++) {
+      if (!data[i].image.length){
+        data[i].image = data[i].ngo.logo
+      }
       $("#appendEventCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].image + '"/>'  +
+            // '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
@@ -518,10 +525,13 @@ $(document).on('turbolinks:load', function() {
     $("#profileInput").empty()
     $("#profileInput").append('<div class="ui cards" id="appendCards"></div>')
     for (var i = 0; i < data.length; i++) {
+      if (!data[i].image.length){
+        data[i].image = data[i].ngo.logo
+      }
       $("#appendCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].image + '"/>'  +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
