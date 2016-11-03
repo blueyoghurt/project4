@@ -278,7 +278,7 @@ Ngo.find_or_create_by!(name: "Yi Hui Old Folks Home") do |ngo|
   ngo.description = "Go in Peace"
   ngo.email = "yihui@email.com"
   ngo.logo = "ngo/logo/ppwiimshbmqtneeliwrz"
-  ngo.ngo_category_id = NgoCategory.find_by(name: "Elderly").id
+  ngo.ngo_category_id = NgoCategory.find_by!(name: "Elderly").id
 end
 
 Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
@@ -289,17 +289,17 @@ Ngo.find_or_create_by!(name: "Xavier School for the Gifted") do |ngo|
   ngo.description = "Be special"
   ngo.email = "xavier@email.com"
   ngo.logo = "ngo/logo/ppwiimshbmqtneeliwrz"
-  ngo.ngo_category_id = NgoCategory.find_by(name: "Special Needs").id
+  ngo.ngo_category_id = NgoCategory.find_by!(name: "Special Needs").id
 end
 
-NgoUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email18"]).id) do |ngouser|
-  ngouser.user_id = User.find_by(email: ENV["seed_email18"]).id
-  ngouser.ngo_id = Ngo.find_by(name: "Xavier School for the Gifted").id
+NgoUser.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email18"]).id) do |ngouser|
+  ngouser.user_id = User.find_by!(email: ENV["seed_email18"]).id
+  ngouser.ngo_id = Ngo.find_by!(name: "Xavier School for the Gifted").id
 end
 
-NgoUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email19"]).id) do |ngouser|
-  ngouser.user_id = User.find_by(email: ENV["seed_email19"]).id
-  ngouser.ngo_id = Ngo.find_by(name: "Yi Hui Old Folks Home").id
+NgoUser.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email19"]).id) do |ngouser|
+  ngouser.user_id = User.find_by!(email: ENV["seed_email19"]).id
+  ngouser.ngo_id = Ngo.find_by!(name: "Yi Hui Old Folks Home").id
 end
 
 Level.find_or_create_by!(description: "Primary One") do |level|
@@ -377,104 +377,104 @@ Level.find_or_create_by!(description: "Tertiary") do |level|
   level.education_level_id = 6
 end
 
-SchoolUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email1"]).id) do |schooluser|
-  schooluser.school_id = School.find_by(name: "ABC Primary School").id
-  schooluser.user_id = User.find_by(email: ENV["seed_email1"]).id
+SchoolUser.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email1"]).id) do |schooluser|
+  schooluser.school_id = School.find_by!(name: "ABC Primary School").id
+  schooluser.user_id = User.find_by!(email: ENV["seed_email1"]).id
 end
 
-SchoolUser.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email2"]).id) do |schooluser|
-  schooluser.school_id = School.find_by(name: "Anderson Secondary School").id
-  schooluser.user_id = User.find_by(email: ENV["seed_email2"]).id
+SchoolUser.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email2"]).id) do |schooluser|
+  schooluser.school_id = School.find_by!(name: "Anderson Secondary School").id
+  schooluser.user_id = User.find_by!(email: ENV["seed_email2"]).id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email3"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email3"]).id
-  student.level_id = Level.find_by(description: "Primary One").id
-  student.school_id = School.find_by(name: "ABC Primary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email3"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email3"]).id
+  student.level_id = Level.find_by!(description: "Primary One").id
+  student.school_id = School.find_by!(name: "ABC Primary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email4"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email4"]).id
-  student.level_id = Level.find_by(description: "Primary Two").id
-  student.school_id = School.find_by(name: "ABC Primary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email4"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email4"]).id
+  student.level_id = Level.find_by!(description: "Primary Two").id
+  student.school_id = School.find_by!(name: "ABC Primary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email5"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email5"]).id
-  student.level_id = Level.find_by(description: "Primary Three").id
-  student.school_id = School.find_by(name: "ABC Primary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email5"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email5"]).id
+  student.level_id = Level.find_by!(description: "Primary Three").id
+  student.school_id = School.find_by!(name: "ABC Primary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email6"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email6"]).id
-  student.level_id = Level.find_by(description: "Primary Four").id
-  student.school_id = School.find_by(name: "ABC Primary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email6"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email6"]).id
+  student.level_id = Level.find_by!(description: "Primary Four").id
+  student.school_id = School.find_by!(name: "ABC Primary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email7"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email7"]).id
-  student.level_id = Level.find_by(description: "Primary Five").id
-  student.school_id = School.find_by(name: "ABC Primary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email7"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email7"]).id
+  student.level_id = Level.find_by!(description: "Primary Five").id
+  student.school_id = School.find_by!(name: "ABC Primary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email8"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email8"]).id
-  student.level_id = Level.find_by(description: "Primary Six").id
-  student.school_id = School.find_by(name: "ABC Primary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email8"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email8"]).id
+  student.level_id = Level.find_by!(description: "Primary Six").id
+  student.school_id = School.find_by!(name: "ABC Primary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email9"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email9"]).id
-  student.level_id = Level.find_by(description: "Secondary One").id
-  student.school_id = School.find_by(name: "Anderson Secondary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email9"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email9"]).id
+  student.level_id = Level.find_by!(description: "Secondary One").id
+  student.school_id = School.find_by!(name: "Anderson Secondary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email10"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email10"]).id
-  student.level_id = Level.find_by(description: "Secondary Two").id
-  student.school_id = School.find_by(name: "Anderson Secondary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email10"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email10"]).id
+  student.level_id = Level.find_by!(description: "Secondary Two").id
+  student.school_id = School.find_by!(name: "Anderson Secondary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email11"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email11"]).id
-  student.level_id = Level.find_by(description: "Secondary Three").id
-  student.school_id = School.find_by(name: "Anderson Secondary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email11"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email11"]).id
+  student.level_id = Level.find_by!(description: "Secondary Three").id
+  student.school_id = School.find_by!(name: "Anderson Secondary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email12"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email12"]).id
-  student.level_id = Level.find_by(description: "Secondary Four").id
-  student.school_id = School.find_by(name: "Anderson Secondary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email12"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email12"]).id
+  student.level_id = Level.find_by!(description: "Secondary Four").id
+  student.school_id = School.find_by!(name: "Anderson Secondary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email13"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email13"]).id
-  student.level_id = Level.find_by(description: "Secondary Five").id
-  student.school_id = School.find_by(name: "Anderson Secondary School").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email13"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email13"]).id
+  student.level_id = Level.find_by!(description: "Secondary Five").id
+  student.school_id = School.find_by!(name: "Anderson Secondary School").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email14"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email14"]).id
-  student.level_id = Level.find_by(description: "Junior College").id
-  student.school_id = School.find_by(name: "DEF Junior College").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email14"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email14"]).id
+  student.level_id = Level.find_by!(description: "Junior College").id
+  student.school_id = School.find_by!(name: "DEF Junior College").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email15"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email15"]).id
-  student.level_id = Level.find_by(description: "Poly").id
-  student.school_id = School.find_by(name: "GHI Polytechnic").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email15"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email15"]).id
+  student.level_id = Level.find_by!(description: "Poly").id
+  student.school_id = School.find_by!(name: "GHI Polytechnic").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email16"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email16"]).id
-  student.level_id = Level.find_by(description: "ITE").id
-  student.school_id = School.find_by(name: "ITE Singapore").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email16"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email16"]).id
+  student.level_id = Level.find_by!(description: "ITE").id
+  student.school_id = School.find_by!(name: "ITE Singapore").id
 end
 
-Student.find_or_create_by!(user_id: User.find_by(email: ENV["seed_email17"]).id) do |student|
-  student.user_id = User.find_by(email: ENV["seed_email17"]).id
-  student.level_id = Level.find_by(description: "Tertiary").id
-  student.school_id = School.find_by(name: "SUTD").id
+Student.find_or_create_by!(user_id: User.find_by!(email: ENV["seed_email17"]).id) do |student|
+  student.user_id = User.find_by!(email: ENV["seed_email17"]).id
+  student.level_id = Level.find_by!(description: "Tertiary").id
+  student.school_id = School.find_by!(name: "SUTD").id
 end
 
 Event.find_or_create_by!(name: "Save Old Folk Eugene") do |event|
@@ -483,11 +483,41 @@ Event.find_or_create_by!(name: "Save Old Folk Eugene") do |event|
   event.end_date = "2016-11-04"
   event.start_time = "17:00:00"
   event.duration = 8.0
-  event.description = "Save the poor buggers!"
+  event.description = "Save the poor bugger!"
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "ABC Primary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.school_id = School.find_by!(name: "ABC Primary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Primary").id
+  event.ngo_id = 1
+  event.status = 0
+end
+
+Event.find_or_create_by!(name: "Save Wei Ying") do |event|
+  event.name = "Save Wei Ying"
+  event.start_date = "2016-11-01"
+  event.end_date = "2016-11-01"
+  event.start_time = "17:00:00"
+  event.duration = 8.0
+  event.description = "Save the poor bugger!"
+  event.vacancy = 18
+  event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  event.school_id = School.find_by!(name: "ABC Primary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Primary").id
+  event.ngo_id = 1
+  event.status = 0
+end
+
+Event.find_or_create_by!(name: "Save Wei Ying") do |event|
+  event.name = "Save Wei Ying"
+  event.start_date = "2016-11-05"
+  event.end_date = "2016-11-05"
+  event.start_time = "17:00:00"
+  event.duration = 8.0
+  event.description = "Save the poor bugger!"
+  event.vacancy = 18
+  event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  event.school_id = School.find_by!(name: "ABC Primary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Primary").id
   event.ngo_id = 1
   event.status = 0
 end
@@ -498,11 +528,11 @@ Event.find_or_create_by!(name: "Save Celine The Kid") do |event|
   event.end_date = "2016-11-04"
   event.start_time = "17:00:00"
   event.duration = 8.0
-  event.description = "Save the poor buggers!"
+  event.description = "Save the poor bugger!"
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "ABC Primary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.school_id = School.find_by!(name: "ABC Primary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Primary").id
   event.ngo_id = 1
   event.status = 0
 end
@@ -513,11 +543,11 @@ Event.find_or_create_by!(name: "Save John") do |event|
   event.end_date = "2016-11-04"
   event.start_time = "17:00:00"
   event.duration = 8.0
-  event.description = "Save the poor buggers!"
+  event.description = "Save the poor bugger!"
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "ABC Primary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.school_id = School.find_by!(name: "ABC Primary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Primary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -528,11 +558,11 @@ Event.find_or_create_by!(name: "Save Yvonne") do |event|
   event.end_date = "2016-11-04"
   event.start_time = "17:00:00"
   event.duration = 8.0
-  event.description = "Save the poor buggers!"
+  event.description = "Save the poor bugger!"
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "ABC Primary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Primary").id
+  event.school_id = School.find_by!(name: "ABC Primary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Primary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -546,8 +576,8 @@ Event.find_or_create_by!(name: "Conserve the beer day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -561,8 +591,8 @@ Event.find_or_create_by!(name: "Conserve the chocolate day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -576,8 +606,8 @@ Event.find_or_create_by!(name: "Conserve the big mac day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -591,8 +621,8 @@ Event.find_or_create_by!(name: "Conserve the bak kut teh day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -606,8 +636,8 @@ Event.find_or_create_by!(name: "Conserve the salad day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -621,8 +651,8 @@ Event.find_or_create_by!(name: "Adopt a starving developer") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
@@ -636,12 +666,11 @@ Event.find_or_create_by!(name: "Adopt an ugly developer") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 2
   event.status = 0
 end
-
 
 Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
   event.name = "Conserve the potato chips day"
@@ -652,8 +681,8 @@ Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 1
   event.status = 0
 end
@@ -667,130 +696,218 @@ Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
   event.description = "Save water, drink beer."
   event.vacancy = 18
   event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
-  event.school_id = School.find_by(name: "Anderson Secondary School").id
-  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.school_id = School.find_by!(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by!(description: "Secondary").id
   event.ngo_id = 1
   event.status = 0
 end
 
 Template.find_or_create_by!(id: 1) do |template|
-  template.event_id = Event.find_by(id: 1).id
-  template.level_id = Level.find_by(id: 3).id
+  template.event_id = Event.find_by!(id: 1).id
+  template.level_id = Level.find_by!(id: 3).id
 end
 
 Template.find_or_create_by!(id: 2) do |template|
-  template.event_id = Event.find_by(id: 1).id
-  template.level_id = Level.find_by(id: 4).id
+  template.event_id = Event.find_by!(id: 1).id
+  template.level_id = Level.find_by!(id: 4).id
 end
 
 Template.find_or_create_by!(id: 3) do |template|
-  template.event_id = Event.find_by(id: 1).id
-  template.level_id = Level.find_by(id: 5).id
+  template.event_id = Event.find_by!(id: 1).id
+  template.level_id = Level.find_by!(id: 5).id
 end
 
 Template.find_or_create_by!(id: 4) do |template|
-  template.event_id = Event.find_by(id: 1).id
-  template.level_id = Level.find_by(id: 6).id
+  template.event_id = Event.find_by!(id: 1).id
+  template.level_id = Level.find_by!(id: 6).id
 end
 
 Template.find_or_create_by!(id: 5) do |template|
-  template.event_id = Event.find_by(id: 2).id
-  template.level_id = Level.find_by(id: 10).id
+  template.event_id = Event.find_by!(id: 2).id
+  template.level_id = Level.find_by!(id: 6).id
 end
 
 Template.find_or_create_by!(id: 6) do |template|
-  template.event_id = Event.find_by(id: 2).id
-  template.level_id = Level.find_by(id: 11).id
+  template.event_id = Event.find_by!(id: 3).id
+  template.level_id = Level.find_by!(id: 6).id
+end
+
+Template.find_or_create_by!(id: 7) do |template|
+  template.event_id = Event.find_by!(id: 2).id
+  template.level_id = Level.find_by!(id: 10).id
+end
+
+Template.find_or_create_by!(id: 8) do |template|
+  template.event_id = Event.find_by!(id: 2).id
+  template.level_id = Level.find_by!(id: 11).id
 end
 
 Task.find_or_create_by!(id: 1) do |task|
   task.description = "Talk to an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 1).id
+  task.template_id = Template.find_by!(id: 1).id
 end
 
 Task.find_or_create_by!(id: 2) do |task|
   task.description = "Hang out with an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 1).id
+  task.template_id = Template.find_by!(id: 1).id
 end
 
 Task.find_or_create_by!(id: 3) do |task|
   task.description = "Help an elderly person cross the road and describe your experience"
-  task.template_id = Template.find_by(id: 2).id
+  task.template_id = Template.find_by!(id: 2).id
 end
 
 Task.find_or_create_by!(id: 4) do |task|
   task.description = "Play chess with an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 2).id
+  task.template_id = Template.find_by!(id: 2).id
 end
 
 Task.find_or_create_by!(id: 5) do |task|
   task.description = "Fold origami an elderly person cross the road and describe your experience"
-  task.template_id = Template.find_by(id: 3).id
+  task.template_id = Template.find_by!(id: 3).id
 end
 
 Task.find_or_create_by!(id: 6) do |task|
   task.description = "Dance with an elderly person and describe your experience"
-  task.template_id = Template.find_by(id: 3).id
+  task.template_id = Template.find_by!(id: 3).id
 end
 
 Task.find_or_create_by!(id: 7) do |task|
   task.description = "Make CNY lanterns with an elderly person cross the road and describe your experience"
-  task.template_id = Template.find_by(id: 4).id
+  task.template_id = Template.find_by!(id: 4).id
 end
 
 Task.find_or_create_by!(id: 8) do |task|
   task.description = "Teach an elderly person how to dance and describe your experience"
-  task.template_id = Template.find_by(id: 4).id
+  task.template_id = Template.find_by!(id: 4).id
 end
 
 Task.find_or_create_by!(id: 9) do |task|
   task.description = "Teach the kids to fold origami and describe your experience"
-  task.template_id = Template.find_by(id: 5).id
+  task.template_id = Template.find_by!(id: 5).id
 end
 
 Task.find_or_create_by!(id: 10) do |task|
   task.description = "Teach the kids to dance and describe your experience"
-  task.template_id = Template.find_by(id: 5).id
+  task.template_id = Template.find_by!(id: 5).id
 end
 
 Task.find_or_create_by!(id: 11) do |task|
   task.description = "Teach the kids the concept of integrity and describe your experience"
-  task.template_id = Template.find_by(id: 6).id
+  task.template_id = Template.find_by!(id: 6).id
 end
 
 Task.find_or_create_by!(id: 12) do |task|
   task.description = "Teach the kids the concept of humility and describe your experience"
-  task.template_id = Template.find_by(id: 6).id
+  task.template_id = Template.find_by!(id: 6).id
 end
 
 Card.find_or_create_by!(id: 1) do |card|
-  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email8"]).id).id
-  card.template_id = Template.find_by(id: 4).id
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email8"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
   card.completion = 3
 end
 
 Card.find_or_create_by!(id: 2) do |card|
-  card.student_id = Student.find_by(user_id: User.find_by(email: ENV["seed_email7"]).id).id
-  card.template_id = Template.find_by(id: 3).id
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email7"]).id).id
+  card.template_id = Template.find_by!(id: 3).id
   card.completion = 0
 end
 
+Card.find_or_create_by!(id: 3) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email9"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 4) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email10"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 5) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email11"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 6) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email12"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 7) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email13"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 8) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email14"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 9) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email15"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 10) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email16"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 11) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email17"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 12) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email6"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 13) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email5"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 14) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email4"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
+Card.find_or_create_by!(id: 15) do |card|
+  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email3"]).id).id
+  card.template_id = Template.find_by!(id: 4).id
+  card.completion = 3
+end
+
 Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 1).id
-  tasktracker.task_id = Task.find_by(id: 7).id
+  tasktracker.card_id = Card.find_by!(id: 1).id
+  tasktracker.task_id = Task.find_by!(id: 7).id
 end
 
 Tasktracker.find_or_create_by!(id: 2) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 1).id
-  tasktracker.task_id = Task.find_by(id: 8).id
+  tasktracker.card_id = Card.find_by!(id: 1).id
+  tasktracker.task_id = Task.find_by!(id: 8).id
 end
 
 Tasktracker.find_or_create_by!(id: 3) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 2).id
-  tasktracker.task_id = Task.find_by(id: 5).id
+  tasktracker.card_id = Card.find_by!(id: 2).id
+  tasktracker.task_id = Task.find_by!(id: 5).id
 end
 
 Tasktracker.find_or_create_by!(id: 4) do |tasktracker|
-  tasktracker.card_id = Card.find_by(id: 2).id
-  tasktracker.task_id = Task.find_by(id: 6).id
+  tasktracker.card_id = Card.find_by!(id: 2).id
+  tasktracker.task_id = Task.find_by!(id: 6).id
 end

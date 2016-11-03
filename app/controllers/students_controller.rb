@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   end
 
   def profile
-    @student = Student.find_by(:user_id => @current_user.id)
+    @student = Student.find_by!(:user_id => @current_user.id)
     respond_to do |format|
       format.json { render json: @student, :include => [:level, :school]  }
     end
