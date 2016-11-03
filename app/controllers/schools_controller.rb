@@ -14,7 +14,7 @@ class SchoolsController < ApplicationController
   end
 
   def profile
-    school_user = SchoolUser.find_by!(:user_id => @current_user.id)
+    school_user = SchoolUser.find_by(:user_id => @current_user.id)
     school = school_user.school_id
     @school = School.find(school)
     respond_to do |format|
