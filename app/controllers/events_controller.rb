@@ -12,6 +12,7 @@ class EventsController < ApplicationController
     @templates = Template.find_by(event_id: @event.id)
     @cards = Card.where(template_id: @templates.id)
     relevant_templates = Template.where(event_id: @event.id)
+
     if @current_user.usertype == 2
       @tasks = Task.where(template_id: relevant_templates.ids)
 
@@ -19,7 +20,11 @@ class EventsController < ApplicationController
 
       @template = Template.find_by(event_id: @event.id, level_id: @current_user.student.level.id)
       @tasks = Task.where(template_id: @template.id)
+
+    elsif @current_user.usertype == 4
+
     end
+    
     @signup = Card.where(template_id: relevant_templates.ids).length
   end
 
@@ -32,13 +37,15 @@ class EventsController < ApplicationController
     end
   end
 
+  # ngo view / upcoming events
   def pending
-    @events = Event.where("end_date > ?", Date.today )
+    @events = Event.where("status > ?", -1 ).where("end_date > ?", Date.today)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
   end
 
+  # ngo view / past events
   def past
     @events = Event.where("end_date <= ?", Date.today )
     respond_to do |format|
@@ -46,29 +53,19 @@ class EventsController < ApplicationController
     end
   end
 
-  def eventAvailabletoStudent
-    @templates = Template.where(level_id: current_user.student.level_id)
-    array = []
-    @events = []
-    @templates.each do |template|
-      array.push(template.event_id)
-    end
-
-    temp_events = Event.find(array)
-    temp_events.each do |event|
-      if (event.school_id == current_user.school.id) && (event.end_date > Date.today)
-        @events.push(event)
-      end
-    end
-
+  # student view / upcoming events
+  def eventsAvailabletoStudent
+    templates = Template.where(level_id: current_user.student.level_id).pluck(:event_id)
+    @events = Event.where(id: templates).where("end_date >= ?", Date.today).where(school_id: current_user.school.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
   end
 
-  def pastEventtoStudent
-    @templates = Template.find_by!(level_id: @user.student.level_id)
-    @events = Event.where("id = ? AND school_id = ? AND end_date <= ?", @templates.event_id, current_user.school.id, Date.today)
+  # student view / past events
+  def pastEventstoStudent
+    templates = Template.where(level_id: current_user.student.level_id).pluck(:id)
+    @events = Event.where(id: templates).where("end_date < ?", Date.today).where(school_id: current_user.school.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
@@ -126,13 +123,13 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:name, :start_date, :end_date, :start_time, :duration, :description, :vacancy, :education_level_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:name, :start_date, :end_date, :start_time, :duration, :description, :vacancy, :education_level_id)
+  end
 end
