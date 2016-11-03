@@ -18,6 +18,10 @@
   border: 1px solid red;
 }*/
 
+body {
+  background-color: #f6f6f6;
+}
+
 .ui.radio.checkbox .box, .ui.radio.checkbox label {
   color: white;
 }

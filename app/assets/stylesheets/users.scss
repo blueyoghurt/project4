@@ -4,6 +4,21 @@
 
 #profileMenu {
   width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#profileInput {
+  height: 700px;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+}
+
+.ui.basic.table {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 #profileInput > .editButton {
@@ -26,8 +41,26 @@
   box-shadow: 3px 3px 3px 3px #FBBD08;
 }
 
+#ngoAppendCards {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 #studentAppendCards .card:hover {
   box-shadow: 3px 3px 3px 3px #FBBD08;
+}
+
+#studentAppendCards {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#appendEventCards {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 #appendEventCards .card:hover {
