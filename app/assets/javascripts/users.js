@@ -263,7 +263,7 @@ $(document).on('turbolinks:load', function() {
       method: 'GET'
     }).done(function (data) {
       console.log("availableEvents Information is back:", data);
-      appendEventCards(data)
+      appendEventCardsStudent(data)
     })
   })
 
@@ -488,6 +488,7 @@ $(document).on('turbolinks:load', function() {
 
   // APPENDING EVENTS
   function appendEventCards(data) {
+    console.log(data);
     $("#profileInput").empty()
     $("#profileInput").append(
       '<div class="ui centered grid" id="addEventBox">' +
@@ -497,6 +498,39 @@ $(document).on('turbolinks:load', function() {
     )
     for (var i = 0; i < data.length; i++) {
       $("#appendEventCards").append(
+        '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
+          '<div class="image">' +
+            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+          '</div>' +
+          '<div class="content">' +
+            '<div class="header">' +
+              data[i].name +
+            '</div>' +
+            '<div class="meta">' +
+              '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
+            '</div>' +
+            '<div class="description">' +
+              data[i].description +
+            '</div>' +
+          '</div>' +
+          '<div class="extra content">' +
+            '<div class="right floated">' +
+              '<i class="list layout icon"></i>' +
+              data[i].cards.length + ' students signed up!' +
+            '</div>' +
+          '</div>' +
+        '</a>'
+      )
+
+    }
+  }
+
+  // APPENDING EVENTS
+  function appendEventCardsStudent(data) {
+    console.log(data);
+    $("#profileInput").empty()
+    for (var i = 0; i < data.length; i++) {
+      $("#profileInput").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
             '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +

@@ -18,6 +18,16 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+  $('.teacherTaskButton').click(function() {
+    console.log("HELLO");
+
+    var taskID = this.id
+    console.log(taskID);
+
+    $('#editing' + taskID + '').modal('show')
+
+  })
+
   // ==================== FUNCTIONS ====================
 
   // APPEND LOADING SYMBOL WHILE LOADING AJAX
