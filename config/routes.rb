@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   get "cards/profile" => "cards#profile"
   get "cards/search" => "cards#search"
+  get "cards/pending" => "cards#pending"
   resources :cards
 
   get "tasks/search" => "tasks#search"

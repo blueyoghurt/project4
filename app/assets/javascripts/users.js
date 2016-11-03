@@ -324,6 +324,19 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+  $("#studentSubmissions").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/cards/pending',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      loadingAjax()
+      appendPendingEventCards(data)
+    })
+  })
+
 
   // ======================= FUNCTIONS =======================
   // APPEND LOADING SYMBOL WHILE LOADING AJAX
@@ -488,12 +501,12 @@ $(document).on('turbolinks:load', function() {
       '</div>' +
       '<div class="ui cards" id="appendEventCards"></div>'
     )
+
     for (var i = 0; i < data.length; i++) {
       $("#appendEventCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-        () || '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' 
-            +
+            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
@@ -518,12 +531,14 @@ $(document).on('turbolinks:load', function() {
     }
   }
 
-  // APPENDING EVENTS
+
+  // APPENDING EVENTS FOR STUDENT
   function appendEventCardsStudent(data) {
     console.log(data);
     $("#profileInput").empty()
+    $("#profileInput").append('<div class="ui cards" id="appendCards"></div>')
     for (var i = 0; i < data.length; i++) {
-      $("#profileInput").append(
+      $("#appendCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
             '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
@@ -543,6 +558,35 @@ $(document).on('turbolinks:load', function() {
             '<div class="right floated">' +
               '<i class="list layout icon"></i>' +
               data[i].cards.length + ' students signed up!' +
+            '</div>' +
+          '</div>' +
+        '</a>'
+      )
+
+    }
+  }
+
+  // APPENDING PENDING EVENTS FOR TEACHER TO APPROVE
+  function appendPendingEventCards(data) {
+    console.log(data);
+    $("#profileInput").empty()
+    $("#profileInput").append('<div class="ui cards" id="appendCards"></div>')
+    for (var i = 0; i < data.length; i++) {
+      $("#appendCards").append(
+        '<a class="anchorForCards ui yellow card" href="/cards/' + data[i].id + '">' +
+          '<div class="image">' +
+            '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/' + data[i].student.user.profile_pic + '">' +
+          '</div>' +
+          '<div class="content">' +
+            '<div class="header">' +
+              data[i].student.user.first_name + data[i].student.user.last_name +
+            '</div>' +
+            '<div class="meta">' +
+              '<span class="date">' + data[i].template.event.name + '</span>' +
+            '</div>' +
+            '<div class="description">' +
+              data[i].template.event.start_date +
+              data[i].template.event.duration + ' hours' +
             '</div>' +
           '</div>' +
         '</a>'

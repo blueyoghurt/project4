@@ -25,6 +25,20 @@ class CardsController < ApplicationController
     end
   end
 
+  def pending
+    student_ids = Student.where(school_id: current_user.school_user.school_id)
+    puts student_ids.inspect
+    puts "================================="
+    @cards = Card.where(student_id: student_ids, completion: 1)
+    respond_to do |format|
+      format.json { render json: @cards, :include => { :student => {:include => [:user]},
+                                                      :template => {:include => [:event, :tasks] },
+                                                      :tasktrackers => { :include => [:task] }
+                                                    }
+      }
+    end
+  end
+
   def search
   end
 
