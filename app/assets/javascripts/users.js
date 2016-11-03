@@ -395,21 +395,14 @@ $(document).on('turbolinks:load', function() {
         '</div>' +
         '<div class="extra content">' +
         '<div class="right floated">' +
-        '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
+        '<a class="cardLinkIcons" href="mailto:' + data[i].email + '" data-tooltip="Email me" data-position="bottom left" data-inverted="">' +
         '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-        'Email' +
         '</a>' +
         '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
         '<i class="text telephone icon"></i>' +
-        'Phone' +
         '</a>' +
-        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
+        '<a class="cardLinkIcons" data-tooltip="' + data[i].website + '" data-position="bottom left" data-inverted="">' +
         '<i class="world icon"></i>' +
-        'Website' +
-        '</a>' +
-        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-        '<i class="text telephone icon"></i>' +
-        'Telephone' +
         '</a>' +
         '</div>' +
         '</div>' +
@@ -499,7 +492,8 @@ $(document).on('turbolinks:load', function() {
       $("#appendEventCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        () || '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' 
+            +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
