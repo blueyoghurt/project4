@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :is_school_user, only: [:create, :new, :destroy]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :event_approval]
 
   # GET /events
   # GET /events.json
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   # ngo view / upcoming events
   def pending
-    @events = Event.where("status > ?", -1 ).where("end_date > ?", Date.today)
+    @events = Event.where("status > ?", 0 ).where("end_date > ?", Date.today)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
@@ -64,6 +64,18 @@ class EventsController < ApplicationController
     @events = Event.where(id: templates).where("end_date < ?", Date.today).where(school_id: current_user.school.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
+    end
+  end
+
+  def event_approval
+    respond_to do |format|
+      if @event.update(event_params)
+        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.json { render :show, status: :ok, location: @event }
+      else
+        format.html { render :edit }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get "events/past" => "events#past"
   get "events/student" => "events#eventsAvailabletoStudent"
   get "events/student/past" => "events#pastEventstoStudent"
+  patch "event/approval/:id" => 'events#event_approval'
   resources :events
 
   get "ngos/profile" => "ngos#profile"

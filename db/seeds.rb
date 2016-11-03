@@ -509,7 +509,7 @@ Event.find_or_create_by!(name: "Save Old Folk Eugene") do |event|
   event.school_id = School.find_by!(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by!(description: "Primary").id
   event.ngo_id = 1
-  event.status = 0
+  event.status = 1
 end
 
 Event.find_or_create_by!(name: "Save Wei Ying") do |event|
