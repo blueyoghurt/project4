@@ -64,9 +64,13 @@ $(document).on('turbolinks:load', function() {
       '</div>' +
       '<div class="ui cards" id="appendTaskList"></div>'
     )
+  }
+
+})
 
     // APPENDING ALL STUDENT CARDS FOR SCHOOL
     function appendAllStudentCards(data) {
+      
       $("#profileInput").empty()
       $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
       for (var i = 0; i < data.length; i++) {
@@ -115,6 +119,3 @@ $(document).on('turbolinks:load', function() {
     //   }
     //   '</tbody>' +
     // '</table>'
-  }
-
-})

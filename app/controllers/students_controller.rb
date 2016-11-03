@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
     cards = Card.where(template_id: templates).pluck(:student_id)
     @students = Student.where(id: cards)
     respond_to do |format|
-      format.json { render json: @students, :include => [:level, :school]  }
+      format.json { render json: @students, :include => [:level, :school, :user]  }
     end
   end
 

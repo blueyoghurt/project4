@@ -57,12 +57,16 @@
     </div>
     <div class="field">
       <%= f.label :start_time %>
-      <%= f.time_select :start_time %>
+      <%= f.time_field :start_time %>
     </div>
     <div class="field">
       <%= f.label :duration_in_hours%>
       <%= f.number_field :duration, :step => 0.01  %>
     </div>
+    <div class="field-group">
+      <%= f.label :event_image%>
+      <%= f.file_field :image%>
+    </div><br/>
     <div class="field">
       <%= f.label :description %>
       <%= f.text_area :description %>
@@ -84,102 +88,102 @@
 
 <!-- EDIT SCHOOL -->
 <% if (@user.usertype == 3) %>
-  <div class="ui modal" id="editingSchool">
-    <div class="header">
-      Edit School
-    </div>
-    <div class="content">
+<div class="ui modal" id="editingSchool">
+  <div class="header">
+    Edit School
+  </div>
+  <div class="content">
     <!-- SNIPPET TO BE PLACED HERE -->
     <%= form_for (@student), html: { class: "ui form", role: "form" } do |f| %>
-      <div class="field">
-        <p>Select your School </p>
-        <%= f.select :school_id, School.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
-      </div>
-      </br>
-      <div class="field">
-        <p>Select your level </p>
-        <%= f.select :level_id, Level.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
-      </div>
+    <div class="field">
+      <p>Select your School </p>
+      <%= f.select :school_id, School.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
     </div>
-    <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
-    </div>
-      <%end %>
+  </br>
+  <div class="field">
+    <p>Select your level </p>
+    <%= f.select :level_id, Level.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
   </div>
+</div>
+<div class="actions">
+  <%= f.submit class: "ui yellow button"%>
+</div>
+<%end %>
+</div>
 <% end %>
 
 <!-- EDIT SCHOOL INSTITUTION -->
 <% if (@user.usertype == 2) %>
-  <div class="ui modal" id="editingSchoolInstitution">
-    <div class="header">
-      Edit Institution Details
-    </div>
-    <div class="content">
-    <%= form_for (@school), html: { class: "ui form", role: "form" } do |f| %>
-      <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :address %>
-        <%= f.text_field :address %>
-      </div>
-      <div class="field">
-        <%= f.label :telephone %>
-        <%= f.text_field :telephone %>
-      </div>
-      <div class="field">
-        <%= f.label :website %>
-        <%= f.text_field :website %>
-      </div>
-      <div class="field">
-        <%= f.label :education_level %>
-        <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
-      </div>
-    </div>
-    <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
-    </div>
-      <%end %>
+<div class="ui modal" id="editingSchoolInstitution">
+  <div class="header">
+    Edit Institution Details
   </div>
+  <div class="content">
+    <%= form_for (@school), html: { class: "ui form", role: "form" } do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :telephone %>
+      <%= f.text_field :telephone %>
+    </div>
+    <div class="field">
+      <%= f.label :website %>
+      <%= f.text_field :website %>
+    </div>
+    <div class="field">
+      <%= f.label :education_level %>
+      <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown" %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui yellow button"%>
+  </div>
+  <%end %>
+</div>
 <% end %>
 
 <!-- EDIT NGO PROFILE -->
 <% if (@user.usertype == 4) %>
-  <div class="ui modal" id="editingNgoProfile">
-    <div class="header">
-      Edit NGO Details
-    </div>
-    <div class="content">
-    <%= form_for (@ngo), html: { class: "ui form", role: "form" } do |f| %>
-      <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :address %>
-        <%= f.text_field :address %>
-      </div>
-      <div class="field">
-        <%= f.label :telephone %>
-        <%= f.text_field :telephone %>
-      </div>
-      <div class="field">
-        <%= f.label :website %>
-        <%= f.text_field :website %>
-      </div>
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-      </div>
-      <div class="field">
-        <%= f.label :ngo_category %>
-        <%= f.select :ngo_category_id, NgoCategory.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
-      </div>
-    </div>
-    <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
-    </div>
-      <%end %>
+<div class="ui modal" id="editingNgoProfile">
+  <div class="header">
+    Edit NGO Details
   </div>
+  <div class="content">
+    <%= form_for (@ngo), html: { class: "ui form", role: "form" } do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :telephone %>
+      <%= f.text_field :telephone %>
+    </div>
+    <div class="field">
+      <%= f.label :website %>
+      <%= f.text_field :website %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :ngo_category %>
+      <%= f.select :ngo_category_id, NgoCategory.all.collect {|x| [x.name, x.id]}, {}, class: "ui search dropdown" %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui yellow button"%>
+  </div>
+  <%end %>
+</div>
 <% end %>

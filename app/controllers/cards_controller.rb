@@ -18,7 +18,7 @@ class CardsController < ApplicationController
     @cards = Card.where(student_id: @student.id)
     respond_to do |format|
       format.json { render json: @cards, :include => { :student => {},
-                                                      :template => {:include => [:event, :tasks] },
+                                                      :template => {:include => [:tasks, :event => {:include => [:ngo]} ] },
                                                       :tasktrackers => { :include => [:task] }
                                                     }
       }
