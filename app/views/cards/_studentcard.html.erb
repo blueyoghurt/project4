@@ -1,0 +1,23 @@
+<%= form_for(@card) do |f| %>
+  <div class="actions">
+    <% if @card.completion == 0 %>
+      <p><b>Status: </b><p>
+        <h3>Draft</h3>
+      <%= f.text_field :completion, value: "1", type: "hidden"%>
+      <%= f.submit "Send for Approval", class: "ui yellow button submissionButton"%>
+    <% elsif @card.completion == 1 %>
+      <p><b>Status: </b><p>
+        <h3>Waiting for Approval</h3>
+      <%= f.submit "Sent", class: "ui yellow button disabled submissionButton"%>
+    <% elsif @card.completion == 2 %>
+      <p><b>Status: </b></p>
+      <h3>Rework required</h3>
+      <%= f.text_field :completion, value: "1", type: "hidden"%>
+      <%= f.submit "Send for Approval", class: "ui yellow button submissionButton"%>
+    <% elsif @card.completion == 3 %>
+      <p><b>Status: </b><p>
+        <h3>Rework required</h3>
+      <%= f.submit "Completed", class: "ui green button disabled submissionButton"%>
+    <% end %>
+  </div>
+<% end %>

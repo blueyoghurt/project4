@@ -43,13 +43,13 @@ class TasktrackersController < ApplicationController
 
     @card = Card.find(@tasktracker.card_id)
 
-    if params[:tasktracker][:picture]
-      uploaded_file = params[:tasktracker][:picture].path
-      @tasktracker.update(picture: Cloudinary::Uploader.upload(uploaded_file, :folder => "tasktracker/picture")["public_id"])
-    end
 
     respond_to do |format|
       if @tasktracker.update(tasktracker_params)
+        if params[:tasktracker][:picture]
+          uploaded_file = params[:tasktracker][:picture].path
+          @tasktracker.update(picture: Cloudinary::Uploader.upload(uploaded_file, :folder => "tasktracker/picture")["public_id"])
+        end
         format.html { redirect_to @card, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @tasktracker }
       else

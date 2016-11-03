@@ -63,13 +63,13 @@ class NgosController < ApplicationController
   # PATCH/PUT /ngos/1.json
   def update
 
-    if params[:ngo][:logo]
-      uploaded_file = params[:ngo][:logo].path
-      @ngo.update(logo: Cloudinary::Uploader.upload(uploaded_file, :folder => "ngo/logo")["public_id"])
-    end
 
     respond_to do |format|
       if @ngo.update(ngo_params)
+        if params[:ngo][:logo]
+          uploaded_file = params[:ngo][:logo].path
+          @ngo.update(logo: Cloudinary::Uploader.upload(uploaded_file, :folder => "ngo/logo")["public_id"])
+        end
         format.html { redirect_to @ngo, notice: 'Ngo was successfully updated.' }
         format.json { render :show, status: :ok, location: @ngo }
       else

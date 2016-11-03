@@ -72,12 +72,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    if params[:user][:profile_pic]
-      uploaded_file = params[:user][:profile_pic].path
-      @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
-    end
     respond_to do |format|
       if @user.update(user_params)
+        if params[:user][:profile_pic]
+          uploaded_file = params[:user][:profile_pic].path
+          @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
+        end
         format.html {
           flash[:success] = "Your profile has been updated."
           redirect_to users_url
