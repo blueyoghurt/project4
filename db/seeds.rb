@@ -489,6 +489,7 @@ Event.find_or_create_by!(name: "Save Old Folk Eugene") do |event|
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
   event.ngo_id = 1
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Save Celine The Kid") do |event|
@@ -503,6 +504,7 @@ Event.find_or_create_by!(name: "Save Celine The Kid") do |event|
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
   event.ngo_id = 1
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Save John") do |event|
@@ -517,6 +519,7 @@ Event.find_or_create_by!(name: "Save John") do |event|
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
   event.ngo_id = 2
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Save Yvonne") do |event|
@@ -531,6 +534,7 @@ Event.find_or_create_by!(name: "Save Yvonne") do |event|
   event.school_id = School.find_by(name: "ABC Primary School").id
   event.education_level_id = EducationLevel.find_by(description: "Primary").id
   event.ngo_id = 2
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Conserve the beer day") do |event|
@@ -545,6 +549,7 @@ Event.find_or_create_by!(name: "Conserve the beer day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 2
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Conserve the chocolate day") do |event|
@@ -559,6 +564,7 @@ Event.find_or_create_by!(name: "Conserve the chocolate day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 2
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Conserve the big mac day") do |event|
@@ -573,6 +579,7 @@ Event.find_or_create_by!(name: "Conserve the big mac day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 2
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Conserve the bak kut teh day") do |event|
@@ -587,6 +594,7 @@ Event.find_or_create_by!(name: "Conserve the bak kut teh day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 2
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Conserve the salad day") do |event|
@@ -601,7 +609,39 @@ Event.find_or_create_by!(name: "Conserve the salad day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 2
+  event.status = 0
 end
+
+Event.find_or_create_by!(name: "Adopt a starving developer") do |event|
+  event.name = "Adopt a starving developer"
+  event.start_date = "2016-11-11"
+  event.end_date = "2016-11-11"
+  event.start_time = "17:00:00"
+  event.duration = 4.0
+  event.description = "Save water, drink beer."
+  event.vacancy = 18
+  event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  event.school_id = School.find_by(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 2
+  event.status = 0
+end
+
+Event.find_or_create_by!(name: "Adopt an ugly developer") do |event|
+  event.name = "Adopt an ugly developer"
+  event.start_date = "2016-11-11"
+  event.end_date = "2016-11-11"
+  event.start_time = "17:00:00"
+  event.duration = 4.0
+  event.description = "Save water, drink beer."
+  event.vacancy = 18
+  event.image = "http://qixelsworld.com/sites/default/files/Youtube-Logo-200_0.png"
+  event.school_id = School.find_by(name: "Anderson Secondary School").id
+  event.education_level_id = EducationLevel.find_by(description: "Secondary").id
+  event.ngo_id = 2
+  event.status = 0
+end
+
 
 Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
   event.name = "Conserve the potato chips day"
@@ -615,6 +655,7 @@ Event.find_or_create_by!(name: "Conserve the potato chips day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 1
+  event.status = 0
 end
 
 Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
@@ -629,42 +670,37 @@ Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
   event.school_id = School.find_by(name: "Anderson Secondary School").id
   event.education_level_id = EducationLevel.find_by(description: "Secondary").id
   event.ngo_id = 1
+  event.status = 0
 end
 
 Template.find_or_create_by!(id: 1) do |template|
   template.event_id = Event.find_by(id: 1).id
   template.level_id = Level.find_by(id: 3).id
-  template.status = 1
 end
 
 Template.find_or_create_by!(id: 2) do |template|
   template.event_id = Event.find_by(id: 1).id
   template.level_id = Level.find_by(id: 4).id
-  template.status = 1
 end
 
 Template.find_or_create_by!(id: 3) do |template|
   template.event_id = Event.find_by(id: 1).id
   template.level_id = Level.find_by(id: 5).id
-  template.status = 1
 end
 
 Template.find_or_create_by!(id: 4) do |template|
   template.event_id = Event.find_by(id: 1).id
   template.level_id = Level.find_by(id: 6).id
-  template.status = 1
 end
 
 Template.find_or_create_by!(id: 5) do |template|
   template.event_id = Event.find_by(id: 2).id
   template.level_id = Level.find_by(id: 10).id
-  template.status = 1
 end
 
 Template.find_or_create_by!(id: 6) do |template|
   template.event_id = Event.find_by(id: 2).id
   template.level_id = Level.find_by(id: 11).id
-  template.status = 1
 end
 
 Task.find_or_create_by!(id: 1) do |task|

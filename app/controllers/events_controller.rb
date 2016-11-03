@@ -9,7 +9,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @cards = Card.where(event_id: @event.id)
+    puts ">>>>>>>", @event.id
+    @templates = Template.find_by(event_id: @event.id)
+    puts ">>>>>>>", @templates.id
+    @cards = Card.where(template_id: @templates.id)
     puts "=============="
     puts @cards.inspect
     # respond_to do |format|
@@ -35,6 +38,22 @@ class EventsController < ApplicationController
 
   def past
     @events = Event.where("end_date <= ?", Date.today )
+    respond_to do |format|
+      format.json { render json: @events, :include => [:tasks, :cards] }
+    end
+  end
+
+  def eventAvailabletoStudent
+    @templates = Template.find_by(level_id: current_user.student.level_id)
+    @events = Event.where("id = ? AND school_id = ? AND end_date > ?", @templates.event_id, current_user.school.id, Date.today)
+    respond_to do |format|
+      format.json { render json: @events, :include => [:tasks, :cards] }
+    end
+  end
+
+  def pastEventtoStudent
+    @templates = Template.find_by(level_id: current_user.student.level_id)
+    @events = Event.where("id = ? AND school_id = ? AND end_date <= ?", @templates.event_id, current_user.school.id, Date.today)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end

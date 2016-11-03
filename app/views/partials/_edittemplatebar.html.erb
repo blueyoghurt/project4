@@ -1,5 +1,5 @@
- <div class="row">
-   <div class="ui card">
+<div class="row">
+  <div class="ui card">
     <div class="content">
       <div class="header"><%= @event.name %></div>
       <div class="meta">Level Information</div>
@@ -11,6 +11,15 @@
         <p><b>Duration:</b> <%= @event.duration %> hours</p>
         <p><b>Capacity:</b> <%= @event.vacancy %></p>
         <p><b>Vacancy:</b> <%= @event.vacancy %></p>
+        <p><b>Status:</b>
+          <% if @event.status == 0%>
+          Pending
+          <% elsif @event.status == 1%>
+          Rew-work
+          <% elsif @event.status == 2%>
+          Approved
+          <% end %>
+        </p>
         <p>
           <b>Description:</b></br>
           <%= @event.description %>
@@ -24,9 +33,9 @@
       </a>
     </div>
   </div>
- </div>
+</div>
 
- <div class="row">
+<div class="row">
   <div class="ui secondary vertical pointing menu" id="profileMenu">
     <a class="item menuScroll active" id="studentSignedUp">Students</a>
     <a class="item menuScroll" id="eventTasks">Tasks</a>
@@ -40,36 +49,36 @@
   </div>
   <div class="content">
     <%= form_for (@event), html: { class: "ui form", role: "form" } do |f| %>
-      <div class="field">
-        <%= f.label :event_name %>
-        <%= f.text_field :name, placeholder: @event.name %>
-      </div>
-      <div class="field">
-        <%= f.label :start_date %>
-        <%= f.date_field :start_date, placeholder: @event.start_date  %>
-      </div>
-      <div class="field">
-        <%= f.label :end_date %>
-        <%= f.date_field :end_date, placeholder: @event.end_date  %>
-      </div>
-      <div class="field">
-        <%= f.label :start_time %>
-        <%= f.time_select :start_time, placeholder: @event.start_time  %>
-      </div>
-      <div class="field">
-        <%= f.label :duration_in_hours%>
-        <%= f.number_field :duration, :step => 0.01, placeholder: @event.duration   %>
-      </div>
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description, placeholder: @event.description  %>
-      </div>
-      <div class="field">
-        <%= f.label :vacancy %>
-        <%= f.number_field :vacancy, placeholder: @event.vacancy  %>
-      </div>
+    <div class="field">
+      <%= f.label :event_name %>
+      <%= f.text_field :name, placeholder: @event.name %>
     </div>
-    <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
+    <div class="field">
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date, placeholder: @event.start_date  %>
     </div>
+    <div class="field">
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date, placeholder: @event.end_date  %>
+    </div>
+    <div class="field">
+      <%= f.label :start_time %>
+      <%= f.time_select :start_time, placeholder: @event.start_time  %>
+    </div>
+    <div class="field">
+      <%= f.label :duration_in_hours%>
+      <%= f.number_field :duration, :step => 0.01, placeholder: @event.duration   %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, placeholder: @event.description  %>
+    </div>
+    <div class="field">
+      <%= f.label :vacancy %>
+      <%= f.number_field :vacancy, placeholder: @event.vacancy  %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui yellow button"%>
+  </div>
   <%end %></div>

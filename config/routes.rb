@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get "events/search" => "events#search"
   get "events/pending" => "events#pending"
   get "events/past" => "events#past"
+  get "events/student" => "events#eventAvailabletoStudent"
+  get "events/student/past" => "events#pastEventtoStudent"
   resources :events
 
   get "ngos/profile" => "ngos#profile"
