@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="ui card">
+    <div class="content">
+      <div class="actions">
+        <% if @event.status == 0 || @event.status == 2%>
+        <% if @event.status == 0 %>
+        <h3>Draft</h3>
+        <% else %>
+        <h3>Amendments requested by NGO</h3>
+        <%end%>
+        <%= form_for @event, :url => event_approval_path(:id => @event.id) do |f| %>
+        <%= f.number_field :status, value: 1, type: "hidden"%>
+        <%= f.submit "Send to NGO", class: "ui green button submissionButton"%><br/><br/>
+        <% end %>
+        <% elsif @event.status == 1 %>
+        <h3>Pending</h3>
+        <button class="ui yellow button disabled submissionButton">Waiting for NGO</button>
+        <% elsif @event.status == 3 %>
+        <h3>Approved</h3>
+        <button class="ui green button disabled submissionButton">Approved</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

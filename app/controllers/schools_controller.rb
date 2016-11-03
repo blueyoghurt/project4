@@ -23,7 +23,6 @@ class SchoolsController < ApplicationController
   end
 
   def search
-    puts "IM IN SCHOOL"
     @schools = School.all
     respond_to do |format|
       format.json { render json: @schools, :include => [:education_level] }

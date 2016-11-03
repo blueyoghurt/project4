@@ -3,13 +3,10 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on('turbolinks:load', function() {
-  console.log('CARDS DOM loaded');
 
   $('.studentTaskButton').click(function() {
-    console.log("HELLO");
 
     var taskID = this.id
-    console.log(taskID);
 
     $('#editing' + taskID + '').modal('show')
 

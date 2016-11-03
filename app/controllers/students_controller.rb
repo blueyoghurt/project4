@@ -1,6 +1,26 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
+  ## customised actions
+  def search
+    school_user = SchoolUser.where(user_id: @current_user.id).first
+    school = school_user.school_id
+    @students = Student.where(school_id: school)
+    respond_to do |format|
+      format.json { render json: @students, :include => [:user, :level] }
+    end
+  end
+
+  def signedup
+    puts "==========================================================="
+    puts "in the signedup method"
+    puts params.inspect
+    puts "==========================================================="
+    template = Template.where(event_id: params[:id])
+    puts ">>>>>>>", template.inspect
+
+  end
+
   # GET /students
   # GET /students.json
   def index
@@ -17,15 +37,6 @@ class StudentsController < ApplicationController
     @student = Student.find_by!(:user_id => @current_user.id)
     respond_to do |format|
       format.json { render json: @student, :include => [:level, :school]  }
-    end
-  end
-
-  def search
-    school_user = SchoolUser.where(user_id: @current_user.id).first
-    school = school_user.school_id
-    @students = Student.where(school_id: school)
-    respond_to do |format|
-      format.json { render json: @students, :include => [:user, :level] }
     end
   end
 

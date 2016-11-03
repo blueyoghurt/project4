@@ -3,10 +3,8 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on('turbolinks:load', function() {
-  console.log('Student DOM loaded');
 
   // $("#studentProfile").click(function() {
-  //   console.log("Student user searching for Profile");
   //   $("#studentInput").empty()
   //   $("#studentInput").append(
   //     '<div class="ui icon">' +
@@ -23,7 +21,6 @@ $(document).on('turbolinks:load', function() {
   //     url: '/student/profile',
   //     method: 'GET'
   //   }).done(function (data) {
-  //     console.log("Information is back:", data);
   //     $("#studentInput").empty()
   //     $("#studentInput").append(
   //

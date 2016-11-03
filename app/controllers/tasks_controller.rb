@@ -14,10 +14,7 @@ class TasksController < ApplicationController
 
   def search
     schoolID = SchoolUser.find(@current_user.id).school_id
-    puts schoolID
-    puts "!!!!!!!!!!!!!!"
     @tasks = Task.where(event_id: params[:id])
-    puts @tasks.inspect
     respond_to do |format|
       format.json { render json: @tasks, :include => [:event, :cards, :level] }
     end

@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   # ngo view / upcoming events
   def pending
-    @events = Event.where("status > ?", 0 ).where("end_date > ?", Date.today)
+    @events = Event.where("status > ?", 0 ).where("end_date > ?", Date.today).where(ngo_id: current_user.ngo.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
 
   # ngo view / past events
   def past
-    @events = Event.where("end_date <= ?", Date.today )
+    @events = Event.where("end_date <= ?", Date.today ).where(ngo_id: current_user.ngo.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
@@ -68,16 +68,26 @@ class EventsController < ApplicationController
   end
 
   def event_approval
-    if @event.ngo.id != current_user.ngo.id
-      flash[:danger] = "You can only approve an event if you are the representative of the relevant NGO"
-      redirect_to root_path
-      return
+    if current_user.usertype == 2 #school_users
+      if @event.school.id != @event.school.id
+        flash[:danger] = "You can only send an event for approval if you are the representative of the school"
+        redirect_to root_path
+        return
+      end
+    elsif current_user.usertype == 4 #ngo_users
+      if @event.ngo.id != current_user.ngo.id
+        flash[:danger] = "You can only approve an event if you are the representative of the relevant NGO"
+        redirect_to root_path
+        return
+      end
     end
 
     respond_to do |format|
       if @event.update(event_approval_params)
         format.html {
-          if @event.status == 2
+          if @event.status == 1
+            flash[:success] = "Event has been sent to the relevant NGOs"
+          elsif @event.status == 2
             flash[:success] = "Event status has been updated and sent to the relevant organisers"
           elsif @event.status == 3
             flash[:success] = "Event has been approved!"

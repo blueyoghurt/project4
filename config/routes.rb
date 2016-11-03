@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   get "student/register" => "students#new"
   get "students/search" => "students#search"
+  get "students/signedup" => "students#signedup"
   get "students/profile" => "students#profile"
   resources :students, except: [:new]
 

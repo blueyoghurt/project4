@@ -27,8 +27,6 @@ class CardsController < ApplicationController
 
   def pending
     student_ids = Student.where(school_id: current_user.school_user.school_id)
-    puts student_ids.inspect
-    puts "================================="
     @cards = Card.where(student_id: student_ids, completion: 1)
     respond_to do |format|
       format.json { render json: @cards, :include => { :student => {:include => [:user]},
@@ -72,7 +70,6 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        puts "I'm updating!"
         format.html { redirect_to @card, notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
       else

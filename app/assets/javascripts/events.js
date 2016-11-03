@@ -1,9 +1,7 @@
 $(document).on('turbolinks:load', function() {
-  console.log('Student DOM loaded');
 
   $(document).on('click','#editEvent',function(){
     $('#editingEvent').modal('show')
-    console.log("Modal to edit event");
   })
 
   $("#eventTasks").click(function() {
@@ -13,17 +11,26 @@ $(document).on('turbolinks:load', function() {
       url: '/tasks/search',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       appendTaskTable(data)
     })
   })
 
+  $(".studentSignedUp").click(function() {
+    loadingAjax()
+    // var taskID = this.id
+
+    $.ajax({
+      url: '/students/event',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("data returned from function", data);
+      appendTaskTable(data)
+    })
+  })
+
+
   $('.teacherTaskButton').click(function() {
-    console.log("HELLO");
-
     var taskID = this.id
-    console.log(taskID);
-
     $('#editing' + taskID + '').modal('show')
 
   })
