@@ -1,18 +1,20 @@
+<table class="ui selectable celled padded yellow table">
+  <thead>
+    <tr>
+      <th class="two wide"></th>
+      <th class="eleven wide">Task Name</th>
+      <th class="three wide">Level</th>
+    </tr>
+  </thead>
+  <tbody>
 
-    <table class="ui selectable celled padded yellow table" id="appendTeacherTasks">
-      <thead>
-        <tr>
-          <th class="one wide"></th>
-          <th class="five wide">Task Name</th>
-          <th class="five wide">Level</th>
-          <th class="one wide">Edit</th>
-        </tr>
-      </thead>
-      <tbody>
+    <% @tasks.each_with_index do |task, index| %>
+      <tr>
+        <th> <%= index + 1 %> </th>
+        <th> <%=task.description %> </th>
+        <th> <%=task.template.level.description %> </th>
+      </tr>
+    <% end %>
 
-
-      </tbody>
-    </table>
-
-
-  <!-- MODAL FOR AMENDING TASK DESCRIPTION AND PICTURE STATUS -->
+  </tbody>
+</table>

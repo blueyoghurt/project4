@@ -9,9 +9,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @templates = Template.find_by(event_id: @event.id)
-    @cards = Card.where(template_id: @templates.id)
     relevant_templates = Template.where(event_id: @event.id)
+    @cards = Card.where(template_id: relevant_templates.pluck(:id))
 
     if @current_user.usertype == 2
       @tasks = Task.where(template_id: relevant_templates.ids)

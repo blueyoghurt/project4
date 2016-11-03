@@ -14,9 +14,9 @@
 *= require_self
 */
 
-.apple {
+/*.apple {
   border: 1px solid red;
-}
+}*/
 
 .ui.radio.checkbox .box, .ui.radio.checkbox label {
   color: white;
