@@ -349,7 +349,7 @@ $(document).on('turbolinks:load', function() {
       $("#ngoAppendCards").append(
         '<div class="ui yellow card">' +
         '<div class="image">' +
-        '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        '<img class="rect_logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].logo + '"/>' +
         '</div>' +
         '<div class="content">' +
         '<a class="header">' + data[i].name+ '</a>' +
@@ -461,10 +461,10 @@ $(document).on('turbolinks:load', function() {
       $("#studentAppendCards").append(
         '<div class="ui yellow card">' +
         '<div class="image">' +
-        '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+        '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].user.profile_pic + '"/>'  +
         '</div>' +
         '<div class="content">' +
-        '<a class="header">' + data[i].user.first_name+ '</a>' +
+        '<a class="header">' + data[i].user.first_name + " " + data[i].user.last_name + '</a>' +
         '<div class="meta">' +
         '<span class="date">' + data[i].level.description + '</span>' +
         '</div>' +

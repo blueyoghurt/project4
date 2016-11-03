@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     elsif @current_user.usertype == 4
 
     end
-    
     @signup = Card.where(template_id: relevant_templates.ids).length
   end
 
