@@ -12,13 +12,13 @@ class StudentsController < ApplicationController
   end
 
   def signedup
-    puts "==========================================================="
-    puts "in the signedup method"
-    puts params.inspect
-    puts "==========================================================="
-    template = Template.where(event_id: params[:id])
-    puts ">>>>>>>", template.inspect
-
+    puts params[:id]
+    templates = Template.where(event_id: params[:id]).pluck(:id)
+    cards = Card.where(template_id: templates).pluck(:student_id)
+    @students = Student.where(id: cards)
+    respond_to do |format|
+      format.json { render json: @students, :include => [:level, :school]  }
+    end
   end
 
   # GET /students
