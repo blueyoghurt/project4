@@ -22,6 +22,11 @@
       <%= f.text_field :last_name, placeholder: @user.last_name %>
     </div>
 
+    <div class="field">
+      <%= f.label :gender %></br>
+      <%= f.select :gender, options_for_select([['Male', 1], ['Female', 2]]), class: "ui search dropdown"  %>
+    </div>
+
   </div>
   <div class="actions">
     <%= f.submit class: "ui yellow button"%>
@@ -68,7 +73,7 @@
     </div>
     <div class="field">
       <%= f.label :education_level_id %></br>
-      <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {} %>
+      <%= f.select :education_level_id, EducationLevel.all.collect {|x| [x.description, x.id]}, {}, class: "ui search dropdown"  %>
     </div>
   </div>
   <div class="actions">
