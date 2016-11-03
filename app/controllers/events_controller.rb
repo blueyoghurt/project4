@@ -44,11 +44,19 @@ class EventsController < ApplicationController
   end
 
   def eventAvailabletoStudent
-    @user = User.find_by(id: current_user.id)
-    puts "<<<<<<<", @user
+    @templates = Template.find_by(level_id: current_user.student.level_id)
+    @events = Event.where("id = ? AND school_id = ? AND end_date > ?", @templates.event_id, current_user.school.id, Date.today)
+    respond_to do |format|
+      format.json { render json: @events, :include => [:tasks, :cards] }
+    end
   end
 
   def pastEventtoStudent
+    @templates = Template.find_by(level_id: current_user.student.level_id)
+    @events = Event.where("id = ? AND school_id = ? AND end_date <= ?", @templates.event_id, current_user.school.id, Date.today)
+    respond_to do |format|
+      format.json { render json: @events, :include => [:tasks, :cards] }
+    end
   end
 
   # GET /events/new

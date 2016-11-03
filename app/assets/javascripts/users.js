@@ -259,10 +259,10 @@ $(document).on('turbolinks:load', function() {
     loadingAjax()
 
     $.ajax({
-      url: '/events/students',
+      url: '/events/student',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
+      console.log("availableEvents Information is back:", data);
       appendEventCards(data)
     })
   })
