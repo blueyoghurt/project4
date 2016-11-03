@@ -1,0 +1,22 @@
+  <div class="actions">
+    <% if @card.completion == 1 %>
+      <p><b>Status: </b><p>
+        <%= form_for(@card) do |f| %>
+          <%= f.text_field :completion, value: "2", type: "hidden"%>
+          <%= f.submit "Rework required", class: "ui yellow button  submissionButton"%>
+        <% end %>
+      </br>
+        <%= form_for(@card) do |f| %>
+          <%= f.text_field :completion, value: "3", type: "hidden"%>
+          <%= f.submit "Approve", class: "ui green button  submissionButton"%>
+        <% end %>
+    <% elsif @card.completion == 2 %>
+      <p><b>Status: </b></p>
+      <h3>Rework required</h3>
+      <button class="ui yellow button disabled submissionButton">Awaiting Rework</button>
+    <% elsif @card.completion == 3 %>
+      <p><b>Status: </b><p>
+        <h3>Rework required</h3>
+      <button class="ui green button disabled submissionButton">Completed</button>
+    <% end %>
+  </div>
