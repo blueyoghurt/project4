@@ -15,11 +15,9 @@ class EventsController < ApplicationController
 
     if @current_user.usertype == 2
       @tasks = Task.where(template_id: relevant_templates.ids)
-
     elsif @current_user.usertype == 3
       @template = Template.find_by(event_id: @event.id, level_id: @current_user.student.level.id)
       @tasks = Task.where(template_id: @template.id)
-
     elsif @current_user.usertype == 4
 
     end

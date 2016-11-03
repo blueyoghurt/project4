@@ -28,16 +28,14 @@
         </p>
       </div>
     </div>
-      <div class="extra content">
-        <% if current_user.usertype == 2 %>
+      <% if current_user.usertype == 2 %>
+        <div class="extra content">
           <a class="right floated" id="editEvent">
             <i class="edit icon"></i>
             Edit
           </a>
-        <% elsif current_user.usertype == 3 %>
-
-        <% end %>
       </div>
+    <% end %>
   </div>
 </div>
 
@@ -49,14 +47,18 @@
     </div>
   </div>
 <% elsif current_user.usertype ==3 %>
-  <% @card = Card.new %>
-  <%= form_for(@card) do |f| %>
-    <div class="actions">
-        <%= f.text_field :student_id, value: @current_user.student.id, type: "hidden"%>
-        <%= f.text_field :template_id, value: @template.id, type: "hidden"%>
-        <%= f.text_field :completion, value: 0 , type: "hidden"%>
-        <%= f.submit "Join", class: "ui yellow button submissionButton"%>
-    </div>
+  <% if Card.find_by(:student_id => @current_user.student.id, :template_id => @template.id) %>
+    <button class="ui teal button submissionButton">Joined!</button>
+  <%else %>
+    <% @card = Card.new %>
+    <%= form_for(@card) do |f| %>
+      <div class="actions">
+          <%= f.text_field :student_id, value: @current_user.student.id, type: "hidden"%>
+          <%= f.text_field :template_id, value: @template.id, type: "hidden"%>
+          <%= f.text_field :completion, value: 0 , type: "hidden"%>
+          <%= f.submit "Join", class: "ui yellow button submissionButton"%>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 

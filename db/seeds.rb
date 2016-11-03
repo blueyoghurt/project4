@@ -702,212 +702,139 @@ Event.find_or_create_by!(name: "Conserve the french fries day") do |event|
   event.status = 0
 end
 
-Template.find_or_create_by!(id: 1) do |template|
-  template.event_id = Event.find_by!(id: 1).id
-  template.level_id = Level.find_by!(id: 3).id
-end
+Template.create(event_id: Event.find_by!(id: 1).id, level_id: Level.find_by!(id: 3).id)
+Template.create(event_id: Event.find_by!(id: 1).id, level_id: Level.find_by!(id: 4).id)
+Template.create(event_id: Event.find_by!(id: 1).id, level_id: Level.find_by!(id: 5).id)
+Template.create(event_id: Event.find_by!(id: 1).id, level_id: Level.find_by!(id: 6).id)
+Template.create(event_id: Event.find_by!(id: 2).id, level_id: Level.find_by!(id: 3).id)
+Template.create(event_id: Event.find_by!(id: 2).id, level_id: Level.find_by!(id: 4).id)
+Template.create(event_id: Event.find_by!(id: 2).id, level_id: Level.find_by!(id: 5).id)
+Template.create(event_id: Event.find_by!(id: 2).id, level_id: Level.find_by!(id: 6).id)
+Template.create(event_id: Event.find_by!(id: 3).id, level_id: Level.find_by!(id: 3).id)
+Template.create(event_id: Event.find_by!(id: 3).id, level_id: Level.find_by!(id: 4).id)
+Template.create(event_id: Event.find_by!(id: 3).id, level_id: Level.find_by!(id: 5).id)
+Template.create(event_id: Event.find_by!(id: 3).id, level_id: Level.find_by!(id: 6).id)
+Template.create(event_id: Event.find_by!(id: 4).id, level_id: Level.find_by!(id: 3).id)
+Template.create(event_id: Event.find_by!(id: 4).id, level_id: Level.find_by!(id: 4).id)
+Template.create(event_id: Event.find_by!(id: 4).id, level_id: Level.find_by!(id: 5).id)
+Template.create(event_id: Event.find_by!(id: 4).id, level_id: Level.find_by!(id: 6).id)
+Template.create(event_id: Event.find_by!(id: 5).id, level_id: Level.find_by!(id: 3).id)
+Template.create(event_id: Event.find_by!(id: 5).id, level_id: Level.find_by!(id: 4).id)
+Template.create(event_id: Event.find_by!(id: 5).id, level_id: Level.find_by!(id: 5).id)
+Template.create(event_id: Event.find_by!(id: 5).id, level_id: Level.find_by!(id: 6).id)
+Template.create(event_id: Event.find_by!(id: 6).id, level_id: Level.find_by!(id: 3).id)
+Template.create(event_id: Event.find_by!(id: 6).id, level_id: Level.find_by!(id: 4).id)
+Template.create(event_id: Event.find_by!(id: 6).id, level_id: Level.find_by!(id: 5).id)
+Template.create(event_id: Event.find_by!(id: 6).id, level_id: Level.find_by!(id: 6).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 7).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 8).id, level_id: Level.find_by!(id: 11).id)
+Template.create(event_id: Event.find_by!(id: 9).id, level_id: Level.find_by!(id: 7).id)
+Template.create(event_id: Event.find_by!(id: 9).id, level_id: Level.find_by!(id: 8).id)
+Template.create(event_id: Event.find_by!(id: 9).id, level_id: Level.find_by!(id: 9).id)
+Template.create(event_id: Event.find_by!(id: 9).id, level_id: Level.find_by!(id: 10).id)
+Template.create(event_id: Event.find_by!(id: 9).id, level_id: Level.find_by!(id: 11).id)
 
-Template.find_or_create_by!(id: 2) do |template|
-  template.event_id = Event.find_by!(id: 1).id
-  template.level_id = Level.find_by!(id: 4).id
-end
-
-Template.find_or_create_by!(id: 3) do |template|
-  template.event_id = Event.find_by!(id: 1).id
-  template.level_id = Level.find_by!(id: 5).id
-end
-
-Template.find_or_create_by!(id: 4) do |template|
-  template.event_id = Event.find_by!(id: 1).id
-  template.level_id = Level.find_by!(id: 6).id
-end
-
-Template.find_or_create_by!(id: 5) do |template|
-  template.event_id = Event.find_by!(id: 2).id
-  template.level_id = Level.find_by!(id: 6).id
-end
-
-Template.find_or_create_by!(id: 6) do |template|
-  template.event_id = Event.find_by!(id: 3).id
-  template.level_id = Level.find_by!(id: 6).id
-end
-
-Template.find_or_create_by!(id: 7) do |template|
-  template.event_id = Event.find_by!(id: 2).id
-  template.level_id = Level.find_by!(id: 10).id
-end
-
-Template.find_or_create_by!(id: 8) do |template|
-  template.event_id = Event.find_by!(id: 2).id
-  template.level_id = Level.find_by!(id: 11).id
-end
-
-Task.find_or_create_by!(id: 1) do |task|
+Task.find_or_create_by!(description: "Talk to an elderly person and describe your experience") do |task|
   task.description = "Talk to an elderly person and describe your experience"
   task.template_id = Template.find_by!(id: 1).id
 end
 
-Task.find_or_create_by!(id: 2) do |task|
+Task.find_or_create_by!(description: "Hang out with an elderly person and describe your experience") do |task|
   task.description = "Hang out with an elderly person and describe your experience"
   task.template_id = Template.find_by!(id: 1).id
 end
 
-Task.find_or_create_by!(id: 3) do |task|
+Task.find_or_create_by!(description: "Help an elderly person cross the road and describe your experience") do |task|
   task.description = "Help an elderly person cross the road and describe your experience"
   task.template_id = Template.find_by!(id: 2).id
 end
 
-Task.find_or_create_by!(id: 4) do |task|
+Task.find_or_create_by!(description: "Play chess with an elderly person and describe your experience") do |task|
   task.description = "Play chess with an elderly person and describe your experience"
   task.template_id = Template.find_by!(id: 2).id
 end
 
-Task.find_or_create_by!(id: 5) do |task|
+Task.find_or_create_by!(description: "Fold origami an elderly person cross the road and describe your experience") do |task|
   task.description = "Fold origami an elderly person cross the road and describe your experience"
   task.template_id = Template.find_by!(id: 3).id
 end
 
-Task.find_or_create_by!(id: 6) do |task|
+Task.find_or_create_by!(description: "Dance with an elderly person and describe your experience") do |task|
   task.description = "Dance with an elderly person and describe your experience"
   task.template_id = Template.find_by!(id: 3).id
 end
 
-Task.find_or_create_by!(id: 7) do |task|
+Task.find_or_create_by!(description: "Make CNY lanterns with an elderly person cross the road and describe your experience") do |task|
   task.description = "Make CNY lanterns with an elderly person cross the road and describe your experience"
   task.template_id = Template.find_by!(id: 4).id
 end
 
-Task.find_or_create_by!(id: 8) do |task|
+Task.find_or_create_by!(description: "Teach an elderly person how to dance and describe your experience") do |task|
   task.description = "Teach an elderly person how to dance and describe your experience"
   task.template_id = Template.find_by!(id: 4).id
 end
 
-Task.find_or_create_by!(id: 9) do |task|
+Task.find_or_create_by!(description: "Teach the kids to fold origami and describe your experience") do |task|
   task.description = "Teach the kids to fold origami and describe your experience"
   task.template_id = Template.find_by!(id: 5).id
 end
 
-Task.find_or_create_by!(id: 10) do |task|
+Task.find_or_create_by!(description: "Teach the kids to dance and describe your experience") do |task|
   task.description = "Teach the kids to dance and describe your experience"
   task.template_id = Template.find_by!(id: 5).id
 end
 
-Task.find_or_create_by!(id: 11) do |task|
+Task.find_or_create_by!(description: "Teach the kids the concept of integrity and describe your experience") do |task|
   task.description = "Teach the kids the concept of integrity and describe your experience"
   task.template_id = Template.find_by!(id: 6).id
 end
 
-Task.find_or_create_by!(id: 12) do |task|
+Task.find_or_create_by!(description: "Teach the kids the concept of humility and describe your experience") do |task|
   task.description = "Teach the kids the concept of humility and describe your experience"
   task.template_id = Template.find_by!(id: 6).id
 end
 
-Card.find_or_create_by!(id: 1) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email8"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
+Card.create(student_id: Student.find_by!(user_id: User.find_by!(email: ENV["seed_email8"]).id).id, template_id: Template.find_by!(id: 4).id, completion: 0)
+Card.create(student_id: Student.find_by!(user_id: User.find_by!(email: ENV["seed_email7"]).id).id, template_id: Template.find_by!(id: 3).id, completion: 0)
+# Card.create(student_id: Student.find_by!(user_id: User.find_by!(email: ENV["seed_email9"]).id).id, template_id: Template.find_by!(id: 4).id, completion: 0)
+# Card.create(student_id: Student.find_by!(user_id: User.find_by!(email: ENV["seed_email10"]).id).id, template_id: Template.find_by!(id: 4).id, completion: 3)
+# Card.create(student_id: Student.find_by!(user_id: User.find_by!(email: ENV["seed_email11"]).id).id, template_id: Template.find_by!(id: 4).id, completion: 3)
+# Card.create(student_id: Student.find_by!(user_id: User.find_by!(email: ENV["seed_email12"]).id).id, template_id: Template.find_by!(id: 4).id, completion: 3)
 
-Card.find_or_create_by!(id: 2) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email7"]).id).id
-  card.template_id = Template.find_by!(id: 3).id
-  card.completion = 0
-end
-
-Card.find_or_create_by!(id: 3) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email9"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 4) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email10"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 5) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email11"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 6) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email12"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 7) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email13"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 8) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email14"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 9) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email15"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 10) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email16"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 11) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email17"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 12) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email6"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 13) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email5"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 14) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email4"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Card.find_or_create_by!(id: 15) do |card|
-  card.student_id = Student.find_by!(user_id: User.find_by!(email: ENV["seed_email3"]).id).id
-  card.template_id = Template.find_by!(id: 4).id
-  card.completion = 3
-end
-
-Tasktracker.find_or_create_by!(id: 1) do |tasktracker|
-  tasktracker.card_id = Card.find_by!(id: 1).id
-  tasktracker.task_id = Task.find_by!(id: 7).id
-end
-
-Tasktracker.find_or_create_by!(id: 2) do |tasktracker|
-  tasktracker.card_id = Card.find_by!(id: 1).id
-  tasktracker.task_id = Task.find_by!(id: 8).id
-end
-
-Tasktracker.find_or_create_by!(id: 3) do |tasktracker|
-  tasktracker.card_id = Card.find_by!(id: 2).id
-  tasktracker.task_id = Task.find_by!(id: 5).id
-end
-
-Tasktracker.find_or_create_by!(id: 4) do |tasktracker|
-  tasktracker.card_id = Card.find_by!(id: 2).id
-  tasktracker.task_id = Task.find_by!(id: 6).id
-end
+Tasktracker.create(card_id: Card.find_by!(id: 1).id, task_id: Task.find_by!(id: 7).id)
+Tasktracker.create(card_id: Card.find_by!(id: 1).id, task_id: Task.find_by!(id: 8).id)
+Tasktracker.create(card_id: Card.find_by!(id: 2).id, task_id: Task.find_by!(id: 5).id)
+Tasktracker.create(card_id: Card.find_by!(id: 2).id, task_id: Task.find_by!(id: 6).id)
