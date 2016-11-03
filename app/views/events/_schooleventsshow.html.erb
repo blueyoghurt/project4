@@ -4,6 +4,7 @@
         <tr>
           <th class="one wide"></th>
           <th class="five wide">Task Name</th>
+          <th class="five wide">Level</th>
           <th class="one wide">Edit</th>
         </tr>
       </thead>
@@ -13,6 +14,7 @@
           <tr>
             <th> <%= index + 1 %> </th>
             <th> <%=task.description %> </th>
+            <th> <%=task.template.level.description %> </th>
             <th><button class="ui button teacherTaskButton" id="TeacherTaskButton<%= task.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
           </tr>
         <% end %>
