@@ -294,7 +294,6 @@ $(document).on('turbolinks:load', function() {
       url: '/schools/search',
       method: 'GET'
     }).done(function (data) {
-      console.log("Information is back:", data);
       loadingAjax()
       appendSchoolCards(data)
     })
@@ -386,7 +385,7 @@ $(document).on('turbolinks:load', function() {
       $("#appendSchoolCards").append(
         '<div class="ui yellow card">' +
         '<div class="image">' +
-        '<img src="' + data[i].logo + '">' +
+        '<img class="rect_logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].logo + '"/>' +
         '</div>' +
         '<div class="content">' +
         '<a class="header">' + data[i].name+ '</a>' +

@@ -12,14 +12,19 @@ class EventsController < ApplicationController
     @templates = Template.find_by(event_id: @event.id)
     @cards = Card.where(template_id: @templates.id)
     relevant_templates = Template.where(event_id: @event.id)
+
     if @current_user.usertype == 2
       @tasks = Task.where(template_id: relevant_templates.ids)
+      @signup = Card.where(template_id: relevant_templates.ids).length
 
     elsif @current_user.usertype == 3
       @template = Template.find_by(event_id: @event.id, level_id: @current_user.student.level.id)
       @tasks = Task.where(template_id: @template.id)
+      @signup = Card.where(template_id: relevant_templates.ids).length
+
+    elsif @current_user.usertype == 4
+
     end
-    @signup = Card.where(template_id: relevant_templates.ids).length
   end
 
   def search
@@ -31,13 +36,15 @@ class EventsController < ApplicationController
     end
   end
 
+  # ngo view / upcoming events
   def pending
-    @events = Event.where("end_date > ?", Date.today )
+    @events = Event.where("status > ?", -1 ).where("end_date > ?", Date.today)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
   end
 
+  # ngo view / past events 
   def past
     @events = Event.where("end_date <= ?", Date.today )
     respond_to do |format|
@@ -45,16 +52,17 @@ class EventsController < ApplicationController
     end
   end
 
-  def eventAvailabletoStudent
+  # student view / upcoming events
+  def eventsAvailabletoStudent
     templates = Template.where(level_id: current_user.student.level_id).pluck(:event_id)
     @events = Event.where(id: templates).where("end_date >= ?", Date.today).where(school_id: current_user.school.id)
-
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
   end
 
-  def pastEventtoStudent
+  # student view / past events
+  def pastEventstoStudent
     templates = Template.where(level_id: current_user.student.level_id).pluck(:id)
     @events = Event.where(id: templates).where("end_date < ?", Date.today).where(school_id: current_user.school.id)
     respond_to do |format|
