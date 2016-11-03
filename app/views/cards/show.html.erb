@@ -1,7 +1,7 @@
 <div class="ui grid stackable">
 
   <div class="four wide column apple">
-    <%= render "partials/eventcard" %>
+    <%= render "cards/eventcard" %>
   </div>
 
 
@@ -20,8 +20,7 @@
 
         <% @tasktrackers.each_with_index do |tasktracker, index| %>
           <tr>
-            <!-- <th> <%= index + 1 %> </th> -->
-            <th> <%= tasktracker.id %> </th>
+            <th> <%= index + 1 %> </th>
             <th> <%=tasktracker.task.description %> </th>
             <th> <%=tasktracker.description %> </th>
             <th> <img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_200,h_200,c_lfill/ + <%=tasktracker.picture%>" class="ui rounded image eventStudentImage"> </th>
@@ -34,7 +33,7 @@
   </div>
 </div>
 
-  <!-- MODAL FOR AMENDING TASK COMPLETION STATUS -->
+  <!-- MODAL FOR AMENDING TASK DESCRIPTION AND PICTURE STATUS -->
   <% @tasktrackers.each do |tasktracker| %>
     <div class="ui modal" id="editingTaskButton<%= tasktracker.id %>">
       <div class="header">

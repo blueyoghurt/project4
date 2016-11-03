@@ -10,37 +10,55 @@
         <p><b>Start Time:</b> <%= @event.start_time %> </p>
         <p><b>Duration:</b> <%= @event.duration %> hours</p>
         <p><b>Capacity:</b> <%= @event.vacancy %></p>
-        <p><b>Vacancy:</b> <%= @event.vacancy %></p>
-        <p><b>Status:</b>
-          <% if @event.status == 0%>
-          Pending
-          <% elsif @event.status == 1%>
-          Rew-work
-          <% elsif @event.status == 2%>
-          Approved
-          <% end %>
-        </p>
+        <p><b>Vacancy:</b> <%= @event.vacancy - @signup %></p>
+        <% if @current_user.usertype == 2 %>
+          <p><b>Status:</b>
+            <% if @event.status == 0%>
+            Pending
+            <% elsif @event.status == 1%>
+            Re-work
+            <% elsif @event.status == 2%>
+            Approved
+            <% end %>
+          </p>
+        <% end %>
         <p>
           <b>Description:</b></br>
           <%= @event.description %>
         </p>
       </div>
     </div>
-    <div class="extra content">
-      <a class="right floated" id="editEvent">
-        <i class="edit icon"></i>
-        Edit
-      </a>
-    </div>
+      <div class="extra content">
+        <% if current_user.usertype == 2 %>
+          <a class="right floated" id="editEvent">
+            <i class="edit icon"></i>
+            Edit
+          </a>
+        <% elsif current_user.usertype == 3 %>
+
+        <% end %>
+      </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="ui secondary vertical pointing menu" id="profileMenu">
-    <a class="item menuScroll active" id="studentSignedUp">Students</a>
-    <a class="item menuScroll" id="eventTasks">Tasks</a>
+<% if current_user.usertype == 2 %>
+  <div class="row">
+    <div class="ui secondary vertical pointing menu" id="profileMenu">
+      <a class="item menuScroll active" id="eventTasks">Tasks</a>
+      <a class="item menuScroll" id="studentSignedUp">Students</a>
+    </div>
   </div>
-</div>
+<% elsif current_user.usertype ==3 %>
+  <% @card = Card.new %>
+  <%= form_for(@card) do |f| %>
+    <div class="actions">
+        <%= f.text_field :student_id, value: @current_user.student.id, type: "hidden"%>
+        <%= f.text_field :template_id, value: @template.id, type: "hidden"%>
+        <%= f.text_field :completion, value: 0 , type: "hidden"%>
+        <%= f.submit "Join", class: "ui yellow button submissionButton"%>
+    </div>
+  <% end %>
+<% end %>
 
 <!-- EDIT PROFILE -->
 <div class="ui modal" id="editingEvent">

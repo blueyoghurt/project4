@@ -9,15 +9,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    puts ">>>>>>>", @event.id
     @templates = Template.find_by(event_id: @event.id)
-    puts ">>>>>>>", @templates.id
     @cards = Card.where(template_id: @templates.id)
-    puts "=============="
-    puts @cards.inspect
-    # respond_to do |format|
-    #   format.json { render json: @cards, :include => [:students, :tasks] }
-    # end
+    relevant_templates = Template.where(event_id: @event.id)
+    if @current_user.usertype == 2
+      @tasks = Task.where(template_id: relevant_templates.ids)
+
+    elsif @current_user.usertype == 3
+      @template = Template.find_by(event_id: @event.id, level_id: @current_user.student.level.id)
+      @tasks = Task.where(template_id: @template.id)
+    end
+    @signup = Card.where(template_id: relevant_templates.ids).length
   end
 
   def search

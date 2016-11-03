@@ -1,0 +1,45 @@
+
+    <table class="ui selectable celled padded yellow table" id="appendTeacherTasks">
+      <thead>
+        <tr>
+          <th class="one wide"></th>
+          <th class="five wide">Task Name</th>
+          <th class="one wide">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @tasks.each_with_index do |task, index| %>
+          <tr>
+            <th> <%= index + 1 %> </th>
+            <th> <%=task.description %> </th>
+            <th><button class="ui button teacherTaskButton" id="TeacherTaskButton<%= task.id %>"><i class="edit icon studentEditTaskButton"></i></button></th>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+
+  <!-- MODAL FOR AMENDING TASK DESCRIPTION AND PICTURE STATUS -->
+  <% @tasks.each_with_index do |task, index| %>
+    <div class="ui modal" id="editingTeacherTaskButton<%= task.id %>">
+      <div class="header">
+        Edit Task
+      </div>
+      <div class="content">
+        <% @task = Task.find(task.id) %>
+        <%= form_for (@task), html: { class: "ui form", role: "form" } do |f| %>
+
+        <div class="field">
+          <%= f.label :description %></br>
+          <%= f.text_field :description, placeholder: @task.description %>
+        </div>
+
+      </div>
+      <div class="actions">
+        <%= f.submit class: "ui yellow button"%>
+      </div>
+      <%end %>
+    </div>
+  <%end %>

@@ -3,12 +3,18 @@
 <div class="ui grid stackable">
 
   <div class="four wide column apple">
-    <%= render "partials/edittemplatebar" %>
+    <%= render "events/edittemplatebar" %>
   </div>
 
   <div class="twelve wide column apple" id="taskListInput">
-    <div class="ui link cards">
 
+    <% if current_user.usertype == 3 %>
+      <%= render "events/studenteventsshow" %>
+    <% else %>
+      <%= render "events/schooleventsshow" %>
+    <% end %>
+
+    <!-- <div class="ui link cards">
       <div class="card">
         <div class="image">
           <img src="/images/avatar2/large/matthew.png">
@@ -33,7 +39,7 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
   </div>
 
 </div>
