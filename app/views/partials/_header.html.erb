@@ -1,26 +1,31 @@
 <% if current_user %>
-<% if  (current_user.usertype == 2)%>
-<div class="ui orange inverted menu">
+  <% if  (current_user.usertype == 2)%>
+    <div class="ui orange inverted menu" id="navMenu">
   <% elsif (current_user.usertype == 3)%>
-  <div class="ui yellow inverted menu">
-    <% elsif (current_user.usertype == 4)%>
-    <div class="ui teal inverted menu">
-      <% elsif (current_user.usertype == 1)%>
-      <div class="ui brown inverted menu">
-        <% end %>
-        <% else %>
-        <div class="ui yellow inverted menu">
-          <% end %>
-          <a class="item" href="/">My Spot!</a>
-          <div class="right menu">
-            <% if current_user %>
-            <a class="item" href="/users" id="manage"><%= current_user.name.titlecase %></a>
-            <%= link_to 'Logout', logout_path, class: "item", method: :delete %>
-            <% else %>
-            <a class="item" id="signIn">Log In</a>
-            <%= render "partials/signin" %>
-            <a class="item" id="signUp">Sign Up</a>
-            <%= render "partials/signup" %>
-            <% end %>
-          </div>
-        </div>
+    <div class="ui yellow inverted menu" id="navMenu">
+  <% elsif (current_user.usertype == 4)%>
+    <div class="ui teal inverted menu" id="navMenu">
+  <% elsif (current_user.usertype == 1)%>
+    <div class="ui brown inverted menu" id="navMenu">
+  <% end %>
+<% else %>
+  <div class="ui menu" id="navMenuLanding">
+<% end %>
+    <a class="item" href="/">
+      <i class="bug icon" id="homeIcon"></i>
+      <b>Spot</b>
+    </a>
+    <div class="right menu">
+      <% if current_user %>
+      <a class="item" href="/users" id="manage"><%= current_user.name.titlecase %></a>
+      <%= link_to 'Logout', logout_path, class: "item", method: :delete %>
+      <% else %>
+      <button id="signIn" class="ui black basic button">Log In</button>
+      <!-- <a class="item" id="signIn">Log In</a> -->
+      <%= render "partials/signin" %>
+      <button id="signUp" class="ui black basic button">Sign Up</button>
+      <!-- <a class="item" id="signUp">Sign Up</a> -->
+      <%= render "partials/signup" %>
+      <% end %>
+    </div>
+  </div>
