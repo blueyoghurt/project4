@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    puts ">>>>>>>", @event.id    
+    puts ">>>>>>>", @event.id
     @templates = Template.find_by(event_id: @event.id)
     puts ">>>>>>>", @templates.id
     @cards = Card.where(template_id: @templates.id)
@@ -41,6 +41,14 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
+  end
+
+  def eventAvailabletoStudent
+    @user = User.find_by(id: current_user.id)
+    puts "<<<<<<<", @user
+  end
+
+  def pastEventtoStudent
   end
 
   # GET /events/new

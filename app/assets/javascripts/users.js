@@ -254,6 +254,20 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+  // CLICKING ON AVAILABE EVENTS (STUDENTS)
+  $("#availableEvents").click(function() {
+    loadingAjax()
+
+    $.ajax({
+      url: '/events/students',
+      method: 'GET'
+    }).done(function (data) {
+      console.log("Information is back:", data);
+      appendEventCards(data)
+    })
+  })
+
+
   // CLICKING ON STUDENT PROFILES (SCHOOL)
   $("#schoolStudentProfiles").click(function() {
     loadingAjax()
