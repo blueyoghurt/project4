@@ -67,7 +67,7 @@
     array = []
     @events = []
     @templates.each do |template|
-      array.push(template.id)
+      array.push(template.event_id)
     end
 
     temp_events = Event.find(array)

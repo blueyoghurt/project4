@@ -45,9 +45,19 @@ class EventsController < ApplicationController
 
   def eventAvailabletoStudent
     @templates = Template.where(level_id: current_user.student.level_id)
-    puts "inspecting templates!", @templates.inspect
-    puts "inspecting templates id", @templates.ids.inspect
-    @events = Event.where("id = ? AND school_id = ? AND end_date > ?", @templates.event_ids, current_user.school.id, Date.today)
+    array = []
+    @events = []
+    @templates.each do |template|
+      array.push(template.event_id)
+    end
+
+    temp_events = Event.find(array)
+    temp_events.each do |event|
+      if (event.school_id == current_user.school.id) && (event.end_date > Date.today)
+        @events.push(event)
+      end
+    end
+
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
