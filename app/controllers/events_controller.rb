@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   def show
     puts ">>>>>>>", @event.id
-    @templates = Template.find_by(event_id: @event.id)
+    @templates = Template.find_by!(event_id: @event.id)
     puts ">>>>>>>", @templates.id
     @cards = Card.where(template_id: @templates.id)
     puts "=============="
@@ -44,15 +44,17 @@ class EventsController < ApplicationController
   end
 
   def eventAvailabletoStudent
-    @templates = Template.find_by(level_id: current_user.student.level_id)
-    @events = Event.where("id = ? AND school_id = ? AND end_date > ?", @templates.event_id, current_user.school.id, Date.today)
+    @templates = Template.where(level_id: current_user.student.level_id)
+    puts "inspecting templates!", @templates.inspect
+    puts "inspecting templates id", @templates.ids.inspect
+    @events = Event.where("id = ? AND school_id = ? AND end_date > ?", @templates.event_ids, current_user.school.id, Date.today)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
   end
 
   def pastEventtoStudent
-    @templates = Template.find_by(level_id: current_user.student.level_id)
+    @templates = Template.find_by!(level_id: @user.student.level_id)
     @events = Event.where("id = ? AND school_id = ? AND end_date <= ?", @templates.event_id, current_user.school.id, Date.today)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
@@ -72,7 +74,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @event.school_id = SchoolUser.find_by(user_id: current_user.id).school_id
+    @event.school_id = SchoolUser.find_by!(user_id: current_user.id).school_id
     puts "=================="
     puts "#{@event.inspect}"
     respond_to do |format|

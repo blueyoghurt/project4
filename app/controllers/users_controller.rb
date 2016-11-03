@@ -7,11 +7,11 @@ class UsersController < ApplicationController
     @user = User.find(@current_user.id)
     @schools = School.all
     if @current_user.usertype == 2
-      @school = School.find(SchoolUser.find_by(:user_id => @current_user.id))
+      @school = School.find(SchoolUser.find_by!(:user_id => @current_user.id))
     elsif @current_user.usertype == 4
-      @ngo = Ngo.find(NgoUser.find_by(:user_id => @current_user.id))
+      @ngo = Ngo.find(NgoUser.find_by!(:user_id => @current_user.id))
     end
-    @student = Student.find_by(:user_id => @current_user.id)
+    @student = Student.find_by!(:user_id => @current_user.id)
     @education_levels = EducationLevel.all
   end
 
