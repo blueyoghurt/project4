@@ -59,6 +59,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
+        puts "I'm updating!"
         format.html { redirect_to @card, notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
       else
@@ -86,6 +87,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:student_id)
+      params.require(:card).permit(:student_id, :template_id, :completion)
     end
 end
