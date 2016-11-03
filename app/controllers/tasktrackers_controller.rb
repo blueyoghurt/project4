@@ -77,6 +77,6 @@ class TasktrackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tasktracker_params
-      params.require(:tasktracker).permit(:approval, :picture, :description, :card_id, :task_id)
+      params.require(:tasktracker).permit(:picture, :description, :card_id, :task_id)
     end
 end
