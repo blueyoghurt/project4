@@ -41,7 +41,7 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.new(card_params)
-    @card.approval = 0
+    @card.completion = 0
 
     respond_to do |format|
       if @card.save
