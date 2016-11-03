@@ -1,72 +1,75 @@
-<p id="notice"><%= notice %></p>
+<div class="ui container">
+  <div id="renderingPartials">
+    <%= render "partials/flash" %>
+  </div>
+  <h1>Welcome <%=current_user.first_name%></h1>
 
-<h1>Welcome <%=current_user.first_name%></h1>
+  <div class="ui grid stackable">
 
-<div class="ui grid stackable">
+    <div class="four wide column apple">
+      <%= render "users/editprofile" %>
+    </div>
 
-  <div class="four wide column apple">
-    <%= render "users/editprofile" %>
+    <div class="twelve wide column apple" id="profileInput">
+      <table class="ui basic table">
+        <tbody>
+          <tr class="logo">
+            <td colspan="2"><%= image_tag(current_user.profile_image) %></td>
+          </tr>
+          <tr>
+            <td><b>First Name:</b></td>
+            <td><%=@user.first_name%></td>
+          </tr>
+          <tr>
+            <td><b>Last Name:</b></td>
+            <td><%=@user.last_name%></td>
+          </tr>
+          <tr>
+            <td><b>Email:</b></td>
+            <td><%=@user.email%></td>
+          </tr>
+          <tr>
+            <td><b>Gender:</b></td>
+            <% if @user.gender == 1 %>
+              <td>Male</td>
+            <% elsif @user.gender == 2 %>
+              <td>Female</td>
+            <% end %>
+          </tr>
+
+          <% if [2,3,4].include? current_user.usertype %>
+          <tr>
+            <% if @user.usertype == 2 %>
+            <td><b>School:</b></td>
+            <td><%= @user.school_user.school.name %></td>
+            <% elsif @user.usertype == 3 %>
+            <td><b>School:</b></td>
+            <td><%= @user.school.name %></td>
+            <% elsif @user.usertype == 4 %>
+            <td><b>Organisation:</b></td>
+            <td><%= @user.ngo.name %></td>
+            <% end %>
+          </tr>
+          <% end %>
+
+          <tr>
+            <td><b>User Type:</b></td>
+            <% if @user.usertype == 1 %>
+            <td>Admin user</td>
+            <% elsif @user.usertype == 2 %>
+            <td>School user</td>
+            <% elsif @user.usertype == 3 %>
+            <td>Student user</td>
+            <% elsif @user.usertype == 4 %>
+            <td>Ngo user</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <button id="editProfile" class="ui yellow button right floated editButton">Edit</button>
+
+    </div>
   </div>
 
-  <div class="twelve wide column apple" id="profileInput">
-    <table class="ui basic table">
-      <tbody>
-        <tr class="logo">
-          <td colspan="2"><%= image_tag(current_user.profile_image) %></td>
-        </tr>
-        <tr>
-          <td><b>First Name:</b></td>
-          <td><%=@user.first_name%></td>
-        </tr>
-        <tr>
-          <td><b>Last Name:</b></td>
-          <td><%=@user.last_name%></td>
-        </tr>
-        <tr>
-          <td><b>Email:</b></td>
-          <td><%=@user.email%></td>
-        </tr>
-        <tr>
-          <td><b>Gender:</b></td>
-          <% if @user.gender == 1 %>
-            <td>Male</td>
-          <% elsif @user.gender == 2 %>
-            <td>Female</td>
-          <% end %>
-        </tr>
-
-        <% if [2,3,4].include? current_user.usertype %>
-        <tr>
-          <% if @user.usertype == 2 %>
-          <td><b>School:</b></td>
-          <td><%= @user.school_user.school.name %></td>
-          <% elsif @user.usertype == 3 %>
-          <td><b>School:</b></td>
-          <td><%= @user.school.name %></td>
-          <% elsif @user.usertype == 4 %>
-          <td><b>Organisation:</b></td>
-          <td><%= @user.ngo.name %></td>
-          <% end %>
-        </tr>
-        <% end %>
-
-        <tr>
-          <td><b>User Type:</b></td>
-          <% if @user.usertype == 1 %>
-          <td>Admin user</td>
-          <% elsif @user.usertype == 2 %>
-          <td>School user</td>
-          <% elsif @user.usertype == 3 %>
-          <td>Student user</td>
-          <% elsif @user.usertype == 4 %>
-          <td>Ngo user</td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
-    <button id="editProfile" class="ui yellow button right floated editButton">Edit</button>
-
-  </div>
-</div>
-
-<%= render "users/modals" %>
+  <%= render "users/modals" %>
+</div

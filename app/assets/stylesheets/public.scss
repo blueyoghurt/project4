@@ -32,7 +32,7 @@
 
 .comments {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 15px;
   background-color: rgba(255,255,255,0.5);
   padding: 20px;
   border-radius: 5px;
@@ -40,7 +40,7 @@
 
 .orange {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 15px;
   background-color: rgba(0,0,0, 0.5);
   padding: 20px;
   border-radius: 5px;
@@ -61,4 +61,28 @@
   background-size: cover;
   background-position: center;
   z-index: -1;
+}
+
+#comment2 {
+  visibility: hidden;;
+}
+
+#comment3 {
+  visibility: hidden;;
+}
+
+#comment4 {
+  visibility: hidden;;
+}
+
+#comment5 {
+  visibility: hidden;;
+}
+
+#comment6 {
+  visibility: hidden;;
+}
+
+#partnerIcons {
+  font-size: 50px;
 }

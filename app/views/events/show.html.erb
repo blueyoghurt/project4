@@ -1,6 +1,8 @@
-<h1><%= @event.name %></h1>
 
-<div class="ui grid stackable">
+<div class="ui grid stackable container">
+  <div id="renderingPartials">
+    <%= render "partials/flash" %>
+  </div>
 
   <div class="four wide column apple">
     <% if current_user.usertype == 2 %>
