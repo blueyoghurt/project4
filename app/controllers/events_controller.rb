@@ -15,16 +15,16 @@ class EventsController < ApplicationController
 
     if @current_user.usertype == 2
       @tasks = Task.where(template_id: relevant_templates.ids)
-      @signup = Card.where(template_id: relevant_templates.ids).length
 
     elsif @current_user.usertype == 3
       @template = Template.find_by(event_id: @event.id, level_id: @current_user.student.level.id)
       @tasks = Task.where(template_id: @template.id)
-      @signup = Card.where(template_id: relevant_templates.ids).length
 
     elsif @current_user.usertype == 4
 
     end
+    
+    @signup = Card.where(template_id: relevant_templates.ids).length
   end
 
   def search
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # ngo view / past events 
+  # ngo view / past events
   def past
     @events = Event.where("end_date <= ?", Date.today )
     respond_to do |format|
@@ -122,13 +122,13 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:name, :start_date, :end_date, :start_time, :duration, :description, :vacancy, :education_level_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:name, :start_date, :end_date, :start_time, :duration, :description, :vacancy, :education_level_id)
+  end
 end
