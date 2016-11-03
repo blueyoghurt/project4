@@ -18,6 +18,7 @@ class EventsController < ApplicationController
       @template = Template.find_by(event_id: @event.id, level_id: @current_user.student.level.id)
       @tasks = Task.where(template_id: @template.id)
     elsif @current_user.usertype == 4
+      @tasks = Task.where(template_id: relevant_templates.ids)
 
     end
     @signup = Card.where(template_id: relevant_templates.ids).length
