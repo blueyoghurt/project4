@@ -44,19 +44,8 @@ class EventsController < ApplicationController
   end
 
   def eventAvailabletoStudent
-    @templates = Template.where(level_id: current_user.student.level_id)
-    array = []
-    @events = []
-    @templates.each do |template|
-      array.push(template.event_id)
-    end
-
-    temp_events = Event.find(array)
-    temp_events.each do |event|
-      if (event.school_id == current_user.school.id) && (event.end_date > Date.today)
-        @events.push(event)
-      end
-    end
+    templates = Template.where(level_id: current_user.student.level_id).pluck(:event_id)
+    @events = Event.where(id: templates).where("end_date >= ?", Date.today).where(school_id: current_user.school.id)
 
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
@@ -64,8 +53,8 @@ class EventsController < ApplicationController
   end
 
   def pastEventtoStudent
-    @templates = Template.find_by!(level_id: @user.student.level_id)
-    @events = Event.where("id = ? AND school_id = ? AND end_date <= ?", @templates.event_id, current_user.school.id, Date.today)
+    templates = Template.where(level_id: current_user.student.level_id).pluck(:id)
+    @events = Event.where(id: templates).where("end_date < ?", Date.today).where(school_id: current_user.school.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
     end
