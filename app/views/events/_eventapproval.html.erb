@@ -5,11 +5,11 @@
         <p><b>Status: </b><p>
         <% if @event.status == 1 %>
           <h3>Waiting for Approval</h3>
-            <%= form_for @event, :url => event_approval_path(@event) do |f| %>
+            <%= form_for @event, :url => event_approval_path(:id => @event.id) do |f| %>
               <%= f.number_field :status, value: 3, type: "hidden"%>
               <%= f.submit "Approve it", class: "ui green button submissionButton"%><br/><br/>
             <% end %>
-            <%= form_for @event, :url => event_approval_path(@event) do |f| %>
+            <%= form_for @event, :url => event_approval_path(:id => @event.id) do |f| %>
               <%= f.number_field :status, value: 2, type: "hidden"%>
               <%= f.submit "Send it for rework", class: "ui yellow button submissionButton"%>
             <% end %>

@@ -492,7 +492,7 @@ $(document).on('turbolinks:load', function() {
       $("#appendEventCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-          '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' 
+          '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">'
             +
           '</div>' +
           '<div class="content">' +

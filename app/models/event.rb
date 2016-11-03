@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :school
+  belongs_to :ngo
   belongs_to :education_level
   has_many :templates
   has_many :tasks, through: :templates
