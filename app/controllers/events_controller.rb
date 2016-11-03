@@ -81,8 +81,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.school_id = SchoolUser.find_by!(user_id: current_user.id).school_id
-    puts "=================="
-    puts "#{@event.inspect}"
+    if params[:event][:image]
+      uploaded_file = params[:event][:image].path
+      @user.update(image: Cloudinary::Uploader.upload(uploaded_file, :folder => "events/")["public_id"])
+    end
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Great! Let's enter the details for the event!" }
