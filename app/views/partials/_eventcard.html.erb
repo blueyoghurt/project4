@@ -1,3 +1,5 @@
+
+  <%= @card.inspect %>
 <div class="row">
   <div class="ui card">
    <div class="content">
@@ -22,11 +24,23 @@
 
 
 <div class="row">
-
   <%= form_for(@card) do |f| %>
-
     <div class="actions">
-      <%= f.submit class: "ui yellow button"%>
+      <% if @card.completion == 0 %>
+        <p><b>Status: </b>Draft</p>
+        <%= f.file_field :approval, value: "1"%>
+        <%= f.submit "Send for Approval", class: "ui yellow button"%>
+      <% elsif @card.completion == 1 %>
+        <p><b>Status: </b>Waiting for Approval</p>
+        <%= f.submit "Waiting for Approval", class: "ui yellow button disabled"%>
+      <% elsif @card.completion == 2 %>
+        <p><b>Status: </b>Rework required</p>
+        <%= f.file_field :approval, value: "1"%>
+        <%= f.submit "Send for Approval", class: "ui yellow button"%>
+      <% elsif @card.completion == 3 %>
+        <p><b>Status: </b>Rework required</p>
+        <%= f.submit "Completed", class: "ui green button disabled"%>
+      <% end %>
     </div>
   <% end %>
 
