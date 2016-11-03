@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     if params[:user][:profile_pic]
       uploaded_file = params[:user][:profile_pic].path
       @user.update(profile_pic: Cloudinary::Uploader.upload(uploaded_file, :folder => "user/profile")["public_id"])
+    elsif @user.gender == 1
+      @user.update(profile_pic: "user/profile/cbvhfnluijup9kxbqirv")
+    else
+      @user.update(profile_pic: "user/profile/hglnxhj4zbuahmppz0px")
     end
 
     respond_to do |format|
