@@ -43,6 +43,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $("#aboutUsDim").click(function() {
+    $('#aboutUsDim').removeClass("active")
     $('#aboutUsDim').dimmer('hide');
   })
 
