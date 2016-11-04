@@ -14,6 +14,9 @@ class EventsController < ApplicationController
 
   # ngo view / upcoming events
   def pending
+    puts ">>>> STATUS", Event.where("status > ?", 0 ).pluck(:id)
+    puts ">>>> DATE", Event.where("end_date > ?", Date.today).pluck(:id)
+    puts ">>>> NGO_ID", Event.where(ngo_id: current_user.ngo.id).pluck(:id)
     @events = Event.where("status > ?", 0 ).where("end_date > ?", Date.today).where(ngo_id: current_user.ngo.id)
     respond_to do |format|
       format.json { render json: @events, :include => [:tasks, :cards] }
@@ -131,7 +134,7 @@ class EventsController < ApplicationController
         format.html {
           flash[:success] = "Great! Let's enter the details for the event!"
           redirect_to @event
-         }
+        }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -148,7 +151,7 @@ class EventsController < ApplicationController
         format.html {
           flash[:success] = "Event was successfully updated."
           redirect_to @event
-         }
+        }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
