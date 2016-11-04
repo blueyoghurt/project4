@@ -420,7 +420,7 @@ $(document).on('turbolinks:load', function() {
       $("#studentAppendCards").append(
         '<a class="anchorForCards ui yellow card" href="/cards/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].template.event.image + '"/>'  +
+            '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].template.event.image + '"/>'  +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
@@ -493,7 +493,7 @@ $(document).on('turbolinks:load', function() {
       $("#appendEventCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].image + '"/>'  +
+            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].image + '"/>'  +
             // '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
           '</div>' +
           '<div class="content">' +
@@ -531,7 +531,7 @@ $(document).on('turbolinks:load', function() {
       $("#appendCards").append(
         '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/'+ data[i].image + '"/>'  +
+            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].image + '"/>'  +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +
@@ -564,7 +564,7 @@ $(document).on('turbolinks:load', function() {
       $("#appendCards").append(
         '<a class="anchorForCards ui yellow card" href="/cards/' + data[i].id + '">' +
           '<div class="image">' +
-            '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_250,h_250,c_lfill/' + data[i].student.user.profile_pic + '">' +
+            '<img src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/' + data[i].student.user.profile_pic + '">' +
           '</div>' +
           '<div class="content">' +
             '<div class="header">' +

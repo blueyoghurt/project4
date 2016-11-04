@@ -70,9 +70,9 @@ $(document).on('turbolinks:load', function() {
 
     // APPENDING ALL STUDENT CARDS FOR SCHOOL
     function appendAllStudentCards(data) {
-      
-      $("#profileInput").empty()
-      $("#profileInput").append('<div class="ui cards" id="studentAppendCards"></div>')
+
+      $("#taskListInput").empty()
+      $("#taskListInput").append('<div class="ui cards" id="studentAppendCards"></div>')
       for (var i = 0; i < data.length; i++) {
         $("#studentAppendCards").append(
           '<div class="ui yellow card">' +

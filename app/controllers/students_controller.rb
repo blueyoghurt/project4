@@ -12,7 +12,6 @@ class StudentsController < ApplicationController
   end
 
   def signedup
-    puts params[:id]
     templates = Template.where(event_id: params[:id]).pluck(:id)
     cards = Card.where(template_id: templates).pluck(:student_id)
     @students = Student.where(id: cards)
