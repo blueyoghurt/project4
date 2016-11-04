@@ -8,7 +8,9 @@
     <% if current_user.usertype == 2 %>
     <%= render "events/eventsendforapproval" %>
     <% end %>
+
     <%= render "events/edittemplatebar" %>
+
     <% if current_user.usertype == 4 %>
     <%= render "events/eventapproval" %>
     <% end %>
@@ -17,13 +19,13 @@
   <div class="twelve wide column apple" id="taskListInput">
 
     <% if [2,3,4].include? current_user.usertype %>
-    <% if current_user.usertype == 2 %>
-    <%= render "events/schooleventsshow" %>
-    <% elsif current_user.usertype == 3 %>
-    <%= render "events/studenteventsshow" %>
-    <% else current_user.usertype == 4 %>
-    <%= render "events/ngoeventsshow" %>
-    <% end %>
+      <% if current_user.usertype == 2 %>
+        <%= render "events/schooleventsshow" %>
+      <% elsif current_user.usertype == 3 %>
+        <%= render "events/studenteventsshow" %>
+      <% else current_user.usertype == 4 %>
+        <%= render "events/ngoeventsshow" %>
+      <% end %>
     <% end %>
   </div>
 </div>
