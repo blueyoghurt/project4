@@ -7,7 +7,7 @@
     </div>
     <div class="content">
       <div class="description">
-        <p><b>Start Time:</b> <%= @event.start_time %> </p>
+        <p><b>Start Time:</b> <%= show_time(@event) %> </p>
         <p><b>Duration:</b> <%= @event.duration %> hours</p>
         <p><b>Capacity:</b> <%= @event.vacancy %></p>
         <p><b>Vacancy:</b> <%= @event.vacancy - @signup %></p>

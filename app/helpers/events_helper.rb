@@ -1,9 +1,7 @@
 module EventsHelper
 
-  # def showtime(params)
-  #   event.start_time.strftime("%b %d, %l:%M %p")
-  # end
-  #
-  # helper_method :showtime
+  def show_time(event)
+    event.start_time.strftime("%l:%M %P ")
+  end
 
 end
