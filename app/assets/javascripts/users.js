@@ -25,11 +25,17 @@ $(document).on('turbolinks:load', function() {
       if (data.usertype == 1) {
         usertype = "Admin user"
       } else if (data.usertype == 2) {
-        usertype = "School user"
+        usertype = "School user";
       } else if (data.usertype == 3) {
-        usertype = "Student user"
+        usertype = "Student user";
       } else if (data.usertype == 4) {
-        usertype = "Ngo user"
+        usertype = "Ngo user";
+      }
+
+      if(data.gender == 1){
+        gender = "Male"
+      } else {
+        gender = "Female"
       }
 
       $("#profileInput").empty()
@@ -52,7 +58,11 @@ $(document).on('turbolinks:load', function() {
         '<td>' + data.email + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td><b>User Type:</b></td>' +
+        '<td><b>Gender:</b></td>' +
+        '<td>' + gender + '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><b>Type:</b></td>' +
         '<td>' + usertype + '</td>' +
         '</tr>' +
         '<tr>' +

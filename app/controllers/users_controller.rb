@@ -18,7 +18,10 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(@current_user.id)
-    render json: @user
+    respond_to do |format|
+      format.json { render json: @user, :except=>[:id, :password_digest, :created_at, :updated_at]}
+    end
+    # render json: @user
   end
 
   # GET /users/1

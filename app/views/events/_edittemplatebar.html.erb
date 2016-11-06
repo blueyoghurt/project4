@@ -3,25 +3,29 @@
     <div class="content">
       <div class="header"><%= @event.name %></div>
       <div class="meta">Level Information</div>
-      <div class="meta"><%= @event.start_date%> to <%= @event.end_date%> </div>
+      <% if @event.start_date == @event.end_date %>
+      <div class="meta"><%= show_date(@event.start_date)%></div>
+      <% else %>
+      <div class="meta"><%= show_date(@event.start_date)%> to <%= show_date(@event.end_date)%> </div>
+      <% end %>
     </div>
     <div class="content">
       <div class="description">
-        <p><b>Start Time:</b> <%= show_time(@event) %> </p>
+        <p><b>Start Time:</b> <%= show_time(@event.start_time) %> </p>
         <p><b>Duration:</b> <%= @event.duration %> hours</p>
         <p><b>Capacity:</b> <%= @event.vacancy %></p>
         <p><b>Vacancy:</b> <%= @event.vacancy - @signup %></p>
         <% if @current_user.usertype == 2 %>
-          <p>
-            <b>Status:</b>
-            <% if @event.status == 0%>
-              Pending
-            <% elsif @event.status == 1%>
-              Re-work
-            <% elsif @event.status == 2%>
-              Approved
-            <% end %>
-          </p>
+        <p>
+          <b>Status:</b>
+          <% if @event.status == 0%>
+          Pending
+          <% elsif @event.status == 1%>
+          Re-work
+          <% elsif @event.status == 2%>
+          Approved
+          <% end %>
+        </p>
         <% end %>
         <p>
           <b>Description:</b></br>
@@ -30,47 +34,47 @@
       </div>
     </div>
     <% if current_user.usertype == 2 %>
-      <div class="extra content">
-        <a class="right floated" id="editEvent">
-          <i class="edit icon"></i>
-          Edit
-        </a>
-      </div>
+    <div class="extra content">
+      <a class="right floated" id="editEvent">
+        <i class="edit icon"></i>
+        Edit
+      </a>
+    </div>
     <% end %>
   </div>
 </div>
 
 <% if current_user.usertype == 2 %>
-  <div class="row">
-    <div class="ui secondary vertical pointing menu" id="profileMenu">
-      <a class="item menuScroll active" id="eventTasks">Tasks</a>
-      <a class="item menuScroll studentSignedUp" id="<%=@event.id%>">Students</a>
-    </div>
+<div class="row">
+  <div class="ui secondary vertical pointing menu" id="profileMenu">
+    <a class="item menuScroll active" id="eventTasks">Tasks</a>
+    <a class="item menuScroll studentSignedUp" id="<%=@event.id%>">Students</a>
   </div>
+</div>
 <% elsif current_user.usertype ==3 %>
-  <div class="row">
-    <div class="ui card">
-      <div class="content">
-        <% if Card.find_by(:student_id => @current_user.student.id, :template_id => @template.id) %>
-          <button class="ui teal button submissionButton">Joined!</button>
-        <% else %>
-          <% @card = Card.new %>
-          <%= form_for(@card) do |f| %>
-            <div class="row">
-                <div class="content">
-                  <div class="actions">
-                    <%= f.text_field :student_id, value: @current_user.student.id, type: "hidden"%>
-                    <%= f.text_field :template_id, value: @template.id, type: "hidden"%>
-                    <%= f.text_field :completion, value: 0 , type: "hidden"%>
-                    <%= f.submit "Join", class: "ui yellow button submissionButton"%>
-                  </div>
-                </div>
-            </div>
-          <% end %>
-        <% end %>
+<div class="row">
+  <div class="ui card">
+    <div class="content">
+      <% if Card.find_by(:student_id => @current_user.student.id, :template_id => @template.id) %>
+      <button class="ui teal button submissionButton">Joined!</button>
+      <% else %>
+      <% @card = Card.new %>
+      <%= form_for(@card) do |f| %>
+      <div class="row">
+        <div class="content">
+          <div class="actions">
+            <%= f.text_field :student_id, value: @current_user.student.id, type: "hidden"%>
+            <%= f.text_field :template_id, value: @template.id, type: "hidden"%>
+            <%= f.text_field :completion, value: 0 , type: "hidden"%>
+            <%= f.submit "Join", class: "ui yellow button submissionButton"%>
+          </div>
+        </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
+</div>
 <% end %>
 
 <!-- EDIT PROFILE -->

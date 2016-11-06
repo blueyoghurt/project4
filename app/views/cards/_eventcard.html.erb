@@ -9,9 +9,9 @@
    <div class="content">
      <div class="description">
        <p><b>Date:</b></p>
-       <p><%= @card.template.event.start_date%> to <%= @card.template.event.end_date%> </p>
+       <p><%= show_date(@card.template.event.start_date)%> to <%= show_date(@card.template.event.end_date)%> </p>
        <p><b>Start Time:</b> </p>
-       <p><%= @card.template.event.start_time %> </p>
+       <p><%= show_time(@card.template.event.start_time) %></p>
        <p><b>Duration:</b></p>
        <p> <%= @card.template.event.duration %> hours</p>
        <p><b>Description:</b></p>
