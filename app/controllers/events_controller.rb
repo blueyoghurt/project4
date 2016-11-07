@@ -46,6 +46,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # ngo and school user view
   def event_approval
     if current_user.usertype == 2 #school_users
       if @event.school.id != @event.school.id

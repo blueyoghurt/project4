@@ -169,6 +169,10 @@ $(document).on('turbolinks:load', function() {
     $('#editingSchoolInstitution').modal('show')
   })
 
+  $(document).on('click','#addTaskButton',function(){
+    $('#addTeacherTask').modal('show')
+  })
+
   // CLICKING NGO INSTITUTION PROFILE (NGO)
   $("#ngoProfile").click(function() {
     loadingAjax()
@@ -261,7 +265,7 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
-  // CLICKING ON AVAILABE EVENTS (STUDENTS)
+  // CLICKING ON AVAILABLE EVENTS (STUDENTS)
   $("#availableEvents").click(function() {
     loadingAjax()
 
@@ -358,76 +362,6 @@ $(document).on('turbolinks:load', function() {
     )
   }
 
-  // APPENDING NGO CARDS
-  function appendNgoCards(data) {
-    $("#profileInput").empty()
-    $("#profileInput").append('<div class="ui cards" id="ngoAppendCards"></div>')
-    for (var i = 0; i < data.length; i++) {
-      $("#ngoAppendCards").append(
-        '<div class="ui yellow card">' +
-        '<div class="image">' +
-        '<img class="rect_logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].logo + '"/>' +
-        '</div>' +
-        '<div class="content">' +
-        '<a class="header">' + data[i].name+ '</a>' +
-        '<div class="meta">' +
-        '<span class="date">MY INDUSTRY</span>' +
-        '</div>' +
-        '<div class="description">' +
-        data[i].description +
-        '</div>' +
-        '</div>' +
-        '<div class="extra content">' +
-        '<div class="right floated">' +
-        '<a class="cardLinkIcons" href="mailto:' + data[i].email + '">' +
-        '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-        'Email' +
-        '</a>' +
-        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-        '<i class="text telephone icon"></i>' +
-        'Phone' +
-        '</a>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
-      )
-    }
-  }
-
-  // APPENDING SCHOOL CARDS FOR NGO
-  function appendSchoolCards(data) {
-    $("#profileInput").empty()
-    $("#profileInput").append('<div class="ui cards" id="appendSchoolCards"></div>')
-    for (var i = 0; i < data.length; i++) {
-      $("#appendSchoolCards").append(
-        '<div class="ui yellow card">' +
-        '<div class="image">' +
-        '<img class="rect_logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].logo + '"/>' +
-        '</div>' +
-        '<div class="content">' +
-        '<a class="header">' + data[i].name+ '</a>' +
-        '<div class="meta">' +
-        '<span class="date">' + data[i].education_level.description + '</span>' +
-        '</div>' +
-        '</div>' +
-        '<div class="extra content">' +
-        '<div class="right floated">' +
-        '<a class="cardLinkIcons" href="mailto:' + data[i].email + '" data-tooltip="Email me" data-position="bottom left" data-inverted="">' +
-        '<i class="mail icon right" id="mailIcon' + i + '"></i>' +
-        '</a>' +
-        '<a class="cardLinkIcons" data-tooltip="' + data[i].telephone + '" data-position="bottom left" data-inverted="">' +
-        '<i class="text telephone icon"></i>' +
-        '</a>' +
-        '<a class="cardLinkIcons" data-tooltip="' + data[i].website + '" data-position="bottom left" data-inverted="">' +
-        '<i class="world icon"></i>' +
-        '</a>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
-      )
-    }
-  }
-
   // APPEND STUDENT SIGNED UP CARDS
   function appendStudentCards(data) {
     $("#profileInput").empty()
@@ -507,35 +441,46 @@ $(document).on('turbolinks:load', function() {
     )
 
     for (var i = 0; i < data.length; i++) {
-      if (!data[i].image.length){
-        data[i].image = data[i].ngo.logo
-      }
-      $("#appendEventCards").append(
-        '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
-          '<div class="image">' +
-            '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].image + '"/>'  +
-            // '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
-          '</div>' +
-          '<div class="content">' +
-            '<div class="header">' +
-              data[i].name +
-            '</div>' +
-            '<div class="meta">' +
-              '<span class="date">' + data[i].start_date + ' to ' + data[i].end_date + '</span>' +
-            '</div>' +
-            '<div class="description">' +
-              data[i].description +
-            '</div>' +
-          '</div>' +
-          '<div class="extra content">' +
-            '<div class="right floated">' +
-              '<i class="list layout icon"></i>' +
-              data[i].cards.length + ' students signed up!' +
-            '</div>' +
-          '</div>' +
-        '</a>'
-      )
 
+        if (data.length){
+        var datestring;
+        if (!data[i].image.length){
+          data[i].image = data[i].ngo.logo
+        }
+        if (data[i].start_date != data[i].end_date){
+          datestring = moment(data[i].start_date).format("DD MMM") + ' to ' + moment(data[i].end_date).format("DD MMM")
+        } else {
+          datestring = moment(data[i].start_date).format("DD MMM YYYY")
+        }
+
+        $("#appendEventCards").append(
+          '<a class="anchorForCards ui yellow card" href="/events/' + data[i].id + '">' +
+            '<div class="image">' +
+              '<img class="logo" src="https://res.cloudinary.com/blueyoghurt/image/upload/w_350,h_200,c_lfill/'+ data[i].image + '"/>'  +
+              // '<img src="https://www.residentadvisor.net/images/news/2014/de-away-moved.jpg">' +
+            '</div>' +
+            '<div class="content">' +
+              '<div class="header">' +
+                data[i].name +
+              '</div>' +
+              '<div class="meta">' +
+                '<span class="date">' + datestring + '</span>' +
+              '</div>' +
+              '<div class="description">' +
+                data[i].description +
+              '</div>' +
+            '</div>' +
+            '<div class="extra content">' +
+              '<div class="right floated">' +
+                '<i class="list layout icon"></i>' +
+                data[i].cards.length + ' students signed up!' +
+              '</div>' +
+            '</div>' +
+          '</a>'
+        )
+      } else {
+        $("#appendEventCards").append('<div class="">There are no available events.</div>')
+      }
     }
   }
 

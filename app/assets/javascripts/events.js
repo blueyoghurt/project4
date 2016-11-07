@@ -15,6 +15,10 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+  $(document).on('click','#editProfile',function(){
+    $('#editingProfile').modal('show')
+  })
+
   $(".studentSignedUp").click(function() {
     loadingAjax()
     var taskID = this.id
