@@ -10,8 +10,16 @@ $(document).on('turbolinks:load', function() {
   })
   ;
 
-// Flash alerts automatically fades out after 5 seconds
-  $("#alertDiv").fadeTo(5000, 0);
+// Flash alerts automatically slides up after 5 seconds
+  $("#alertDiv").fadeTo(2000, 1).slideUp(500);
+
+// Datepicker on add events modal's event listener
+  $( function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true
+    });
+  } );
+
 
   // CLICKING USER PROFILE (STUDENT, NGOS AND SCHOOLS)
   $("#userProfile").click(function() {
@@ -281,6 +289,8 @@ $(document).on('turbolinks:load', function() {
   $(document).on('click','#addEvent',function(){
     $('#addingEvent').modal('show')
   })
+
+
 
   // CLICKING ON SCHOOL PROFILES (NGO)
   $("#schoolCards").click(function() {
