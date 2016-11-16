@@ -1,24 +1,15 @@
-# README
+# My Spot
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+As it currently stands, when schools tie up with NPOs to conduct community service events/activities, the onus lies on the teacher to not only source, but heavily manage the proceedings of the event/activity. This CRM app is therefore created to allow teachers to collaborate with NPOs on the activites to be conducted during events, as well as to manage the student sign up, and post-event student reflection.
 
-Things you may want to cover:
+Built on:
+  - Rails
 
-* Ruby version
+Functionality:
+  - Login/Signup
+  - NGO/Teacher approval
+  - Edit events/tasks
+  
+Live Site: https://myspot-sg.herokuapp.com
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![](https://media.giphy.com/media/ESqZ3bGfkA7aU/giphy.gif)
